@@ -4,7 +4,7 @@ import { AnimateUIProvider } from '@animate-ui/react/provider';
 import { Button } from '@animate-ui/react/primitives/buttons/button';
 import { Entrance } from './animation.jsx';
 import {
-  ArrowDownRight, ArrowLeft, ArrowRight, BookOpen, Check, ChevronDown, ChevronRight, ClipboardList,
+  ArrowDownRight, ArrowLeft, ArrowRight, BookOpen, Check, ChevronLeft, ChevronRight, ClipboardList,
   Database, GraduationCap, Grid3X3, House, Layers3, Menu, Moon, Network, RotateCcw, Search,
   Sun, Target, Terminal, X, CircleHelp,
 } from 'lucide-react';
@@ -343,11 +343,15 @@ function Quiz({ items, mode, setProgress, onExit }) {
       <p>{count}/{items.length} câu đã trả lời</p></div>
       <Button className="outline-button" onClick={onExit}><ArrowLeft size={16} /> Thoát bài</Button>
     </div>
-    {!result && <div className="quiz-progress">
-      <div><strong>Tiến độ làm bài</strong><span>{count > 0 && count / items.length < 0.01 ? '<1%' : Math.floor(count / items.length * 100) + '%'}</span></div>
-      <progress value={count} max={items.length} aria-label="Số câu đã trả lời" />
-      <Button className="outline-button question-toggle" aria-expanded={showQuestions} aria-controls="question-list" onClick={() => setShowQuestions(value => !value)}>
-        <Grid3X3 size={17} /> {showQuestions ? 'Ẩn danh sách câu hỏi' : 'Danh sách câu hỏi'} <ChevronDown size={16} />
+    {!result && <div className="quiz-toolbar">
+      <div className="quiz-progress">
+        <div><strong>Tiến độ làm bài</strong><span>{count > 0 && count / items.length < 0.01 ? '<1%' : Math.floor(count / items.length * 100) + '%'}</span></div>
+        <progress value={count} max={items.length} aria-label="Số câu đã trả lời" />
+      </div>
+      <Button className="icon-button question-toggle" aria-label={showQuestions ? 'Ẩn danh sách câu hỏi' : 'Mở danh sách câu hỏi'}
+        title={showQuestions ? 'Ẩn danh sách câu hỏi' : 'Mở danh sách câu hỏi'}
+        aria-expanded={showQuestions} aria-controls="question-list" onClick={() => setShowQuestions(value => !value)}>
+        <ChevronLeft size={21} aria-hidden="true" />
       </Button>
     </div>}
     {result ? <div className="result">
