@@ -47,6 +47,7 @@ h3 { font-size: 1.08rem; }
 .nav-label { margin: 0 11px 10px; color: #9293b2; font-size: .65rem; font-weight: 750; letter-spacing: .13em; }
 .chapter-label { margin-top: 30px; }
 .nav-item { display: flex; gap: 10px; align-items: center; color: #c9c8de; padding: 10px 11px; min-height: 43px; border-radius: 10px; font-size: .84rem; margin-bottom: 4px; }
+.nav-item { transition: background-color .2s ease, color .2s ease; }
 .nav-item svg { flex: none; }
 .nav-item:hover { background: #232440; color: white; }
 .nav-item.active { background: #322952; color: #e6dbff; font-weight: 650; }
@@ -111,8 +112,14 @@ progress::-moz-progress-bar { border-radius: 10px; background: var(--accent); }
 .section-heading p, .muted { color: var(--muted); font-size: .87rem; margin-top: 6px; }
 .chapter-count { display: flex; gap: 6px; align-items: center; color: var(--muted); font-size: .75rem; white-space: nowrap; }
 .chapter-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px; }
-.chapter-card { display: flex; flex-direction: column; padding: 17px; min-height: 171px; transition: border-color .2s, transform .2s, box-shadow .2s; }
-.chapter-card:hover { transform: translateY(-3px); border-color: #a997ee; box-shadow: 0 10px 24px #6644c512; }
+.chapter-card { display: flex; flex-direction: column; padding: 17px; min-height: 171px; transition: border-color .2s ease, translate .2s cubic-bezier(.23, 1, .32, 1), box-shadow .2s ease; }
+.chapter-card:focus-visible { border-color: #a997ee; }
+@media (hover: hover) and (pointer: fine) {
+  .chapter-card:hover { border-color: #a997ee; box-shadow: 0 10px 24px #6644c512; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .chapter-card:hover { translate: 0 -3px; }
+}
 .card-top, .card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .chapter-card h3 { margin-top: 12px; }
 .chapter-card p { margin: 4px 0 13px; font-size: .81rem; line-height: 1.45; color: var(--muted); }
@@ -127,6 +134,7 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8p
 .chapter-banner button { margin-left: auto; flex-shrink: 0; }
 .tabs { display: flex; gap: 6px; margin: 18px 0 24px; border-bottom: 1px solid var(--border); overflow-x: auto; }
 .tabs a { display: inline-flex; align-items: center; gap: 7px; padding: 11px 13px; white-space: nowrap; color: var(--muted); border-bottom: 2px solid transparent; font-size: .85rem; }
+.tabs a { transition: color .2s ease, border-color .2s ease; }
 .tabs a:hover, .tabs a[aria-current] { color: var(--accent); }
 .tabs a[aria-current] { border-color: var(--accent); font-weight: 700; }
 .reading-card, .case-card, .result-card { padding: 18px; margin-top: 12px; }
@@ -150,6 +158,7 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8p
 .option { display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: 10px; padding: 9px 11px; margin-bottom: 7px; cursor: pointer; font-size: .88rem; overflow-wrap: anywhere; }
 .option input { accent-color: var(--accent); flex: none; }
 .option span { flex: none; color: var(--accent); font-weight: 750; }
+.option { transition: background-color .15s ease, border-color .15s ease; }
 .option.chosen { border-color: var(--accent); background: var(--accent-soft); }
 .quiz-actions { justify-content: flex-start; flex-wrap: wrap; }
 .quiz-actions .submit { margin-left: auto; }
@@ -174,8 +183,8 @@ footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8p
   .hero-art { right: 0; transform: translateY(-50%) scale(.85); transform-origin: right; }
 }
 @media (max-width: 850px) {
-  .sidebar { visibility: hidden; transform: translateX(-100%); transition: transform .2s; width: min(265px, 85vw); }
-  .sidebar.open { visibility: visible; transform: translateX(0); }
+  .sidebar { visibility: hidden; transform: translateX(-100%); transition: transform .16s cubic-bezier(.4, 0, 1, 1), visibility 0s .16s; pointer-events: none; width: min(265px, 85vw); }
+  .sidebar.open { visibility: visible; transform: translateX(0); pointer-events: auto; transition: transform .22s cubic-bezier(.215, .61, .355, 1); }
   .mobile-menu { display: inline-flex; }
   .mobile-scrim { display: block; position: fixed; inset: 0; z-index: 4; background: #140c2f80; }
   .workspace { margin-left: 0; }
