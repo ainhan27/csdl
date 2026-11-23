@@ -7,7 +7,38 @@
     {
       "title": "Vòng đời DBLC và vận hành",
       "text": "DBLC gồm khởi tạo, thiết kế, triển khai và nạp dữ liệu, kiểm thử và đánh giá, vận hành, bảo trì và phát triển. Khởi tạo xác định vấn đề, mục tiêu, phạm vi và tính khả thi. Triển khai tạo cấu trúc, chuyển đổi và nạp dữ liệu. Kiểm thử xác nhận tính đúng, bảo mật, hiệu năng và khả năng phục hồi trước vận hành.\nBảo mật nhằm bảo đảm bí mật, toàn vẹn và sẵn sàng. Các lớp bảo vệ gồm kiểm soát vật lý, xác thực, phân quyền, kiểm toán và mã hóa. Bản sao đầy đủ ghi toàn bộ dữ liệu, sao lưu vi sai ghi thay đổi từ bản đầy đủ gần nhất, sao lưu gia tăng ghi thay đổi từ lần sao lưu trước. DBA lập kế hoạch và thử phục hồi định kỳ.",
-      "source": "Chương 2, Phần 1, tr. 5–17"
+      "source": "Chương 2, Phần 1, tr. 5–17",
+      "diagram": {
+        "title": "Sáu pha của vòng đời cơ sở dữ liệu",
+        "steps": [
+          [
+            "Khởi tạo",
+            "Xác định mục tiêu"
+          ],
+          [
+            "Thiết kế",
+            "Lập mô hình"
+          ],
+          [
+            "Triển khai",
+            "Tạo bảng và nạp dữ liệu"
+          ],
+          [
+            "Kiểm thử",
+            "Đối chiếu yêu cầu"
+          ],
+          [
+            "Vận hành",
+            "Đưa vào sử dụng"
+          ],
+          [
+            "Bảo trì",
+            "Sửa lỗi và cải tiến"
+          ]
+        ],
+        "note": "Kết quả kiểm thử hoặc vận hành có thể đưa nhóm quay về một pha thiết kế trước đó.",
+        "flow": true
+      }
     },
     {
       "title": "Cách tiếp cận và ba mức thiết kế",
@@ -37,7 +68,26 @@
     {
       "title": "Ánh xạ ERD và kiểm tra lược đồ",
       "text": "Mỗi thực thể mạnh thành bảng. Thực thể yếu mang khóa chủ sở hữu và khóa bộ phận. Với 1–N, khóa ngoại nằm phía N. Với 1–1, thường chọn phía tham gia bắt buộc để đặt khóa ngoại UNIQUE. Với N–N, tạo bảng liên kết chứa khóa của hai đầu và thuộc tính của mối kết hợp.\nThuộc tính đa trị được tách thành bảng riêng (khóa chủ, giá trị). Với kết hợp bậc cao, tạo bảng chứa các khóa ngoại và xác định khóa chính theo bản số, thường là tổ hợp khóa các bên nếu không có ràng buộc chặt hơn. Kiểm tra chuẩn hóa, toàn vẹn tham chiếu, từ điển dữ liệu và rà soát lược đồ với người dùng.",
-      "source": "Chương 2, Phần 3, tr. 24–37"
+      "source": "Chương 2, Phần 3, tr. 24–37",
+      "diagram": {
+        "title": "Ánh xạ quan hệ nhiều–nhiều thành bảng liên kết",
+        "steps": [
+          [
+            "SINHVIÊN",
+            "MaSV · Khóa chính"
+          ],
+          [
+            "ĐĂNGKÝ",
+            "MaSV + MaHP · Khóa ghép"
+          ],
+          [
+            "HỌCPHẦN",
+            "MaHP · Khóa chính"
+          ]
+        ],
+        "note": "Hai liên kết 1–N đi từ SINHVIÊN và HỌCPHẦN tới ĐĂNGKÝ. Mỗi mã trong ĐĂNGKÝ đồng thời là khóa ngoại.",
+        "flow": false
+      }
     },
     {
       "title": "Đại số quan hệ: chọn, chiếu và phép tập hợp",
