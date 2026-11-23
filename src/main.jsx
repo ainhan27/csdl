@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
+import { AnimateUIProvider } from '@animate-ui/react/provider';
+import { Button } from '@animate-ui/react/primitives/buttons/button';
+import { Entrance } from './animation.jsx';
 import {
   ArrowDown, ArrowDownRight, ArrowLeft, ArrowRight, BookOpen, Check, ChevronRight, ClipboardList,
   Database, GraduationCap, House, Layers3, Menu, Moon, Network, RotateCcw, Search,
@@ -80,7 +83,7 @@ function App() {
   }, [hash, searchSelection, targetId]);
 
   return <div className="shell">
-    {menu && <button className="mobile-scrim" aria-label="Đóng menu" onClick={() => setMenu(false)} />}
+    {menu && <Entrance><button className="mobile-scrim" aria-label="Đóng menu" onClick={() => setMenu(false)} /></Entrance>}
     <aside className={'sidebar' + (menu ? ' open' : '')}>
       <a className="brand" href="#/" onClick={() => setMenu(false)}>
         <span className="brand-icon"><Database size={23} /></span>
@@ -107,10 +110,14 @@ function App() {
         </div>
       </header>
       <main className="main">
-        {chapter ? <Chapter key={chapter.id} chapter={chapter} requestedTab={tab} targetId={targetId} progress={progress} setProgress={setProgress} />
-          : reviewing ? <Review wrong={wrong} setProgress={setProgress} />
-          : quizzing ? <QuizHub setProgress={setProgress} />
-          : <Dashboard progress={progress} />}
+        <Entrance key={chapter ? chapter.id + '/' + (tab ?? 'theory') : reviewing ? 'review' : quizzing ? 'quiz' : 'home'}>
+          <div>
+            {chapter ? <Chapter key={chapter.id} chapter={chapter} requestedTab={tab} targetId={targetId} progress={progress} setProgress={setProgress} />
+              : reviewing ? <Review wrong={wrong} setProgress={setProgress} />
+              : quizzing ? <QuizHub setProgress={setProgress} />
+              : <Dashboard progress={progress} />}
+          </div>
+        </Entrance>
         <footer><span>MIS2001 · Cơ sở dữ liệu</span><span>Tiến độ lưu trên thiết bị này</span></footer>
       </main>
     </div>
@@ -133,7 +140,7 @@ function Dashboard({ progress }) {
         <span className="hero-tag"><GraduationCap size={17} /> HỌC PHẦN MIS2001</span>
         <h1>Ôn tập cuối kỳ<br /><em>Cơ sở dữ liệu</em></h1>
         <p>Hệ thống kiến thức, luyện trắc nghiệm và vận dụng qua các tình huống thực tế.</p>
-        <a className="primary-button" href={chapterUrl(next.id)}>{completed || practiced ? 'Tiếp tục học' : 'Bắt đầu học'} <ArrowRight size={17} /></a>
+        <Button asChild><a className="primary-button" href={chapterUrl(next.id)}>{completed || practiced ? 'Tiếp tục học' : 'Bắt đầu học'} <ArrowRight size={17} /></a></Button>
         <a className="hero-quiz" href="#/quiz">Giải trắc nghiệm <ArrowRight size={17} /></a>
       </div>
       <div className="hero-art" aria-hidden="true">
@@ -155,11 +162,11 @@ function Dashboard({ progress }) {
       <div className="chapter-grid">
         {chapters.map(chapter => {
           const Icon = icons[chapter.id - 1];
-          return <a className="chapter-card" key={chapter.id} href={chapterUrl(chapter.id)}>
+          return <Button key={chapter.id} asChild tapScale={0.985}><a className="chapter-card" href={chapterUrl(chapter.id)}>
             <div className="card-top"><span className={'tile-icon tone-' + chapter.id}><Icon size={22} /></span></div>
             <h3>{chapter.title}</h3><p>{chapter.description}</p>
             <div className="card-bottom"><span>{progress.completed[chapter.id] ? <><Check size={15} /> Đã hoàn thành</> : chapter.questions.length ? <><ClipboardList size={15} /> {chapter.questions.length} câu hỏi</> : <><ClipboardList size={15} /> {chapter.cases.length} câu tự luận</>}</span><ChevronRight size={19} /></div>
-          </a>;
+          </a></Button>;
         })}
       </div>
     </section>
@@ -222,7 +229,7 @@ function Review({ wrong, setProgress }) {
     {session ? <Quiz items={session} mode="practice" setProgress={setProgress} onExit={() => setSession(null)} />
       : <div className="empty"><RotateCcw size={34} />
         <h2>{wrong.length ? wrong.length + ' câu cần luyện lại' : 'Chưa có câu sai đã xác nhận'}</h2>
-        {wrong.length > 0 && <button className="primary-button" onClick={() => setSession(wrong)}>Bắt đầu luyện lại <ArrowRight size={16} /></button>}
+        {wrong.length > 0 && <Button className="primary-button" onClick={() => setSession(wrong)}>Bắt đầu luyện lại <ArrowRight size={16} /></Button>}
       </div>}
   </>;
 }
@@ -260,13 +267,13 @@ function QuizHub({ initialChapter, questionId, setProgress }) {
         <article className="case-card">
           <span className="tile-icon tone-1"><ClipboardList size={23} /></span>
           <h2>Làm bài thi</h2><p>{examLength} câu được chọn ngẫu nhiên. Đáp án và lời giải mở sau khi nộp bài.</p>
-          <button className="primary-button" disabled={verified.length < examLength} onClick={() => start('exam')}>Bắt đầu thi <ArrowRight size={16} /></button>
+          <Button className="primary-button" disabled={verified.length < examLength} onClick={() => start('exam')}>Bắt đầu thi <ArrowRight size={16} /></Button>
           {verified.length < examLength && <p>Phạm vi này có {verified.length}/{examLength} câu đã xác minh. Bạn có thể chọn phạm vi lớn hơn.</p>}
         </article>
         <article className="case-card">
           <span className="tile-icon tone-3"><Target size={23} /></span>
           <h2>Luyện tập</h2><p>Làm cả {pool.length} câu trong phạm vi đã chọn. Xem giải thích sau khi xác nhận từng câu.</p>
-          <button className="primary-button" onClick={() => start('practice')}>Bắt đầu luyện <ArrowRight size={16} /></button>
+          <Button className="primary-button" onClick={() => start('practice')}>Bắt đầu luyện <ArrowRight size={16} /></Button>
         </article>
       </div>
     </section>}
@@ -315,13 +322,13 @@ function Quiz({ items, mode, index: initialIndex = 0, setProgress, onExit }) {
     <div className="section-heading">
       <div><h2>{result ? 'Kết quả ' + (exam ? 'bài thi' : 'luyện tập') : exam ? 'Bài thi' : 'Luyện tập'}</h2>
       <p>{count}/{items.length} câu đã {exam ? 'chọn đáp án' : 'xác nhận'}</p></div>
-      <button className="outline-button" onClick={onExit}><ArrowLeft size={16} /> Thoát bài</button>
+      <Button className="outline-button" onClick={onExit}><ArrowLeft size={16} /> Thoát bài</Button>
     </div>
     {result ? <div className="result">
-      <div className="result-summary" aria-live="polite"><span className="tile-icon tone-3"><Target size={24} /></span><div>
+      <Entrance><div className="result-summary" aria-live="polite"><span className="tile-icon tone-3"><Target size={24} /></span><div>
         <h3>{result.graded ? `${result.correct}/${result.graded} câu đúng` : 'Chưa có điểm'}</h3>
         {result.graded < items.length && <p>{items.length - result.graded} câu cần kiểm chứng.</p>}
-      </div></div>
+      </div></div></Entrance>
       {result.rows.map(row => <article className="result-card" key={row.question.id}>
         <h3>Chương {row.question.id.split('-')[0]} · Câu {row.question.number}. {row.question.text}</h3>
         <p>Bạn chọn {letters[row.selected]}. {row.question.options[row.selected]}</p>
@@ -331,18 +338,18 @@ function Quiz({ items, mode, index: initialIndex = 0, setProgress, onExit }) {
       <div className="quiz-box" id="quiz-question">
         <div className="quiz-meta"><span>Câu {index + 1}/{items.length}</span><span>Chương {question.id.split('-')[0]} · Câu gốc {question.number}</span></div>
         <progress value={count} max={items.length} aria-label="Số câu đã trả lời" />
-        <fieldset key={question.id} disabled={!exam && answered}>
+        <Entrance key={question.id}><fieldset disabled={!exam && answered}>
           <legend>{question.text}</legend>
           {question.options.map((option, position) => <label className={'option ' + (responses[question.id] === position ? 'chosen' : '')} key={position}>
             <input type="radio" name={question.id} checked={responses[question.id] === position} onChange={() => setResponses(previous => ({ ...previous, [question.id]: position }))} />
             <span>{letters[position]}</span>{option}
           </label>)}
-        </fieldset>
-        {!exam && answered && <div aria-live="polite"><Feedback row={grade([question], responses).rows[0]} /></div>}
+        </fieldset></Entrance>
+        {!exam && answered && <Entrance key={question.id + "-feedback"}><div aria-live="polite"><Feedback row={grade([question], responses).rows[0]} /></div></Entrance>}
         <div className="quiz-actions">
-          <button className="outline-button" disabled={!index} onClick={() => move(index - 1)}><ArrowLeft size={16} /> Câu trước</button>
-          <button className="outline-button" disabled={index === items.length - 1} onClick={() => move(index + 1)}>Câu sau <ArrowRight size={16} /></button>
-          {!exam && !answered && <button className="primary-button submit" disabled={responses[question.id] === undefined} onClick={checkAnswer}>Xác nhận đáp án <Check size={16} /></button>}
+          <Button className="outline-button" disabled={!index} onClick={() => move(index - 1)}><ArrowLeft size={16} /> Câu trước</Button>
+          <Button className="outline-button" disabled={index === items.length - 1} onClick={() => move(index + 1)}>Câu sau <ArrowRight size={16} /></Button>
+          {!exam && !answered && <Button className="primary-button submit" disabled={responses[question.id] === undefined} onClick={checkAnswer}>Xác nhận đáp án <Check size={16} /></Button>}
         </div>
       </div>
       <aside className="quiz-box question-panel">
@@ -350,7 +357,7 @@ function Quiz({ items, mode, index: initialIndex = 0, setProgress, onExit }) {
         <div className="question-nav" aria-label="Chuyển câu hỏi">
           {items.map((item, position) => <button key={item.id} className={(exam ? responses[item.id] !== undefined : confirmed[item.id]) ? 'filled' : ''} aria-label={'Đến câu ' + (position + 1)} aria-current={index === position ? 'step' : undefined} onClick={() => move(position)}>{position + 1}</button>)}
         </div>
-        <button className="primary-button" disabled={count !== items.length} onClick={submit}>{exam ? 'Nộp bài' : 'Xem tổng kết'} <Check size={16} /></button>
+        <Button className="primary-button" disabled={count !== items.length} onClick={submit}>{exam ? 'Nộp bài' : 'Xem tổng kết'} <Check size={16} /></Button>
         {count !== items.length && <p className="muted">Còn {items.length - count} câu.</p>}
       </aside>
     </div>}
@@ -387,4 +394,4 @@ function SearchDialog({ close, openResult }) {
   </dialog>;
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById('root')).render(<AnimateUIProvider reducedMotion="user"><App /></AnimateUIProvider>);

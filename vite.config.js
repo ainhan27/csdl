@@ -7,4 +7,17 @@ export default defineConfig({
     ? '/' + process.env.GITHUB_REPOSITORY.split('/')[1] + '/'
     : '/',
   plugins: [react(), tailwindcss()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          animation: [
+            '@animate-ui/react/provider',
+            '@animate-ui/react/primitives/buttons/button',
+            '@animate-ui/react/primitives/effects/fade',
+          ],
+        },
+      },
+    },
+  },
 });
