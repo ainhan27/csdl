@@ -7,7 +7,34 @@
     {
       "title": "Big Data và mô hình 5V",
       "text": "Big Data là dữ liệu có quy mô hoặc đặc tính vượt khả năng xử lý hiệu quả của công cụ thông thường. Ngưỡng thay đổi theo hạ tầng, độ trễ kỳ vọng và bài toán. 5V gồm Volume (khối lượng), Velocity (tốc độ), Variety (đa dạng), Veracity (độ tin cậy) và Value (giá trị).\nBảng đơn hàng có lược đồ cố định, log JSON là bán cấu trúc, hình ảnh và bình luận tự do thường là phi cấu trúc. Các loại dữ liệu có thể cùng xuất hiện trong một hệ thống, khiến một lược đồ bảng cứng khó bao phủ mọi nhu cầu.",
-      "source": "Chương 5, tr. 5–15"
+      "source": "Chương 5, tr. 5–15",
+      "diagram": {
+        "title": "5V để đánh giá một bài toán dữ liệu lớn",
+        "steps": [
+          [
+            "Volume",
+            "Khối lượng cần lưu"
+          ],
+          [
+            "Velocity",
+            "Tốc độ phát sinh và xử lý"
+          ],
+          [
+            "Variety",
+            "Độ đa dạng của định dạng"
+          ],
+          [
+            "Veracity",
+            "Độ đáng tin cậy"
+          ],
+          [
+            "Value",
+            "Giá trị có thể khai thác"
+          ]
+        ],
+        "note": "Tùy hạ tầng và bài toán, một hoặc nhiều yếu tố có thể tạo ra giới hạn xử lý.",
+        "flow": false
+      }
     },
     {
       "title": "NoSQL, mở rộng và tính nhất quán",
@@ -29,7 +56,26 @@
     {
       "title": "Hadoop, HDFS và MapReduce",
       "text": "Hadoop là nền tảng phân tán. HDFS chia tệp thành khối và nhân bản trên DataNode. NameNode giữ siêu dữ liệu và vị trí khối. YARN điều phối tài nguyên cho công việc.\nMap biến dữ liệu đầu vào thành cặp khóa–giá trị. Shuffle/Sort gom giá trị theo khóa. Reduce tổng hợp theo khóa. Khi đếm từ, Map sinh (từ, 1), Shuffle gom theo từ, Reduce cộng số lần. HBase cung cấp truy cập dữ liệu họ cột, Hive hỗ trợ truy vấn phân tích trên hệ sinh thái.",
-      "source": "Chương 5, tr. 28–33"
+      "source": "Chương 5, tr. 28–33",
+      "diagram": {
+        "title": "Đếm từ bằng MapReduce",
+        "steps": [
+          [
+            "Map",
+            "Sinh cặp (từ, 1)"
+          ],
+          [
+            "Shuffle / Sort",
+            "Gom các cặp có cùng từ"
+          ],
+          [
+            "Reduce",
+            "Cộng số lần xuất hiện"
+          ]
+        ],
+        "note": "Ví dụ: “SQL SQL dữ liệu” tạo hai cặp (SQL, 1), rồi gộp thành (SQL, 2).",
+        "flow": true
+      }
     },
     {
       "title": "Chọn công nghệ và xu hướng",

@@ -2,9 +2,9 @@
 
 Website tiếng Việt gồm 5 chương. Phần lý thuyết tổng hợp từ các PDF bài giảng và ghi số trang theo từng mục. Ngân hàng giữ nguyên đề của 289 câu trắc nghiệm và 6 câu tự luận trong **ÔN TẬP CSDL.docx**.
 
-- **Làm bài thi** lấy ngẫu nhiên 45 câu đã đối chiếu. Trả lời đủ 45 câu và nộp bài để xem điểm, đáp án và lời giải.
-- **Luyện tập** dùng toàn bộ ngân hàng hoặc từng chương từ 1 đến 4. Bật trộn câu hỏi nếu muốn đổi thứ tự. Xác nhận mỗi câu để xem lời giải ngay.
-- **Luyện câu sai** lấy các câu đã xác minh mà lần trả lời gần nhất bị sai. Chương 5 có 6 câu tự luận và lưu bản nháp. Tiến độ, các câu đã nộp hoặc xác nhận và bản nháp được lưu bằng localStorage trên trình duyệt.
+- **Làm bài thi** lấy ngẫu nhiên 45 câu đã đối chiếu trong chương ở mỗi lượt. Trả lời đủ 45 câu và nộp bài để xem điểm, đáp án và lời giải.
+- **Luyện tập** xáo trộn toàn bộ câu hỏi trong chương ở mỗi lượt. Chọn đáp án để xem lời giải ngay.
+- **Luyện câu sai** lấy các câu đã xác minh mà lần trả lời gần nhất bị sai. Chương 5 có 6 câu tự luận và lưu bản nháp. Tiến độ, các câu luyện tập đã chọn và bài thi đã nộp và bản nháp được lưu bằng localStorage trên trình duyệt.
 
 ## Chạy trên máy
 
@@ -21,7 +21,7 @@ npm run build
 
 Mỗi chương có một tệp `src/content/chapter-N.json`. Giữ nguyên `id` của các câu hiện có để tiến độ trên thiết bị vẫn khớp.
 
-- Trong `theory`, dùng `title`, `text` và `source` cho tiêu đề, nội dung và số trang bài giảng. Dùng ký tự xuống dòng để chia đoạn và trường `example` để hiện mã hoặc công thức trong khối riêng.
+- Trong `theory`, dùng `title`, `text` và `source` cho tiêu đề, nội dung và số trang bài giảng. Dùng ký tự xuống dòng để chia đoạn và trường `example` để hiện mã hoặc công thức trong khối riêng. Trường tùy chọn `diagram` gồm `title`, `steps` (cặp nhãn và mô tả), `note` và `flow` để hiện sơ đồ hoặc các khối so sánh.
 - Trong `questions`, dùng `id` duy nhất, `number`, `text`, bốn `options`, `answer` và `explanation`.
 - Với đáp án đã đối chiếu, dùng chỉ số từ `0` đến `3` tương ứng A đến D và ghi lời giải vào `explanation`. Khi chưa thể chốt đáp án, đặt `answer: null` và ghi lý do kiểm chứng vào `explanation` nếu có. Câu này xuất hiện trong Luyện tập với nhãn “Cần kiểm chứng” và nằm ngoài điểm số.
 - Trong `cases` của Chương 5, dùng `id` duy nhất, `number`, `title` và danh sách `paragraphs`.

@@ -28,12 +28,66 @@
     {
       "title": "SELECT, WHERE, NULL, hàm và thứ tự xử lý",
       "text": "Thứ tự logic đi từ FROM/JOIN đến WHERE, GROUP BY, HAVING, SELECT, DISTINCT và ORDER BY. DISTINCT loại hàng trùng trên tổ hợp cột được chọn. BETWEEN gồm hai cận. LIKE dùng % cho chuỗi bất kỳ và _ cho đúng một ký tự. Kiểm tra thiếu dữ liệu bằng IS NULL, không dùng = NULL.\nHàm số như ROUND, hàm chuỗi như CONCAT và SUBSTRING, hàm ngày như GETDATE và DATEADD, CAST/CONVERT để đổi kiểu. CASE phân nhánh theo điều kiện. TOP trong SQL Server và OFFSET/FETCH cần ORDER BY rõ ràng khi muốn kết quả nhất quán.",
-      "source": "Chương 4, Phần 3, tr. 5–43"
+      "source": "Chương 4, Phần 3, tr. 5–43",
+      "diagram": {
+        "title": "Thứ tự xử lý logic của truy vấn SELECT",
+        "steps": [
+          [
+            "FROM / JOIN",
+            "Xác định nguồn"
+          ],
+          [
+            "WHERE",
+            "Lọc hàng"
+          ],
+          [
+            "GROUP BY",
+            "Gom nhóm"
+          ],
+          [
+            "HAVING",
+            "Lọc nhóm"
+          ],
+          [
+            "SELECT",
+            "Chọn cột"
+          ],
+          [
+            "ORDER BY",
+            "Sắp xếp"
+          ]
+        ],
+        "note": "Đây là thứ tự logic. SELECT nằm đầu câu lệnh khi viết, nhưng được xử lý sau khi lọc và gom nhóm.",
+        "flow": true
+      }
     },
     {
       "title": "Kết bảng và phép tập hợp",
       "text": "INNER JOIN chỉ giữ cặp khớp. LEFT/RIGHT JOIN giữ thêm hàng không khớp phía tương ứng. FULL OUTER JOIN giữ hàng không khớp ở cả hai phía. Lọc cột phía phải trong WHERE của LEFT JOIN có thể loại hàng NULL do kết ngoài tạo ra, vì vậy cần chọn vị trí điều kiện ON hoặc WHERE theo mục đích.\nUNION loại trùng và UNION ALL giữ trùng. INTERSECT lấy phần chung, EXCEPT lấy phần chỉ có ở truy vấn đầu. Các vế phải có cùng số cột với kiểu tương thích theo vị trí.",
-      "source": "Chương 4, Phần 3, tr. 16–20, 45–54"
+      "source": "Chương 4, Phần 3, tr. 16–20, 45–54",
+      "diagram": {
+        "title": "Phép kết giữ những hàng nào?",
+        "steps": [
+          [
+            "INNER JOIN",
+            "Chỉ các cặp khớp"
+          ],
+          [
+            "LEFT JOIN",
+            "Các cặp khớp và hàng lẻ bên trái"
+          ],
+          [
+            "RIGHT JOIN",
+            "Các cặp khớp và hàng lẻ bên phải"
+          ],
+          [
+            "FULL JOIN",
+            "Các cặp khớp và hàng lẻ ở cả hai bên"
+          ]
+        ],
+        "note": "Ở hàng chỉ có một phía, các cột của phía vắng mặt nhận NULL.",
+        "flow": false
+      }
     },
     {
       "title": "Truy vấn lồng và tìm hàng thiếu liên kết",

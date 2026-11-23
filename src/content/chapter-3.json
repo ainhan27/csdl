@@ -23,7 +23,30 @@
       "title": "Bao đóng và bài toán thành viên",
       "text": "Đặt X⁺ = X. Duyệt các PTH L → R. Khi L ⊆ X⁺, thêm R vào X⁺. Lặp đến khi không còn tăng. X → Y thuộc F⁺ khi và chỉ khi Y ⊆ X⁺. X là siêu khóa nếu X⁺ chứa toàn bộ thuộc tính.",
       "source": "Chương 3, Phần 1, tr. 24–29",
-      "example": "U = ABCDEG, F = {AB → C, BC → AD, D → E, CG → B}\n(AB)⁺: AB → ABC → ABCD → ABCDE, thiếu G nên AB không là siêu khóa."
+      "example": "U = ABCDEG, F = {AB → C, BC → AD, D → E, CG → B}\n(AB)⁺: AB → ABC → ABCD → ABCDE, thiếu G nên AB không là siêu khóa.",
+      "diagram": {
+        "title": "Tính bao đóng của AB",
+        "steps": [
+          [
+            "AB",
+            "Tập xuất phát"
+          ],
+          [
+            "ABC",
+            "AB → C"
+          ],
+          [
+            "ABCD",
+            "BC → AD"
+          ],
+          [
+            "ABCDE",
+            "D → E"
+          ]
+        ],
+        "note": "Không còn thuộc tính mới. Nếu lược đồ còn G, AB không phải siêu khóa.",
+        "flow": true
+      }
     },
     {
       "title": "Tìm một khóa và toàn bộ khóa",
@@ -34,7 +57,30 @@
     {
       "title": "1NF, 2NF và 3NF",
       "text": "1NF yêu cầu một giá trị nguyên tử theo miền trong mỗi ô và không có nhóm lặp. 2NF yêu cầu 1NF và không có thuộc tính không khóa phụ thuộc vào một tập con thực sự của bất kỳ khóa ứng viên nào. Kiểm tra trên mọi khóa ứng viên, không chỉ khóa chính.\n3NF yêu cầu với mỗi X → A không tầm thường, X là siêu khóa hoặc A là thuộc tính khóa (nằm trong ít nhất một khóa ứng viên). Với ví dụ DIEM(MaSV, MaHP, TenSV, TenHP, Diem), tách TenSV theo MaSV và TenHP theo MaHP để lần lượt bỏ phụ thuộc bộ phận.",
-      "source": "Chương 3, Phần 2, tr. 20–33"
+      "source": "Chương 3, Phần 2, tr. 20–33",
+      "diagram": {
+        "title": "Chuẩn hóa theo từng mức",
+        "steps": [
+          [
+            "1NF",
+            "Một giá trị nguyên tử trong mỗi ô"
+          ],
+          [
+            "2NF",
+            "Bỏ phụ thuộc vào một phần khóa"
+          ],
+          [
+            "3NF",
+            "Xét phụ thuộc bắc cầu của thuộc tính không khóa"
+          ],
+          [
+            "BCNF",
+            "Vế trái của mỗi PTH không tầm thường là siêu khóa"
+          ]
+        ],
+        "note": "Kiểm tra điều kiện từng mức trước khi phân rã và kiểm tra phép nối lại.",
+        "flow": true
+      }
     },
     {
       "title": "BCNF, 4NF và kiểm tra phân rã",

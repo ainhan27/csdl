@@ -7,7 +7,30 @@
     {
       "title": "Dữ liệu, thông tin và tri thức",
       "text": "Dữ liệu là quan sát thô như mã hàng, giá và số lượng của từng hóa đơn. Khi gom hóa đơn theo ngày và tính doanh thu, ta có thông tin. Khi hiểu doanh thu biến động theo mùa và dùng nhận định đó để điều chỉnh tồn kho, thông tin trở thành tri thức phục vụ quyết định.\nDữ liệu tĩnh thay đổi tương đối ít, chẳng hạn mã sinh viên và ngày sinh. Dữ liệu động như tồn kho hoặc doanh thu thay đổi theo giao dịch. Siêu dữ liệu mô tả dữ liệu, ví dụ tên cột, kiểu dữ liệu, khóa và quan hệ của bảng.\nDữ liệu có cấu trúc tuân theo lược đồ rõ như hàng và cột. JSON và XML là bán cấu trúc vì có khóa hoặc thẻ nhưng các bản ghi không nhất thiết cùng cấu trúc. Ảnh, video và văn bản tự do là các ví dụ phi cấu trúc.",
-      "source": "Chương 1, tr. 5–11"
+      "source": "Chương 1, tr. 5–11",
+      "diagram": {
+        "title": "Từ dữ liệu thô đến quyết định",
+        "steps": [
+          [
+            "Dữ liệu",
+            "Hóa đơn, số lượng, đơn giá"
+          ],
+          [
+            "Thông tin",
+            "Doanh thu từng ngày"
+          ],
+          [
+            "Tri thức",
+            "Nhu cầu tăng vào cuối tuần"
+          ],
+          [
+            "Quyết định",
+            "Tăng tồn kho trước cuối tuần"
+          ]
+        ],
+        "note": "Mỗi bước bổ sung ngữ cảnh hoặc chuyển hiểu biết thành hành động.",
+        "flow": true
+      }
     },
     {
       "title": "Chất lượng, quản lý và quản trị dữ liệu",
@@ -32,12 +55,54 @@
     {
       "title": "Kiến trúc ba mức và các mô-đun",
       "text": "Mức ngoài cung cấp khung nhìn riêng cho từng nhóm. Mức quan niệm mô tả lược đồ logic toàn cục, gồm thực thể, mối liên hệ và ràng buộc. Mức trong mô tả chỉ mục, tệp và đường truy cập. Ánh xạ nối các mức để hỗ trợ độc lập dữ liệu vật lý và logic.\nBộ xử lý truy vấn phân tích và chọn kế hoạch thực thi. Bộ quản lý lưu trữ điều phối trang, tệp và bộ đệm. Bộ quản lý giao dịch phối hợp truy cập đồng thời và khôi phục. Trong kiến trúc khách–chủ, ứng dụng gửi yêu cầu đến máy chủ DBMS. Kiến trúc nhiều tầng có thể thêm tầng nghiệp vụ ở giữa.",
-      "source": "Chương 1, tr. 39–44"
+      "source": "Chương 1, tr. 39–44",
+      "diagram": {
+        "title": "Ba lớp nhìn cùng một cơ sở dữ liệu",
+        "steps": [
+          [
+            "Mức ngoài",
+            "Bán hàng thấy giá và tồn kho"
+          ],
+          [
+            "Mức quan niệm",
+            "Lược đồ chung: SẢN PHẨM, HÓA ĐƠN"
+          ],
+          [
+            "Mức trong",
+            "Tệp, trang và chỉ mục"
+          ]
+        ],
+        "note": "Ánh xạ giữa các lớp giúp thay đổi cách lưu trữ mà vẫn giữ khung nhìn của người dùng.",
+        "flow": true
+      }
     },
     {
       "title": "Giao dịch và ACID",
       "text": "Atomicity là tất cả hoặc không có gì. Consistency yêu cầu giao dịch hợp lệ giữ các ràng buộc nhất quán. Isolation kiểm soát tác động khi thực thi đồng thời. Durability giữ kết quả đã COMMIT sau sự cố. Ví dụ chuyển khoản cần cả ghi nợ và ghi có trong cùng giao dịch.",
-      "source": "Chương 1, tr. 40–41"
+      "source": "Chương 1, tr. 40–41",
+      "diagram": {
+        "title": "ACID qua một giao dịch chuyển khoản",
+        "steps": [
+          [
+            "Nguyên tử",
+            "Ghi nợ và ghi có cùng thành công hoặc cùng hoàn tác"
+          ],
+          [
+            "Nhất quán",
+            "Giao dịch giữ các ràng buộc số dư"
+          ],
+          [
+            "Cô lập",
+            "Các giao dịch đồng thời được kiểm soát"
+          ],
+          [
+            "Bền vững",
+            "Kết quả đã COMMIT tồn tại sau sự cố"
+          ]
+        ],
+        "note": "Bốn đặc tính giải quyết bốn yêu cầu khác nhau của cùng một giao dịch.",
+        "flow": false
+      }
     },
     {
       "title": "Mô hình, hệ quản trị và xu hướng",
