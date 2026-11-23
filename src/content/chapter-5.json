@@ -98,25 +98,94 @@
           "id": "y-1",
           "points": 2,
           "title": "Định nghĩa Big Data",
-          "answer": "Nêu dữ liệu lớn có quy mô hoặc đặc tính vượt khả năng lưu trữ và xử lý hiệu quả của công cụ thông thường trong bối cảnh đang xét."
+          "answer": "Nêu dữ liệu lớn có quy mô hoặc đặc tính vượt khả năng lưu trữ và xử lý hiệu quả của công cụ thông thường trong bối cảnh đang xét.",
+          "ideas": [
+            [
+              "vượt quá khả năng",
+              "khó xử lý",
+              "không xử lý hiệu quả"
+            ],
+            [
+              "truyền thống",
+              "thông thường",
+              "traditional"
+            ]
+          ]
         },
         {
           "id": "y-2",
           "points": 5,
           "title": "Giải thích đủ 5V",
-          "answer": "Volume là khối lượng, Velocity là tốc độ phát sinh và xử lý, Variety là sự đa dạng định dạng, Veracity là độ tin cậy và Value là lợi ích có thể khai thác."
+          "answer": "Volume là khối lượng, Velocity là tốc độ phát sinh và xử lý, Variety là sự đa dạng định dạng, Veracity là độ tin cậy và Value là lợi ích có thể khai thác.",
+          "ideas": [
+            [
+              "volume",
+              "khối lượng"
+            ],
+            [
+              "velocity",
+              "tốc độ",
+              "vận tốc"
+            ],
+            [
+              "variety",
+              "đa dạng"
+            ],
+            [
+              "veracity",
+              "độ tin cậy",
+              "tính chính xác"
+            ],
+            [
+              "value",
+              "giá trị"
+            ]
+          ]
         },
         {
           "id": "y-3",
           "points": 1,
           "title": "Giải thích vì sao không có ngưỡng cố định",
-          "answer": "Ngưỡng phụ thuộc năng lực công nghệ, hạ tầng và bài toán. Khối lượng từng khó xử lý có thể trở nên khả thi khi năng lực hệ thống tăng."
+          "answer": "Ngưỡng phụ thuộc năng lực công nghệ, hạ tầng và bài toán. Khối lượng từng khó xử lý có thể trở nên khả thi khi năng lực hệ thống tăng.",
+          "ideas": [
+            [
+              "ngưỡng",
+              "quy mô"
+            ],
+            [
+              "công nghệ",
+              "hạ tầng",
+              "năng lực"
+            ],
+            [
+              "thay đổi",
+              "phát triển",
+              "tùy thuộc",
+              "phụ thuộc"
+            ]
+          ]
         },
         {
           "id": "y-4",
           "points": 2,
           "title": "Chọn Value và lập luận",
-          "answer": "Value quyết định khoản đầu tư vì phân tích phải đem lại ích lợi kinh doanh đủ để biện minh cho chi phí thu thập, lưu trữ và xử lý."
+          "answer": "Value quyết định khoản đầu tư vì phân tích phải đem lại ích lợi kinh doanh đủ để biện minh cho chi phí thu thập, lưu trữ và xử lý.",
+          "ideas": [
+            [
+              "value",
+              "giá trị"
+            ],
+            [
+              "lợi ích",
+              "kinh doanh",
+              "doanh thu",
+              "hiệu quả"
+            ],
+            [
+              "chi phí",
+              "đầu tư"
+            ]
+          ]
         }
       ]
     },
@@ -133,25 +202,96 @@
           "id": "y-1",
           "points": 3,
           "title": "Phân biệt ba loại dữ liệu và cho ví dụ",
-          "answer": "Có cấu trúc: bảng với lược đồ xác định, như bảng kế toán. Bán cấu trúc: có khóa hoặc thẻ và lược đồ linh hoạt, như JSON hoặc XML. Phi cấu trúc: không có lược đồ bảng cố định cho nội dung, như hình ảnh hoặc văn bản tự do."
+          "answer": "Có cấu trúc: bảng với lược đồ xác định, như bảng kế toán. Bán cấu trúc: có khóa hoặc thẻ và lược đồ linh hoạt, như JSON hoặc XML. Phi cấu trúc: không có lược đồ bảng cố định cho nội dung, như hình ảnh hoặc văn bản tự do.",
+          "ideas": [
+            [
+              "bảng",
+              "lược đồ cố định",
+              "dòng cột"
+            ],
+            [
+              "json",
+              "xml",
+              "thẻ",
+              "nhãn"
+            ],
+            [
+              "văn bản",
+              "hình ảnh",
+              "video",
+              "âm thanh"
+            ]
+          ]
         },
         {
           "id": "y-2",
           "points": 2,
           "title": "Bảng đơn hàng",
-          "answer": "Có cấu trúc và phù hợp với RDBMS vì có các cột rõ ràng, quan hệ với khách hàng hoặc sản phẩm, đồng thời hưởng lợi từ giao dịch và ràng buộc."
+          "answer": "Có cấu trúc và phù hợp với RDBMS vì có các cột rõ ràng, quan hệ với khách hàng hoặc sản phẩm, đồng thời hưởng lợi từ giao dịch và ràng buộc.",
+          "ideas": [
+            [
+              "đơn hàng",
+              "orders"
+            ],
+            [
+              "bảng",
+              "có cấu trúc"
+            ],
+            [
+              "giao dịch",
+              "acid",
+              "ràng buộc",
+              "quan hệ"
+            ]
+          ]
         },
         {
           "id": "y-3",
           "points": 2,
           "title": "Nhật ký clickstream JSON",
-          "answer": "Bán cấu trúc. RDBMS có thể lưu JSON, nhưng log có trường thay đổi và lưu lượng ghi lớn có thể phù hợp hơn với hệ được tối ưu cho tải này."
+          "answer": "Bán cấu trúc. RDBMS có thể lưu JSON, nhưng log có trường thay đổi và lưu lượng ghi lớn có thể phù hợp hơn với hệ được tối ưu cho tải này.",
+          "ideas": [
+            [
+              "clickstream",
+              "nhật ký",
+              "luồng nhấp chuột"
+            ],
+            [
+              "json",
+              "bán cấu trúc"
+            ],
+            [
+              "linh hoạt",
+              "lưu lượng",
+              "tải ghi",
+              "tốc độ ghi"
+            ]
+          ]
         },
         {
           "id": "y-4",
           "points": 3,
           "title": "Hình ảnh và bình luận",
-          "answer": "Ảnh và nội dung bình luận tự do là phi cấu trúc. RDBMS có thể lưu metadata, đường dẫn hoặc văn bản, còn kho đối tượng và công cụ tìm kiếm có thể phù hợp hơn khi cần lưu ảnh hoặc khai thác nội dung ở quy mô lớn."
+          "answer": "Ảnh và nội dung bình luận tự do là phi cấu trúc. RDBMS có thể lưu metadata, đường dẫn hoặc văn bản, còn kho đối tượng và công cụ tìm kiếm có thể phù hợp hơn khi cần lưu ảnh hoặc khai thác nội dung ở quy mô lớn.",
+          "ideas": [
+            [
+              "hình ảnh",
+              "ảnh sản phẩm"
+            ],
+            [
+              "bình luận",
+              "văn bản tự do"
+            ],
+            [
+              "phi cấu trúc"
+            ],
+            [
+              "kho đối tượng",
+              "metadata",
+              "siêu dữ liệu",
+              "quy mô lớn"
+            ]
+          ]
         }
       ]
     },
@@ -168,25 +308,90 @@
           "id": "y-1",
           "points": 3,
           "title": "Thách thức của hệ quan hệ",
-          "answer": "Nêu lược đồ bảng cứng với dữ liệu bán/phi cấu trúc, giới hạn và chi phí mở rộng dọc, cùng chi phí duy trì ràng buộc hoặc giao dịch nhất quán ở tải lớn."
+          "answer": "Nêu lược đồ bảng cứng với dữ liệu bán/phi cấu trúc, giới hạn và chi phí mở rộng dọc, cùng chi phí duy trì ràng buộc hoặc giao dịch nhất quán ở tải lớn.",
+          "ideas": [
+            [
+              "bán cấu trúc",
+              "phi cấu trúc",
+              "lược đồ cứng"
+            ],
+            [
+              "mở rộng dọc",
+              "scale up",
+              "nâng cấp phần cứng"
+            ],
+            [
+              "acid",
+              "giao dịch",
+              "ràng buộc"
+            ]
+          ]
         },
         {
           "id": "y-2",
           "points": 3,
           "title": "Bối cảnh xuất hiện NoSQL",
-          "answer": "Dữ liệu Web tăng mạnh trong thập niên 2000. Bigtable, MapReduce và Dynamo là các công trình tiêu biểu. Thuật ngữ NoSQL được dùng lại năm 2009 cho nhóm giải pháp phi quan hệ."
+          "answer": "Dữ liệu Web tăng mạnh trong thập niên 2000. Bigtable, MapReduce và Dynamo là các công trình tiêu biểu. Thuật ngữ NoSQL được dùng lại năm 2009 cho nhóm giải pháp phi quan hệ.",
+          "ideas": [
+            [
+              "thập niên 2000",
+              "web",
+              "2000"
+            ],
+            [
+              "bigtable",
+              "mapreduce",
+              "dynamo"
+            ],
+            [
+              "2009",
+              "not only sql",
+              "phi quan hệ"
+            ]
+          ]
         },
         {
           "id": "y-3",
           "points": 2,
           "title": "Lập luận về vai trò của SQL",
-          "answer": "Nêu NoSQL bổ sung cho SQL. Hệ quan hệ vẫn phù hợp với giao dịch chặt, dữ liệu có cấu trúc và truy vấn JOIN, chẳng hạn kế toán hoặc ngân hàng."
+          "answer": "Nêu NoSQL bổ sung cho SQL. Hệ quan hệ vẫn phù hợp với giao dịch chặt, dữ liệu có cấu trúc và truy vấn JOIN, chẳng hạn kế toán hoặc ngân hàng.",
+          "ideas": [
+            [
+              "bổ sung",
+              "không thay thế",
+              "not only sql"
+            ],
+            [
+              "acid",
+              "ngân hàng",
+              "kế toán"
+            ],
+            [
+              "join",
+              "truy vấn phức tạp",
+              "dữ liệu có cấu trúc"
+            ]
+          ]
         },
         {
           "id": "y-4",
           "points": 2,
           "title": "Giải thích cách dùng kết hợp",
-          "answer": "Polyglot Persistence dùng mỗi hệ cho mẫu truy cập phù hợp, ví dụ dùng SQL lưu đơn hàng và kho khóa–giá trị lưu phiên."
+          "answer": "Polyglot Persistence dùng mỗi hệ cho mẫu truy cập phù hợp, ví dụ dùng SQL lưu đơn hàng và kho khóa–giá trị lưu phiên.",
+          "ideas": [
+            [
+              "polyglot persistence",
+              "kết hợp nhiều",
+              "dùng kết hợp"
+            ],
+            [
+              "mẫu truy cập",
+              "đơn hàng",
+              "phiên",
+              "session",
+              "bài toán"
+            ]
+          ]
         }
       ]
     },
@@ -203,25 +408,100 @@
           "id": "y-1",
           "points": 2,
           "title": "Giải thích ACID",
-          "answer": "Atomicity là tất cả hoặc không gì cả. Consistency giữ các ràng buộc. Isolation kiểm soát ảnh hưởng giữa giao dịch đồng thời. Durability giữ kết quả đã commit sau sự cố."
+          "answer": "Atomicity là tất cả hoặc không gì cả. Consistency giữ các ràng buộc. Isolation kiểm soát ảnh hưởng giữa giao dịch đồng thời. Durability giữ kết quả đã commit sau sự cố.",
+          "ideas": [
+            [
+              "atomicity",
+              "nguyên tử"
+            ],
+            [
+              "consistency",
+              "nhất quán"
+            ],
+            [
+              "isolation",
+              "cô lập"
+            ],
+            [
+              "durability",
+              "bền vững"
+            ]
+          ]
         },
         {
           "id": "y-2",
           "points": 2,
           "title": "Giải thích BASE và sự hội tụ",
-          "answer": "BASE gồm Basically Available, Soft state và Eventually consistent. Bản sao có thể chưa đồng bộ ngay và sẽ hội tụ nếu ngừng cập nhật và hệ tiếp tục đồng bộ."
+          "answer": "BASE gồm Basically Available, Soft state và Eventually consistent. Bản sao có thể chưa đồng bộ ngay và sẽ hội tụ nếu ngừng cập nhật và hệ tiếp tục đồng bộ.",
+          "ideas": [
+            [
+              "basically available",
+              "sẵn sàng cơ bản"
+            ],
+            [
+              "soft state",
+              "trạng thái mềm"
+            ],
+            [
+              "eventually consistent",
+              "eventual consistency",
+              "nhất quán cuối cùng",
+              "nhất quán sau cùng"
+            ],
+            [
+              "hội tụ",
+              "đồng bộ sau",
+              "chưa đồng bộ ngay"
+            ]
+          ]
         },
         {
           "id": "y-3",
           "points": 3,
           "title": "Phân tích mạng xã hội",
-          "answer": "Lượt thích hoặc bình luận có thể hiển thị trễ trong thời gian ngắn mà rủi ro thấp. Đánh đổi đó có thể cải thiện tính sẵn sàng và tốc độ phản hồi."
+          "answer": "Lượt thích hoặc bình luận có thể hiển thị trễ trong thời gian ngắn mà rủi ro thấp. Đánh đổi đó có thể cải thiện tính sẵn sàng và tốc độ phản hồi.",
+          "ideas": [
+            [
+              "mạng xã hội",
+              "lượt thích",
+              "bình luận"
+            ],
+            [
+              "trễ",
+              "chậm",
+              "không cần tức thời",
+              "chưa đồng bộ"
+            ],
+            [
+              "sẵn sàng",
+              "phản hồi",
+              "hiệu năng"
+            ]
+          ]
         },
         {
           "id": "y-4",
           "points": 3,
           "title": "Phân tích chuyển khoản ngân hàng",
-          "answer": "Ghi nợ và ghi có cần được thực hiện nguyên tử. Khi quyết định có cho phép chi tiền, số dư cũ hoặc giao dịch đồng thời thiếu kiểm soát có thể dẫn đến chi vượt số dư."
+          "answer": "Ghi nợ và ghi có cần được thực hiện nguyên tử. Khi quyết định có cho phép chi tiền, số dư cũ hoặc giao dịch đồng thời thiếu kiểm soát có thể dẫn đến chi vượt số dư.",
+          "ideas": [
+            [
+              "chuyển khoản",
+              "ngân hàng",
+              "chuyển tiền"
+            ],
+            [
+              "ghi nợ",
+              "ghi có",
+              "nguyên tử"
+            ],
+            [
+              "số dư",
+              "chi vượt",
+              "rút vượt",
+              "thất thoát"
+            ]
+          ]
         }
       ]
     },
@@ -238,49 +518,192 @@
           "id": "y-1",
           "points": 1,
           "title": "So sánh Key–Value",
-          "answer": "Cặp khóa–giá trị, cấu trúc giá trị linh hoạt, truy cập nhanh theo khóa. Ví dụ Redis hoặc DynamoDB."
+          "answer": "Cặp khóa–giá trị, cấu trúc giá trị linh hoạt, truy cập nhanh theo khóa. Ví dụ Redis hoặc DynamoDB.",
+          "ideas": [
+            [
+              "khóa giá trị",
+              "key value"
+            ],
+            [
+              "redis",
+              "dynamodb"
+            ],
+            [
+              "truy xuất theo khóa",
+              "tra cứu theo khóa",
+              "truy cập theo khóa",
+              "truy cập nhanh",
+              "truy xuất nhanh"
+            ]
+          ]
         },
         {
           "id": "y-2",
           "points": 1,
           "title": "So sánh Document",
-          "answer": "Tài liệu JSON/BSON, lược đồ linh hoạt, có thể truy vấn theo trường trong tài liệu. Ví dụ MongoDB hoặc CouchDB."
+          "answer": "Tài liệu JSON/BSON, lược đồ linh hoạt, có thể truy vấn theo trường trong tài liệu. Ví dụ MongoDB hoặc CouchDB.",
+          "ideas": [
+            [
+              "document",
+              "tài liệu"
+            ],
+            [
+              "json",
+              "bson"
+            ],
+            [
+              "mongodb",
+              "couchdb"
+            ],
+            [
+              "linh hoạt",
+              "truy vấn theo trường"
+            ]
+          ]
         },
         {
           "id": "y-3",
           "points": 1,
           "title": "So sánh Column-Family",
-          "answer": "Hàng có khóa và nhóm cột, có thể có tập cột khác nhau, phù hợp ghi dữ liệu lớn theo mẫu truy cập. Ví dụ Cassandra hoặc HBase."
+          "answer": "Hàng có khóa và nhóm cột, có thể có tập cột khác nhau, phù hợp ghi dữ liệu lớn theo mẫu truy cập. Ví dụ Cassandra hoặc HBase.",
+          "ideas": [
+            [
+              "column family",
+              "họ cột",
+              "wide column"
+            ],
+            [
+              "cassandra",
+              "hbase"
+            ],
+            [
+              "mẫu truy cập",
+              "ghi dữ liệu lớn",
+              "ghi khối lượng lớn",
+              "thông lượng ghi"
+            ]
+          ]
         },
         {
           "id": "y-4",
           "points": 1,
           "title": "So sánh Graph",
-          "answer": "Nút, cạnh và thuộc tính, lược đồ có thể linh hoạt, tối ưu duyệt quan hệ nhiều bước. Ví dụ Neo4j hoặc Amazon Neptune."
+          "answer": "Nút, cạnh và thuộc tính, lược đồ có thể linh hoạt, tối ưu duyệt quan hệ nhiều bước. Ví dụ Neo4j hoặc Amazon Neptune.",
+          "ideas": [
+            [
+              "graph",
+              "đồ thị"
+            ],
+            [
+              "nút",
+              "node"
+            ],
+            [
+              "cạnh",
+              "edge"
+            ],
+            [
+              "neo4j",
+              "neptune"
+            ]
+          ]
         },
         {
           "id": "y-5",
           "points": 1.5,
           "title": "Phiên đăng nhập",
-          "answer": "Key–Value như Redis phù hợp vì truy xuất nhanh theo mã phiên."
+          "answer": "Key–Value như Redis phù hợp vì truy xuất nhanh theo mã phiên.",
+          "ideas": [
+            [
+              "phiên đăng nhập",
+              "session",
+              "mã phiên"
+            ],
+            [
+              "khóa giá trị",
+              "key value",
+              "redis"
+            ],
+            [
+              "truy xuất",
+              "đọc ghi",
+              "tra cứu",
+              "truy cập"
+            ]
+          ]
         },
         {
           "id": "y-6",
           "points": 1.5,
           "title": "Thực đơn nhà hàng",
-          "answer": "Document như MongoDB phù hợp vì mỗi nhà hàng có tập thuộc tính và tùy chọn khác nhau, vẫn truy vấn được theo trường."
+          "answer": "Document như MongoDB phù hợp vì mỗi nhà hàng có tập thuộc tính và tùy chọn khác nhau, vẫn truy vấn được theo trường.",
+          "ideas": [
+            [
+              "thực đơn",
+              "menu",
+              "món ăn"
+            ],
+            [
+              "document",
+              "tài liệu",
+              "mongodb"
+            ],
+            [
+              "linh hoạt",
+              "thuộc tính khác nhau",
+              "truy vấn theo trường",
+              "lồng"
+            ]
+          ]
         },
         {
           "id": "y-7",
           "points": 1.5,
           "title": "Tọa độ GPS",
-          "answer": "Column-Family như Cassandra phù hợp với ghi liên tục và đọc theo tài xế, khoảng thời gian. Có thể chọn giải pháp khác nếu giải thích thuyết phục theo mẫu truy cập."
+          "answer": "Column-Family như Cassandra phù hợp với ghi liên tục và đọc theo tài xế, khoảng thời gian. Có thể chọn giải pháp khác nếu giải thích thuyết phục theo mẫu truy cập.",
+          "ideas": [
+            [
+              "gps",
+              "tọa độ",
+              "vị trí tài xế"
+            ],
+            [
+              "column family",
+              "họ cột",
+              "cassandra",
+              "time series",
+              "chuỗi thời gian"
+            ],
+            [
+              "ghi liên tục",
+              "tần suất ghi",
+              "thông lượng ghi",
+              "khoảng thời gian"
+            ]
+          ]
         },
         {
           "id": "y-8",
           "points": 1.5,
           "title": "Gợi ý từ bạn bè",
-          "answer": "Graph như Neo4j biểu diễn liên kết người dùng – bạn bè – nhà hàng bằng các cạnh để duyệt nhiều bước."
+          "answer": "Graph như Neo4j biểu diễn liên kết người dùng – bạn bè – nhà hàng bằng các cạnh để duyệt nhiều bước.",
+          "ideas": [
+            [
+              "gợi ý",
+              "bạn bè"
+            ],
+            [
+              "graph",
+              "đồ thị",
+              "neo4j"
+            ],
+            [
+              "duyệt",
+              "cạnh",
+              "nhiều bước",
+              "mối quan hệ"
+            ]
+          ]
         }
       ]
     },
@@ -297,37 +720,135 @@
           "id": "y-1",
           "points": 1.5,
           "title": "Cơ sở dữ liệu đa mô hình",
-          "answer": "Một hệ hỗ trợ nhiều mô hình như tài liệu và đồ thị. Ví dụ ArangoDB hoặc Azure Cosmos DB."
+          "answer": "Một hệ hỗ trợ nhiều mô hình như tài liệu và đồ thị. Ví dụ ArangoDB hoặc Azure Cosmos DB.",
+          "ideas": [
+            [
+              "đa mô hình",
+              "multi model"
+            ],
+            [
+              "tài liệu",
+              "document",
+              "đồ thị",
+              "graph"
+            ],
+            [
+              "arangodb",
+              "cosmos db",
+              "orientdb"
+            ]
+          ]
         },
         {
           "id": "y-2",
           "points": 1.5,
           "title": "Cơ sở dữ liệu thuần đám mây",
-          "answer": "Hệ được thiết kế cho hạ tầng đám mây, hỗ trợ co giãn và giảm công vận hành. Ví dụ Amazon Aurora, Spanner hoặc Snowflake."
+          "answer": "Hệ được thiết kế cho hạ tầng đám mây, hỗ trợ co giãn và giảm công vận hành. Ví dụ Amazon Aurora, Spanner hoặc Snowflake.",
+          "ideas": [
+            [
+              "thuần đám mây",
+              "cloud native"
+            ],
+            [
+              "co giãn",
+              "tự động mở rộng",
+              "mở rộng tự động"
+            ],
+            [
+              "aurora",
+              "spanner",
+              "snowflake"
+            ]
+          ]
         },
         {
           "id": "y-3",
           "points": 1.5,
           "title": "Cơ sở dữ liệu tích hợp AI",
-          "answer": "Dùng AI hỗ trợ tối ưu truy vấn, chỉ mục hoặc tài nguyên. Tài liệu nêu Oracle Autonomous Database làm ví dụ."
+          "answer": "Dùng AI hỗ trợ tối ưu truy vấn, chỉ mục hoặc tài nguyên. Tài liệu nêu Oracle Autonomous Database làm ví dụ.",
+          "ideas": [
+            [
+              "tích hợp ai",
+              "trí tuệ nhân tạo",
+              "ai integrated"
+            ],
+            [
+              "tối ưu truy vấn",
+              "chỉ mục",
+              "tài nguyên"
+            ],
+            [
+              "oracle autonomous"
+            ]
+          ]
         },
         {
           "id": "y-4",
           "points": 2,
           "title": "Đánh giá ưu và nhược điểm NoSQL",
-          "answer": "Lược đồ linh hoạt, mở rộng ngang và hiệu năng theo mẫu truy cập là ưu điểm. Hạn chế có thể gồm thiếu chuẩn truy vấn chung, JOIN khó và mức nhất quán hoặc giao dịch tùy hệ. Vận hành nhiều hệ làm tăng công đồng bộ và quản trị."
+          "answer": "Lược đồ linh hoạt, mở rộng ngang và hiệu năng theo mẫu truy cập là ưu điểm. Hạn chế có thể gồm thiếu chuẩn truy vấn chung, JOIN khó và mức nhất quán hoặc giao dịch tùy hệ. Vận hành nhiều hệ làm tăng công đồng bộ và quản trị.",
+          "ideas": [
+            [
+              "mở rộng ngang",
+              "lược đồ linh hoạt",
+              "hiệu năng"
+            ],
+            [
+              "thiếu chuẩn",
+              "join",
+              "acid",
+              "nhất quán"
+            ],
+            [
+              "đồng bộ",
+              "quản trị",
+              "vận hành"
+            ]
+          ]
         },
         {
           "id": "y-5",
           "points": 1.5,
           "title": "Multi-model giảm số hệ phải tích hợp",
-          "answer": "Dùng nhiều mô hình trên cùng nền tảng có thể giảm kết nối, đồng bộ và chi phí vận hành các hệ rời."
+          "answer": "Dùng nhiều mô hình trên cùng nền tảng có thể giảm kết nối, đồng bộ và chi phí vận hành các hệ rời.",
+          "ideas": [
+            [
+              "một hệ",
+              "cùng nền tảng",
+              "duy nhất"
+            ],
+            [
+              "giảm kết nối",
+              "giảm tích hợp",
+              "giảm đồng bộ",
+              "giảm chi phí",
+              "giảm công",
+              "đơn giản hóa"
+            ]
+          ]
         },
         {
           "id": "y-6",
           "points": 2,
           "title": "Cloud-native giảm công vận hành",
-          "answer": "Tự động hóa sao lưu, phân vùng và co giãn giúp giảm công quản trị hạ tầng phân tán và có thể điều chỉnh chi phí theo tải."
+          "answer": "Tự động hóa sao lưu, phân vùng và co giãn giúp giảm công quản trị hạ tầng phân tán và có thể điều chỉnh chi phí theo tải.",
+          "ideas": [
+            [
+              "tự động hóa",
+              "tự động"
+            ],
+            [
+              "sao lưu",
+              "phân vùng",
+              "co giãn",
+              "mở rộng"
+            ],
+            [
+              "vận hành",
+              "quản trị",
+              "chi phí"
+            ]
+          ]
         }
       ]
     }

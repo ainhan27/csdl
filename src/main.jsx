@@ -216,14 +216,15 @@ function Chapter({ chapter, requestedTab, targetId, progress, setProgress }) {
     {tab === 'cases' && <section className="reading"><h2>Bài tập tình huống</h2>
       {chapter.cases.map(item => <CaseStudy key={item.id} item={item}
         draft={progress.drafts[item.id] ?? ''}
-        assessment={progress.caseScores?.[item.id] ?? {}}
-        onDraft={value => setProgress(previous => ({ ...previous, drafts: { ...previous.drafts, [item.id]: value } }))}
-        onRate={(criterion, value) => setProgress(previous => ({
+        reviewed={progress.caseReviewed?.[item.id] === true}
+        onDraft={value => setProgress(previous => ({
           ...previous,
-          caseScores: {
-            ...previous.caseScores,
-            [item.id]: { ...previous.caseScores?.[item.id], [criterion]: value },
-          },
+          drafts: { ...previous.drafts, [item.id]: value },
+          caseReviewed: { ...previous.caseReviewed, [item.id]: false },
+        }))}
+        onReview={() => setProgress(previous => ({
+          ...previous,
+          caseReviewed: { ...previous.caseReviewed, [item.id]: true },
         }))}
       />)}
     </section>}
