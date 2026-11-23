@@ -1,0 +1,673 @@
+{
+  "id": 1,
+  "title": "Tổng quan về cơ sở dữ liệu",
+  "sourceHeading": "CHƯƠNG 1: TỔNG QUAN VỀ CƠ SỞ DỮ LIỆU (48 CÂU)",
+  "description": "Nền tảng dữ liệu, hệ quản trị và kiến trúc cơ sở dữ liệu.",
+  "theory": [
+    {
+      "title": "Dữ liệu và thông tin",
+      "text": "Dữ liệu là các quan sát thô. Thông tin xuất hiện khi dữ liệu được xử lý và đặt trong ngữ cảnh. Siêu dữ liệu mô tả cấu trúc hoặc đặc điểm của dữ liệu."
+    },
+    {
+      "title": "Cơ sở dữ liệu và DBMS",
+      "text": "Cơ sở dữ liệu tổ chức các dữ liệu có liên quan. Hệ quản trị cơ sở dữ liệu cung cấp công cụ định nghĩa, truy vấn, kiểm soát truy cập và phục hồi dữ liệu."
+    },
+    {
+      "title": "Kiến trúc ba mức",
+      "text": "Mức ngoài là các khung nhìn của người dùng, mức khái niệm mô tả cấu trúc logic chung, và mức trong mô tả cách lưu trữ vật lý."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Siêu dữ liệu",
+      "english": "Metadata",
+      "definition": "Dữ liệu mô tả dữ liệu như kiểu, cấu trúc và ràng buộc."
+    },
+    {
+      "term": "Hệ quản trị cơ sở dữ liệu",
+      "english": "DBMS",
+      "definition": "Phần mềm định nghĩa, thao tác và kiểm soát cơ sở dữ liệu."
+    },
+    {
+      "term": "Độc lập dữ liệu",
+      "english": "Data independence",
+      "definition": "Khả năng thay đổi lược đồ ở một mức với tác động hạn chế đến mức cao hơn."
+    }
+  ],
+  "questions": [
+    {
+      "id": "1-1",
+      "number": 1,
+      "text": "Dữ liệu (Data) là gì?",
+      "options": [
+        "Sự thấu hiểu thông tin và khả năng áp dụng thông tin đó vào thực tiễn",
+        "Các báo cáo doanh thu cuối năm của một công ty",
+        "Các sự kiện, con số hoặc ký hiệu thô được thu thập từ thế giới thực nhưng chưa được xử lý để tạo ra ý nghĩa cụ thể",
+        "Thông tin đã được xử lý nhằm hỗ trợ việc ra quyết định"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-2",
+      "number": 2,
+      "text": "Mục nào sau đây được phân loại là dữ liệu tĩnh (static data)?",
+      "options": [
+        "Doanh thu hàng tháng của một cửa hàng",
+        "Số lượng giao dịch thẻ tín dụng trong một ngày",
+        "Số lượng sản phẩm tồn kho theo thời gian thực",
+        "Họ tên, ngày sinh và địa chỉ của một sinh viên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-3",
+      "number": 3,
+      "text": "Mục nào sau đây được phân loại là dữ liệu động (dynamic data)?",
+      "options": [
+        "Doanh thu và số lượng hàng hóa tồn kho",
+        "Họ và tên đầy đủ của một nhân viên",
+        "Địa chỉ thường trú của một sinh viên",
+        "Ngày sinh của một khách hàng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-4",
+      "number": 4,
+      "text": "Thông tin (Information) được định nghĩa như thế nào?",
+      "options": [
+        "Các sự kiện, con số hoặc ký hiệu thô chưa qua xử lý",
+        "Các quy tắc và chính sách quản trị dữ liệu của một tổ chức",
+        "Kết quả của việc xử lý, tổ chức hoặc tổng hợp dữ liệu nhằm tạo ra ý nghĩa phục vụ cho việc ra quyết định",
+        "Các thiết bị phần cứng được sử dụng để lưu trữ dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-5",
+      "number": 5,
+      "text": "Tri thức (Knowledge) là gì?",
+      "options": [
+        "Sự thấu hiểu thông tin và khả năng áp dụng thông tin đó vào thực tiễn",
+        "Quy trình sao lưu và phục hồi dữ liệu sau sự cố",
+        "Điểm số thô của sinh viên trước khi được xếp loại",
+        "Một hệ thống phần mềm quản trị cơ sở dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-6",
+      "number": 6,
+      "text": "Đâu là trình tự đúng của chu trình chuyển hóa dữ liệu?",
+      "options": [
+        "Tri thức → Dữ liệu → Thông tin → Ra quyết định",
+        "Dữ liệu → Thông tin → Tri thức → Ra quyết định",
+        "Thông tin → Dữ liệu → Tri thức → Ra quyết định",
+        "Dữ liệu → Tri thức → Thông tin → Ra quyết định"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-7",
+      "number": 7,
+      "text": "Siêu dữ liệu (Metadata) là gì?",
+      "options": [
+        "Phần mềm trung gian (Middleware) kết nối các ứng dụng",
+        "Dữ liệu mô tả dữ liệu (cấu trúc, kiểu dữ liệu, mối quan hệ, các ràng buộc, v.v.)",
+        "Dữ liệu do người dùng cuối nhập vào hệ thống",
+        "Các báo cáo được xuất ra từ cơ sở dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-8",
+      "number": 8,
+      "text": "Phân loại theo mức độ cấu trúc, dữ liệu XML và JSON thuộc nhóm nào?",
+      "options": [
+        "Dữ liệu có cấu trúc (Structured data)",
+        "Siêu dữ liệu (Metadata)",
+        "Dữ liệu bán cấu trúc (Semi-structured data)",
+        "Dữ liệu phi cấu trúc (Unstructured data)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-9",
+      "number": 9,
+      "text": "Tiêu chí \"Tính chính xác\" (Accuracy) của chất lượng dữ liệu yêu cầu điều gì?",
+      "options": [
+        "Không tồn tại dữ liệu trùng lặp không cần thiết",
+        "Dữ liệu phải phù hợp với mục đích và nhu cầu của tổ chức",
+        "Dữ liệu phản ánh đúng thực tế và đến từ nguồn đáng tin cậy",
+        "Dữ liệu được cập nhật thường xuyên và đúng thời điểm"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-10",
+      "number": 10,
+      "text": "Tiêu chí \"Tính kịp thời\" (Timeliness) của chất lượng dữ liệu có nghĩa là gì?",
+      "options": [
+        "Dữ liệu phản ánh đúng thực tế khách quan",
+        "Tất cả thông tin cần thiết đều được lưu trữ đầy đủ",
+        "Dữ liệu được cập nhật thường xuyên và mang tính thời sự tại thời điểm sử dụng",
+        "Ý nghĩa của dữ liệu được định nghĩa rõ ràng để không thể bị hiểu sai"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-11",
+      "number": 11,
+      "text": "Quản lý dữ liệu (Data management) khác với Quản trị dữ liệu (Data governance) như thế nào?",
+      "options": [
+        "Hai thuật ngữ này có ý nghĩa hoàn toàn giống nhau",
+        "Quản lý dữ liệu thiết lập chính sách, trong khi quản trị dữ liệu thực hiện công việc lưu trữ kỹ thuật",
+        "Quản lý dữ liệu là quá trình kỹ thuật thu thập, lưu trữ, tổ chức và sử dụng dữ liệu, trong khi quản trị dữ liệu là tập hợp các chính sách, quy trình và trách nhiệm giám sát việc quản lý đó",
+        "Quản lý dữ liệu chỉ dành cho các cơ sở dữ liệu lớn, còn quản trị dữ liệu dành cho các doanh nghiệp nhỏ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-12",
+      "number": 12,
+      "text": "Hệ thống tập tin thủ công sử dụng những công cụ nào để quản lý dữ liệu?",
+      "options": [
+        "Các tập tin dữ liệu trên ổ đĩa cứng của máy tính",
+        "Các máy chủ khách-chủ (client-server) chuyên dụng",
+        "Giấy bút, bìa hồ sơ và tủ đựng tài liệu",
+        "Hệ quản trị cơ sở dữ liệu Access"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-13",
+      "number": 13,
+      "text": "Vai trò Chuyên viên xử lý dữ liệu (Data Processing - DP Specialist) xuất hiện trong giai đoạn nào của lịch sử quản lý dữ liệu?",
+      "options": [
+        "Hệ cơ sở dữ liệu đám mây (Cloud database systems)",
+        "Hệ cơ sở dữ liệu quan hệ (RDBMS)",
+        "Hệ thống tập tin thủ công (Manual file systems)",
+        "Hệ thống tập tin trên máy tính (Computerised file systems)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-14",
+      "number": 14,
+      "text": "Bản chất của sự phụ thuộc chương trình - dữ liệu (program-data dependence) trong hệ thống tập tin trên máy tính là gì?",
+      "options": [
+        "Các chương trình ứng dụng chạy hoàn toàn độc lập với cách định dạng dữ liệu trên đĩa",
+        "Dữ liệu tự động thay đổi cấu trúc khi ứng dụng được nâng cấp lên phiên bản mới",
+        "Hệ thống tập tin tự động biên dịch lại ứng dụng mỗi khi có dữ liệu mới được thêm vào",
+        "Cấu trúc lưu trữ thực tế của dữ liệu và cấu trúc logic được mô tả trong chương trình ứng dụng gắn kết chặt chẽ với nhau, do đó việc thay đổi cấu trúc dữ liệu buộc phải sửa đổi mã nguồn của chương trình"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-15",
+      "number": 15,
+      "text": "Những nhược điểm lớn nào của hệ thống tập tin đã dẫn đến sự ra đời của các hệ cơ sở dữ liệu?",
+      "options": [
+        "Chúng sử dụng quá ít bộ nhớ và quá ít thiết bị vật lý",
+        "Chi phí lập trình và bảo trì cao, dư thừa dữ liệu, không nhất quán và sự phụ thuộc chương trình - dữ liệu",
+        "Không hỗ trợ lưu trữ tập tin trên máy tính cá nhân",
+        "Máy tính xử lý dữ liệu quá nhanh khiến dữ liệu bị mất"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-16",
+      "number": 16,
+      "text": "Hệ cơ sở dữ liệu làm giảm sự dư thừa dữ liệu (data redundancy) bằng cách nào?",
+      "options": [
+        "Bằng cách lưu trữ dữ liệu tập trung trong một kho lưu trữ logic duy nhất được chia sẻ cho mọi người",
+        "Bằng cách tối đa hóa số lượng các tập tin và ứng dụng riêng lẻ",
+        "Bằng cách loại bỏ hoàn toàn siêu dữ liệu của hệ thống",
+        "Bằng cách lưu trữ dữ liệu riêng biệt và độc lập tại mỗi phòng ban"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-17",
+      "number": 17,
+      "text": "Cơ sở dữ liệu (Database) là gì?",
+      "options": [
+        "Các tủ đựng hồ sơ bằng giấy của một văn phòng truyền thống",
+        "Một chương trình Python dùng để in báo cáo",
+        "Một tập hợp các dữ liệu có liên quan với nhau, được lưu trữ một cách có tổ chức để nhiều người dùng và ứng dụng có thể dùng chung",
+        "Một tập hợp các tập tin dữ liệu riêng lẻ không có mối liên hệ nào với nhau"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-18",
+      "number": 18,
+      "text": "Hệ quản trị cơ sở dữ liệu (DBMS) đóng vai trò gì?",
+      "options": [
+        "Là ngôn ngữ truy vấn tiêu chuẩn quốc tế SQL",
+        "Là một thiết bị vật lý dùng để kết nối mạng LAN",
+        "Là nhân viên chịu trách nhiệm nhập liệu hàng ngày",
+        "Đóng vai trò là trung gian giữa người dùng hoặc ứng dụng với dữ liệu thực tế được lưu trữ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-19",
+      "number": 19,
+      "text": "Theo tài liệu môn học, tại sao DBMS lại cung cấp một lớp trừu tượng (abstraction layer)?",
+      "options": [
+        "Để buộc các lập trình viên phải tự viết mã quản lý lưu trữ",
+        "Để loại bỏ hoàn toàn vai trò của người quản trị cơ sở dữ liệu (DBA)",
+        "Để che giấu sự phức tạp của việc lưu trữ vật lý đồng thời đảm bảo tính an toàn, nhất quán và hiệu năng truy xuất",
+        "Để làm tăng kích thước của các tập tin lưu trữ vật lý"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-20",
+      "number": 20,
+      "text": "Thành phần trung tâm của một hệ cơ sở dữ liệu là gì?",
+      "options": [
+        "Người dùng cuối (End users)",
+        "Các thủ tục/quy trình (Procedures)",
+        "Hệ quản trị cơ sở dữ liệu (DBMS)",
+        "Phần cứng (Hardware)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-21",
+      "number": 21,
+      "text": "Các thành phần chính của một hệ cơ sở dữ liệu bao gồm những gì?",
+      "options": [
+        "Chỉ bao gồm cơ sở dữ liệu và DBMS",
+        "Máy tính, máy in, Internet và nhân viên nhập liệu",
+        "Phần cứng, phần mềm, con người, thủ tục/quy trình và dữ liệu",
+        "Hệ điều hành và các ứng dụng được viết bằng Java hoặc Python"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-22",
+      "number": 22,
+      "text": "Theo tài liệu môn học, nhóm nào KHÔNG thuộc năm nhóm người trong một hệ cơ sở dữ liệu?",
+      "options": [
+        "Người dùng cuối và quản trị viên hệ thống",
+        "Nhân viên bán hàng tại cửa hàng không sử dụng máy tính",
+        "Lập trình viên ứng dụng và chuyên viên phân tích hệ thống",
+        "Người quản trị cơ sở dữ liệu (DBA) và người thiết kế cơ sở dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-23",
+      "number": 23,
+      "text": "Các thủ tục/quy trình (Procedures) đóng vai trò gì trong một hệ cơ sở dữ liệu?",
+      "options": [
+        "Là dữ liệu mà người dùng cuối thu thập từ thế giới thực",
+        "Là phần mềm DBMS giúp quản lý và truy xuất dữ liệu nhanh chóng",
+        "Là các thiết bị vật lý như máy tính, ổ cứng và máy in",
+        "Là các hướng dẫn và quy tắc chi phối cách thiết kế và sử dụng hệ thống, thực thi các tiêu chuẩn, đồng thời hỗ trợ giám sát và kiểm toán"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-24",
+      "number": 24,
+      "text": "Hậu quả trực tiếp của việc thiết kế cơ sở dữ liệu kém là gì?",
+      "options": [
+        "Một hệ thống dễ dàng mở rộng và bảo trì hơn theo thời gian",
+        "Bảo mật tốt hơn và truy xuất dữ liệu nhanh hơn",
+        "Chi phí phần cứng thấp hơn và ít cần đến DBA có kỹ năng cao",
+        "Dữ liệu bị trùng lặp và không nhất quán, hiệu năng kém và thông tin sai lệch dẫn đến các quyết định sai lầm"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-25",
+      "number": 25,
+      "text": "Thách thức chính của sự phụ thuộc nhà cung cấp (vendor lock-in) khi triển khai hệ cơ sở dữ liệu là gì?",
+      "options": [
+        "Khoản đầu tư ban đầu lớn vào một giải pháp khiến việc chuyển đổi nhà cung cấp trở nên khó khăn và hạn chế sự lựa chọn các thành phần khác",
+        "Phần cứng máy chủ không thể nâng cấp được nữa",
+        "Nhà cung cấp có thể can thiệp và thay đổi dữ liệu của người dùng",
+        "Cơ sở dữ liệu ngừng hoạt động mỗi khi nhà cung cấp phát hành bản cập nhật"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-26",
+      "number": 26,
+      "text": "Trong kiến trúc ba mức ANSI/SPARC, mức nào mô tả toàn bộ cấu trúc logic của cơ sở dữ liệu cho tất cả người dùng mà không quan tâm đến việc lưu trữ vật lý?",
+      "options": [
+        "Mức ánh xạ (Mapping level)",
+        "Mức quan niệm (Conceptual level)",
+        "Mức trong / mức vật lý (Internal / physical level)",
+        "Mức ngoài / mức khung nhìn (External / view level)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-27",
+      "number": 27,
+      "text": "Theo tài liệu môn học, người quản trị cơ sở dữ liệu (DBA) chủ yếu làm việc ở mức nào của kiến trúc ANSI/SPARC?",
+      "options": [
+        "Mức trong (Internal level)",
+        "Mức ngoài (External level)",
+        "Mức vật lý (Physical level)",
+        "Mức quan niệm (Conceptual level)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-28",
+      "number": 28,
+      "text": "Mức ngoài / mức khung nhìn (External / view level) của kiến trúc ANSI/SPARC thực hiện chức năng gì cho các nhóm người dùng khác nhau?",
+      "options": [
+        "Tự động chuyển đổi cơ sở dữ liệu quan hệ sang dạng NoSQL phi cấu trúc",
+        "Mô tả cách dữ liệu thực sự được băm (hashed) và đánh chỉ mục trên đĩa",
+        "Thống nhất toàn bộ cấu trúc logic của mọi bảng và ràng buộc toàn vẹn trong cơ sở dữ liệu",
+        "Cung cấp cho mỗi nhóm một khung nhìn dữ liệu riêng phù hợp với công việc của nhóm đó và che giấu những dữ liệu không liên quan đến họ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-29",
+      "number": 29,
+      "text": "Trong các nhóm ngôn ngữ SQL bổ sung, ngôn ngữ định nghĩa khung nhìn (VDL - View Definition Language) được dùng để làm gì?",
+      "options": [
+        "Chỉ định cách dữ liệu được băm và lưu trữ vật lý trong bộ nhớ chính",
+        "Thực hiện cấp quyền GRANT và thu hồi quyền REVOKE trên cơ sở dữ liệu quan hệ",
+        "Tạo các khung nhìn tùy chỉnh cho từng nhóm người dùng ở mức ngoài của kiến trúc",
+        "Quản lý việc sao lưu và phục hồi cơ sở dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-30",
+      "number": 30,
+      "text": "Mức trong / mức vật lý (Internal / physical level) của kiến trúc ANSI/SPARC mô tả điều gì?",
+      "options": [
+        "Cấu trúc logic tổng thể của các bảng, mối quan hệ và các ràng buộc toàn vẹn",
+        "Quyền truy cập và bảo mật của người dùng cuối trên các khung nhìn dữ liệu",
+        "Cách dữ liệu thực sự được lưu trữ trên các thiết bị vật lý: cấu trúc tập tin, chỉ mục (indexes), phương pháp băm và đường dẫn truy xuất",
+        "Cách các phòng ban nhìn thấy dữ liệu và tương tác với các ứng dụng nghiệp vụ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-31",
+      "number": 31,
+      "text": "Ngôn ngữ định nghĩa lưu trữ (SDL - Storage Definition Language) có chức năng gì?",
+      "options": [
+        "Quản lý các giao dịch đồng thời và kiểm soát tính cô lập của chúng",
+        "Cung cấp cho người dùng cuối các lệnh để truy xuất và hiển thị dữ liệu dưới dạng bảng",
+        "Định nghĩa các lược đồ mức ngoài cho các ứng dụng viết bằng Java, Python hoặc C++",
+        "Định nghĩa cách dữ liệu thực sự được lưu trữ trong bộ nhớ vật lý, và thường được tích hợp ngầm vào DDL thay vì cung cấp dưới dạng các lệnh SQL riêng biệt cho người dùng gọi"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-32",
+      "number": 32,
+      "text": "Nhóm ngôn ngữ DDL (Data Definition Language) được dùng để làm gì?",
+      "options": [
+        "Truy vấn và truy xuất dữ liệu từ cơ sở dữ liệu",
+        "Thêm, sửa và xóa dữ liệu trong các bảng",
+        "Cấp hoặc thu hồi quyền truy cập dữ liệu của người dùng",
+        "Định nghĩa và khai báo cấu trúc cơ sở dữ liệu (tạo, sửa đổi và xóa các đối tượng như bảng, khung nhìn và chỉ mục)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-33",
+      "number": 33,
+      "text": "Những lệnh nào thuộc nhóm DDL?",
+      "options": [
+        "CREATE, ALTER, DROP",
+        "COMMIT, ROLLBACK",
+        "SELECT",
+        "INSERT, UPDATE, DELETE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-34",
+      "number": 34,
+      "text": "Nhóm ngôn ngữ DML (Data Manipulation Language) được dùng để làm gì?",
+      "options": [
+        "Tạo hoặc xóa cấu trúc bảng",
+        "Truy vấn thông tin để làm báo cáo",
+        "Thao tác trên dữ liệu bên trong các bảng: thêm, sửa và xóa các dòng dữ liệu",
+        "Cấp quyền truy cập hệ thống cho nhân viên mới"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-35",
+      "number": 35,
+      "text": "Những lệnh nào thuộc nhóm DML?",
+      "options": [
+        "SELECT",
+        "GRANT, REVOKE",
+        "CREATE, ALTER, DROP",
+        "INSERT, UPDATE, DELETE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-36",
+      "number": 36,
+      "text": "Lệnh nào phổ biến nhất trong nhóm DQL (Data Query Language)?",
+      "options": [
+        "COMMIT",
+        "SELECT",
+        "CREATE",
+        "INSERT"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-37",
+      "number": 37,
+      "text": "Những lệnh nào thuộc nhóm DCL (Data Control Language)?",
+      "options": [
+        "SELECT, INSERT, UPDATE",
+        "CREATE VIEW, CREATE INDEX",
+        "GRANT, REVOKE",
+        "COMMIT, ROLLBACK"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-38",
+      "number": 38,
+      "text": "Những lệnh nào tạo nên nhóm TCL (Transaction Control Language) và công dụng của chúng là gì?",
+      "options": [
+        "INSERT, UPDATE, DELETE, dùng để thay đổi dữ liệu",
+        "COMMIT, ROLLBACK, SAVEPOINT, dùng để quản lý các giao dịch nhằm đảm bảo dữ liệu luôn nhất quán và toàn vẹn",
+        "CREATE, ALTER, DROP, dùng để thay đổi cấu trúc bảng",
+        "GRANT, REVOKE, dùng để phân quyền người dùng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-39",
+      "number": 39,
+      "text": "Những tính chất nào tạo nên ACID, bộ tính chất bảo vệ tính toàn vẹn dữ liệu trong các giao dịch cơ sở dữ liệu?",
+      "options": [
+        "Accuracy, Completeness, Inconsistency, Durability",
+        "Atomicity, Consistency, Inconsistency, Diversity",
+        "Accuracy, Completeness, Isolation, Diversity",
+        "Atomicity, Consistency, Isolation, Durability"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-40",
+      "number": 40,
+      "text": "Trong ACID, tính nguyên tử (Atomicity) được hiểu như thế nào?",
+      "options": [
+        "Một khi giao dịch đã xác nhận (commit), dữ liệu của nó phải được lưu trữ vĩnh viễn ngay cả khi hệ thống gặp sự cố",
+        "Một giao dịch phải được thực hiện trọn vẹn toàn bộ hoặc không thực hiện gì cả (all or nothing)",
+        "Dữ liệu được chia nhỏ thành các nguyên tử để có thể lưu trữ hiệu quả hơn trên đĩa",
+        "Các giao dịch chạy đồng thời không được làm ảnh hưởng hoặc làm sai lệch dữ liệu của nhau"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-41",
+      "number": 41,
+      "text": "Phân loại theo số lượng người dùng, loại cơ sở dữ liệu nào hỗ trợ một nhóm hoặc một phòng ban có ít hơn 50 người?",
+      "options": [
+        "Cơ sở dữ liệu đơn người dùng (Single-user database)",
+        "Cơ sở dữ liệu phân tán (Distributed database)",
+        "Cơ sở dữ liệu doanh nghiệp (Enterprise database)",
+        "Cơ sở dữ liệu nhóm làm việc (Workgroup database)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-42",
+      "number": 42,
+      "text": "Đâu là định nghĩa đúng về cơ sở dữ liệu phân tán (Distributed database)?",
+      "options": [
+        "Dữ liệu được sao chép toàn bộ sang hệ thống hồ sơ giấy thủ công",
+        "Dữ liệu chỉ phục vụ một người dùng tại một thời điểm",
+        "Dữ liệu được lưu trữ tập trung trên một máy chủ vật lý duy nhất",
+        "Dữ liệu được trải rộng và lưu trữ tại nhiều vị trí địa lý khác nhau"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-43",
+      "number": 43,
+      "text": "Đặc điểm của cơ sở dữ liệu tác nghiệp (OLTP - Operational database) là gì?",
+      "options": [
+        "Lưu trữ dữ liệu phi cấu trúc như âm thanh và video",
+        "Chủ yếu lưu trữ dữ liệu lịch sử để phân tích xu hướng",
+        "Chỉ hỗ trợ một người dùng tại một thời điểm",
+        "Hỗ trợ các giao dịch diễn ra hàng ngày và dữ liệu của nó được cập nhật liên tục"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-44",
+      "number": 44,
+      "text": "Cơ sở dữ liệu phân tích (OLAP - Analytical database) chủ yếu được dùng để làm gì?",
+      "options": [
+        "Tạo các cấu trúc bảng vật lý trên ổ đĩa cứng",
+        "Hỗ trợ các giao dịch thanh toán trực tuyến tức thời",
+        "Hỗ trợ phân tích và ra quyết định, chủ yếu bằng cách lưu trữ dữ liệu lịch sử",
+        "Lưu trữ thông tin cá nhân của một người dùng duy nhất"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-45",
+      "number": 45,
+      "text": "Hệ quản trị cơ sở dữ liệu quan hệ (RDBMS) tổ chức dữ liệu dưới dạng nào?",
+      "options": [
+        "Các bảng (tables) được tạo thành từ các hàng và các cột",
+        "Các cây phân cấp độc lập",
+        "Các cặp khóa - giá trị (key-value) phi cấu trúc",
+        "Các đồ thị được tạo thành từ các nút và các cạnh"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-46",
+      "number": 46,
+      "text": "Hệ quản trị cơ sở dữ liệu quan hệ phổ biến nào sau đây được nêu tên trong tài liệu môn học?",
+      "options": [
+        "Neo4j",
+        "MS SQL Server, Oracle, MySQL, IBM DB2",
+        "Apache Cassandra",
+        "MongoDB"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-47",
+      "number": 47,
+      "text": "Các hệ cơ sở dữ liệu NoSQL ra đời nhằm giải quyết vấn đề gì?",
+      "options": [
+        "Giảm số lượng lập trình viên và chuyên viên phân tích hệ thống",
+        "Thay thế các hệ thống tập tin giấy bút thủ công",
+        "Loại bỏ nhu cầu sử dụng mạng máy tính trong các công ty lớn",
+        "Xử lý khối lượng dữ liệu khổng lồ, đa dạng và tăng trưởng theo cấp số nhân từ mạng xã hội và Web 2.0, điều mà mô hình quan hệ truyền thống gặp khó khăn để đáp ứng hiệu quả"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "1-48",
+      "number": 48,
+      "text": "Sự khác biệt cơ bản về mặt kiến trúc giữa cơ sở dữ liệu đám mây phân tích quy mô petabyte không máy chủ (serverless) như Google BigQuery và một RDBMS truyền thống như MySQL là gì?",
+      "options": [
+        "Cơ sở dữ liệu phân tích không máy chủ như BigQuery được tối ưu hóa cho các giao dịch OLTP hàng ngày trên dữ liệu thay đổi liên tục, lưu trữ tập trung trong các bảng đơn giản",
+        "MySQL xử lý dữ liệu quy mô petabyte tốt hơn BigQuery và không cần cấu hình hạ tầng phần cứng",
+        "BigQuery lưu trữ và phân tích dữ liệu ở quy mô lớn (OLAP) với phần tính toán tách biệt khỏi phần lưu trữ, chạy không máy chủ để xử lý lượng lớn dữ liệu lịch sử bằng SQL chuẩn, trong khi MySQL là cơ sở dữ liệu quan hệ truyền thống chạy trên máy chủ chuyên dụng và được tối ưu hóa cho OLTP",
+        "BigQuery chỉ hỗ trợ các tập tin thủ công và dữ liệu phi cấu trúc, đồng thời không hỗ trợ SQL"
+      ],
+      "answer": null,
+      "explanation": null
+    }
+  ],
+  "cases": [
+    {
+      "id": "1-case",
+      "title": "Bài tập vận dụng",
+      "paragraphs": [
+        "Một trường đang lưu điểm bằng các bảng tính riêng ở mỗi khoa. Hãy chỉ ra các nguy cơ về trùng lặp, nhất quán và quyền truy cập. Đề xuất cách tổ chức cơ sở dữ liệu dùng chung."
+      ],
+      "supplemental": true
+    }
+  ]
+}

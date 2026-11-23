@@ -1,0 +1,1323 @@
+{
+  "id": 2,
+  "title": "Thiết kế CSDL và mô hình ER",
+  "sourceHeading": "CHƯƠNG 2: THIẾT KẾ CƠ SỞ DỮ LIỆU, MÔ HÌNH ER VÀ MÔ HÌNH QUAN HỆ (98 CÂU)",
+  "description": "Từ yêu cầu nghiệp vụ đến sơ đồ ER và lược đồ quan hệ.",
+  "theory": [
+    {
+      "title": "Thiết kế khái niệm",
+      "text": "Xác định thực thể, thuộc tính và quan hệ từ yêu cầu. Bản số và mức tham gia diễn đạt các ràng buộc nghiệp vụ."
+    },
+    {
+      "title": "Ánh xạ ER sang quan hệ",
+      "text": "Với quan hệ 1–N, khóa ngoại thường nằm ở phía N. Quan hệ N–N cần một bảng liên kết chứa khóa ngoại tới hai bảng tham gia."
+    },
+    {
+      "title": "Toàn vẹn dữ liệu",
+      "text": "Khóa chính định danh bộ và không nhận NULL. Khóa ngoại tham chiếu khóa của bảng đích theo ràng buộc toàn vẹn tham chiếu."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Thực thể",
+      "english": "Entity",
+      "definition": "Đối tượng có thể phân biệt trong miền nghiệp vụ."
+    },
+    {
+      "term": "Bản số",
+      "english": "Cardinality",
+      "definition": "Số lượng đối tượng có thể tham gia vào một quan hệ."
+    },
+    {
+      "term": "Khóa ngoại",
+      "english": "Foreign key",
+      "definition": "Thuộc tính hoặc nhóm thuộc tính tham chiếu một khóa của quan hệ đích."
+    }
+  ],
+  "questions": [
+    {
+      "id": "2-1",
+      "number": 1,
+      "text": "Vòng đời phát triển cơ sở dữ liệu (DBLC - Database Life Cycle) có bao nhiêu giai đoạn?",
+      "options": [
+        "4 giai đoạn",
+        "7 giai đoạn",
+        "5 giai đoạn",
+        "6 giai đoạn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-2",
+      "number": 2,
+      "text": "Giai đoạn đầu tiên của vòng đời phát triển cơ sở dữ liệu (DBLC) là gì?",
+      "options": [
+        "Nghiên cứu sơ bộ cơ sở dữ liệu (Database initial study)",
+        "Cài đặt và nạp dữ liệu (Implementation and loading)",
+        "Kiểm thử và đánh giá (Testing and evaluation)",
+        "Thiết kế cơ sở dữ liệu (Database design)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-3",
+      "number": 3,
+      "text": "Hoạt động nào sau đây KHÔNG phải là mục đích của giai đoạn nghiên cứu sơ bộ cơ sở dữ liệu?",
+      "options": [
+        "Xác định mục tiêu, phạm vi và ranh giới",
+        "Xác định các vấn đề và ràng buộc",
+        "Phân tích tình hình thực tế của công ty",
+        "Lựa chọn phần mềm hệ quản trị cơ sở dữ liệu (DBMS)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-4",
+      "number": 4,
+      "text": "Phát biểu nào mô tả đúng về quy trình vòng đời phát triển cơ sở dữ liệu (DBLC)?",
+      "options": [
+        "Quy trình này không bao giờ lặp lại",
+        "Quy trình này diễn ra tuần tự một cách nghiêm ngặt",
+        "Quy trình này chỉ diễn ra một lần duy nhất",
+        "Quy trình này có tính lặp (iterative) và không hoàn toàn tuần tự nghiêm ngặt"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-5",
+      "number": 5,
+      "text": "Khi cơ sở dữ liệu được tạo trong giai đoạn cài đặt và nạp dữ liệu, cấu trúc lưu trữ vật lý được thiết lập theo thứ tự phân cấp nào?",
+      "options": [
+        "Table → Table space → Storage group",
+        "Storage group → Table space → Table",
+        "Storage group → Table → Table space",
+        "Table space → Storage group → Table"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-6",
+      "number": 6,
+      "text": "Ba mục tiêu chính của bảo mật dữ liệu (data security) là gì?",
+      "options": [
+        "Tính toàn vẹn (Integrity), tính bảo mật/riêng tư (Confidentiality/privacy), tính sẵn sàng (Availability)",
+        "Bảo mật (Security), sao lưu (Backup), phục hồi (Recovery)",
+        "Tính toàn vẹn (Integrity), tính khả thi (Feasibility), nhật ký kiểm toán (Audit trails)",
+        "Tính sẵn sàng (Availability), xác thực (Authentication), mã hóa (Encryption)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-7",
+      "number": 7,
+      "text": "Biện pháp bảo mật nào được xem là \"tuyến phòng thủ cuối cùng\" (last line of defence) trong việc triển khai cơ sở dữ liệu?",
+      "options": [
+        "Xác thực bằng mật khẩu (Password authentication)",
+        "Nhật ký kiểm toán (Audit trails)",
+        "Tường lửa (Firewall)",
+        "Phân quyền truy cập (Access permissions)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-8",
+      "number": 8,
+      "text": "Mã hóa hai khóa (two-key encryption / mã hóa bất đối xứng) bảo vệ dữ liệu như thế nào?",
+      "options": [
+        "Không sử dụng khóa nào, chỉ dùng thuật toán nén dữ liệu",
+        "Một khóa dùng chung được sử dụng cho cả việc mã hóa và giải mã",
+        "Khóa công khai (public key) dùng để mã hóa và khóa bí mật (private key) dùng để giải mã",
+        "Khóa bí mật (private key) dùng để mã hóa và khóa công khai (public key) dùng để giải mã"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-9",
+      "number": 9,
+      "text": "Ai là người chịu trách nhiệm cuối cùng cho việc sao lưu và phục hồi dữ liệu?",
+      "options": [
+        "Lập trình viên ứng dụng",
+        "Nhà quản lý doanh nghiệp",
+        "Người dùng cuối",
+        "Người quản trị cơ sở dữ liệu (DBA)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-10",
+      "number": 10,
+      "text": "Mức sao lưu nào chỉ lưu lại các đối tượng đã thay đổi kể từ lần sao lưu đầy đủ (full backup) gần nhất?",
+      "options": [
+        "Sao lưu phòng ngừa (Preventive backup)",
+        "Sao lưu nhật ký giao dịch (Transaction log backup)",
+        "Sao lưu đầy đủ (Full backup)",
+        "Sao lưu khác biệt (Differential backup)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-11",
+      "number": 11,
+      "text": "Theo tài liệu môn học, việc phục hồi cơ sở dữ liệu (database recovery) được thực hiện như thế nào?",
+      "options": [
+        "Bằng cách khôi phục bản sao lưu nhất quán gần nhất, sau đó thực hiện cuốn tới (roll forward) hoặc hoàn tác (undo) các giao dịch chưa xác nhận",
+        "Bằng cách khởi động lại toàn bộ hệ thống từ đầu mà không cần bản sao lưu",
+        "Bằng cách cài đặt một hệ quản trị cơ sở dữ liệu (DBMS) mới",
+        "Bằng cách xóa các bảng bị hỏng và tạo các bảng mới"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-12",
+      "number": 12,
+      "text": "Trong các hoạt động bảo trì định kỳ của DBA, loại bảo trì nào nhằm mục đích cải thiện hiệu năng hoặc bổ sung các thực thể và thuộc tính mới?",
+      "options": [
+        "Bảo trì thích ứng (Adaptive maintenance)",
+        "Bảo trì hoàn thiện (Perfective maintenance)",
+        "Bảo trì phòng ngừa (Preventive maintenance)",
+        "Bảo trì khắc phục (Corrective maintenance)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-13",
+      "number": 13,
+      "text": "Thiết kế cơ sở dữ liệu có bao nhiêu mức?",
+      "options": [
+        "5 mức",
+        "2 mức",
+        "4 mức",
+        "3 mức"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-14",
+      "number": 14,
+      "text": "Thiết kế cơ sở dữ liệu có ba mức. Mỗi mức phụ thuộc như thế nào vào phần cứng và phần mềm DBMS?",
+      "options": [
+        "Mức quan niệm (phụ thuộc phần cứng) → Mức logic (độc lập cả hai) → Mức vật lý (phụ thuộc DBMS)",
+        "Mức quan niệm (phụ thuộc cả hai) → Mức logic (độc lập cả hai) → Mức vật lý (phụ thuộc DBMS)",
+        "Mức quan niệm (phụ thuộc DBMS) → Mức logic (độc lập cả hai) → Mức vật lý (độc lập cả hai)",
+        "Mức quan niệm (độc lập cả hai) → Mức logic (phụ thuộc DBMS, độc lập phần cứng) → Mức vật lý (phụ thuộc cả hai)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-15",
+      "number": 15,
+      "text": "Đặc điểm của phương pháp tiếp cận từ trên xuống (top-down) trong thiết kế cơ sở dữ liệu là gì?",
+      "options": [
+        "Bắt đầu từ dữ liệu thực tế thu thập được, sau đó gom nhóm và chuẩn hóa từng bước",
+        "Chỉ phù hợp với các cơ sở dữ liệu nhỏ có ít thực thể",
+        "Đi thẳng từ thiết kế vật lý lên thiết kế quan niệm",
+        "Bắt đầu ở mức quan niệm với mức độ trừu tượng cao và mô hình hóa các chi tiết một cách tiệm tiến"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-16",
+      "number": 16,
+      "text": "Loại hệ thống nào phù hợp với phương pháp tiếp cận từ dưới lên (bottom-up) trong thiết kế cơ sở dữ liệu?",
+      "options": [
+        "Các hệ cơ sở dữ liệu nhỏ có ít thực thể",
+        "Mọi loại hệ thống bất kể quy mô",
+        "Các hệ thống lớn và cực kỳ phức tạp",
+        "Các hệ cơ sở dữ liệu phân tán toàn cầu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-17",
+      "number": 17,
+      "text": "Mối quan hệ bổ trợ giữa hai phương pháp tiếp cận từ trên xuống (top-down) và từ dưới lên (bottom-up) trong thiết kế cơ sở dữ liệu được mô tả như thế nào?",
+      "options": [
+        "Top-down là kỹ thuật chuẩn hóa, còn bottom-up là việc xây dựng sơ đồ thực thể kết hợp (ERD)",
+        "Cả hai phương pháp đều bắt đầu ở mức quan niệm và không liên quan đến chuẩn hóa",
+        "Mô hình hóa ER là quy trình top-down còn chuẩn hóa là kỹ thuật bottom-up, và cả hai bổ trợ cho nhau tùy thuộc vào quy mô của hệ thống",
+        "Bottom-up chỉ được dùng cho các hệ thống lớn, phức tạp, còn top-down dùng cho các hệ thống nhỏ có ít thực thể"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-18",
+      "number": 18,
+      "text": "Trong thiết kế cơ sở dữ liệu thực tế, người thiết kế thường phải đánh đổi giữa ba mục tiêu xung đột nào?",
+      "options": [
+        "Thời gian phân tích, chi phí nhân sự và bảo mật",
+        "DBMS, ngôn ngữ lập trình và phần cứng",
+        "Tiêu chuẩn thiết kế, tốc độ xử lý và các yêu cầu thông tin",
+        "Số lượng bảng, dung lượng lưu trữ và giao diện"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-19",
+      "number": 19,
+      "text": "Trong thiết kế cơ sở dữ liệu, nguyên tắc nào được ưu tiên trước khi tối ưu hóa hiệu năng?",
+      "options": [
+        "Giảm số lượng thực thể yếu về 0",
+        "Phi chuẩn hóa (denormalise) các bảng trước để đảm bảo tốc độ",
+        "Thiết kế vì tính toàn vẹn dữ liệu trước (chuẩn hóa), và chỉ phi chuẩn hóa sau đó nếu thực sự cần thiết",
+        "Gộp tất cả các thực thể vào một bảng duy nhất"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-20",
+      "number": 20,
+      "text": "Sơ đồ thực thể kết hợp (ERD - Entity Relationship Diagram) thuộc mức mô hình dữ liệu nào?",
+      "options": [
+        "Mức thấp (mức vật lý)",
+        "Mức cao (mức quan niệm)",
+        "Mức cài đặt (mức logic)",
+        "Mức phụ thuộc DBMS"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-21",
+      "number": 21,
+      "text": "Trong thiết kế quan niệm, quy tắc nào phát biểu rằng: \"Tất cả những gì cần thiết đều có ở đó, và tất cả những gì có ở đó đều cần thiết\"?",
+      "options": [
+        "Quy tắc thiết kế độc lập (Independent design rule)",
+        "Quy tắc nghiệp vụ tối thiểu (Minimal business rule)",
+        "Quy tắc dữ liệu tối thiểu (Minimal data rule)",
+        "Quy tắc cấu trúc chuẩn hóa (Normalised structure rule)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-22",
+      "number": 22,
+      "text": "Trong thiết kế quan niệm, bước phân tích dữ liệu và yêu cầu khám phá đặc điểm của các phần tử dữ liệu thông qua bốn nhóm nào?",
+      "options": [
+        "Quyền truy cập, nhật ký kiểm toán, sao lưu đầy đủ, sao lưu khác biệt",
+        "Nhu cầu thông tin (Information needs), người dùng thông tin (Information users), nguồn thông tin (Information sources), cấu thành thông tin (Information constitution)",
+        "Quy tắc nghiệp vụ, thực thể chính, mối quan hệ, khóa chính và khóa ngoại",
+        "Khối lượng dữ liệu, cấu trúc lưu trữ, chỉ mục, khung nhìn dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-23",
+      "number": 23,
+      "text": "Phát biểu nào sau đây về nguồn gốc và độ tin cậy của các quy tắc nghiệp vụ (business rules) là đúng?",
+      "options": [
+        "Các tài liệu như quy trình và sổ tay vận hành là nguồn trực tiếp nhưng có độ tin cậy thấp nhất",
+        "Quy tắc nghiệp vụ chỉ có thể thu thập từ ban lãnh đạo cấp cao, không bao giờ thu thập từ người dùng cuối",
+        "Phỏng vấn người dùng cuối là nguồn gián tiếp và luôn hoàn toàn đáng tin cậy",
+        "Phỏng vấn người dùng cuối là nguồn trực tiếp, nhanh chóng nhưng độ tin cậy có thể thấp do nhận thức khác nhau, vì vậy người thiết kế phải đối chiếu và xác minh lại các quy tắc"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-24",
+      "number": 24,
+      "text": "Đâu là một hạn chế của quy tắc nghiệp vụ (business rules) trong mô hình hóa cơ sở dữ liệu?",
+      "options": [
+        "Không phải mọi quy tắc đều có thể mô hình hóa được, và một số quy tắc phức tạp phải được thực thi bởi phần mềm ứng dụng",
+        "Quy tắc nghiệp vụ phải giữ cố định và không bao giờ được thay đổi hoặc cập nhật",
+        "Quy tắc nghiệp vụ làm giảm sự giao tiếp giữa người thiết kế và người dùng cuối",
+        "Quy tắc nghiệp vụ không áp dụng cho các tổ chức nhỏ hoặc nhóm nghiên cứu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-25",
+      "number": 25,
+      "text": "Mô hình thực thể kết hợp (ER) chủ yếu được xây dựng dựa trên cơ sở nào?",
+      "options": [
+        "Các bảng dữ liệu vật lý hiện có",
+        "Các quy tắc nghiệp vụ (Business rules)",
+        "Sơ đồ luồng dữ liệu (DFD)",
+        "Ý kiến cá nhân của lập trình viên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-26",
+      "number": 26,
+      "text": "Các bước xây dựng mô hình quan niệm bằng sơ đồ ERD được thực hiện theo trình tự nào?",
+      "options": [
+        "Xác định thực thể → Xác định quy tắc nghiệp vụ → Xác định mối quan hệ → Xác định thuộc tính và khóa → Chuẩn hóa → Hoàn thiện ERD → Người dùng xác minh và chỉnh sửa",
+        "Xác định quy tắc nghiệp vụ → Xác định các thực thể chính → Xác định mối quan hệ → Xác định thuộc tính, khóa chính và khóa ngoại → Chuẩn hóa → Hoàn thiện ERD ban đầu → Người dùng xác minh → Chỉnh sửa ERD",
+        "Chuẩn hóa → Xác định thực thể → Xác định thuộc tính → Xác định mối quan hệ → Người dùng xác minh → Hoàn thiện ERD",
+        "Xác định thực thể → Xác định thuộc tính → Chuẩn hóa → Xác định quy tắc nghiệp vụ → Xác định mối quan hệ → Chỉnh sửa ERD"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-27",
+      "number": 27,
+      "text": "Bước đầu tiên (Bước 1) trong quy trình xây dựng mô hình ER là gì?",
+      "options": [
+        "Liệt kê và chọn lọc thông tin để xây dựng từ điển dữ liệu",
+        "Xác định bản số (cardinalities) và các mối quan hệ",
+        "Xác định các tập thực thể chính",
+        "Vẽ sơ đồ bằng phần mềm MS Visio"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-28",
+      "number": 28,
+      "text": "Ở bước nào trong quy trình xây dựng ERD, bản số (cardinalities) và các mối quan hệ được xác định, đồng thời các thuộc tính khóa được gạch chân?",
+      "options": [
+        "Bước 2: Xác định các tập thực thể",
+        "Bước 1: Liệt kê và chọn lọc thông tin",
+        "Bước 5: Vẽ ERD bằng công cụ",
+        "Bước 4: Chuẩn hóa mô hình"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-29",
+      "number": 29,
+      "text": "Ký pháp ERD nào thường được sử dụng trong giai đoạn phân tích yêu cầu (thiết kế quan niệm)?",
+      "options": [
+        "Ký pháp chân chim (Crow's Foot notation)",
+        "Sơ đồ lớp UML (UML class diagram)",
+        "Ký pháp Bachman (Bachman notation)",
+        "Ký pháp Chen (Chen notation)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-30",
+      "number": 30,
+      "text": "Trong mô hình ER, tập thực thể (entity set) là gì?",
+      "options": [
+        "Một tập hợp các thuộc tính có cùng kiểu dữ liệu",
+        "Tập hợp các khóa chính trong cơ sở dữ liệu",
+        "Một tập hợp các thực thể chia sẻ chung các tính chất/thuộc tính",
+        "Một tập hợp các mối quan hệ giữa các thực thể"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-31",
+      "number": 31,
+      "text": "Tên của một tập thực thể trong sơ đồ ERD thường có dạng từ loại nào?",
+      "options": [
+        "Một danh từ số ít",
+        "Một động từ số nhiều",
+        "Một tính từ mô tả đặc điểm",
+        "Một cụm động từ chỉ hành động"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-32",
+      "number": 32,
+      "text": "Thành phần nào của ERD mô tả các đặc điểm riêng biệt của một tập thực thể?",
+      "options": [
+        "Thực thể (Entity)",
+        "Thuộc tính (Attribute)",
+        "Bản số (Cardinality)",
+        "Mối quan hệ (Relationship)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-33",
+      "number": 33,
+      "text": "Trong ký pháp Chen, hình dạng nào biểu diễn một thực thể (entity)?",
+      "options": [
+        "Hình tròn",
+        "Hình chữ nhật",
+        "Hình thoi",
+        "Hình elip (bầu dục)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-34",
+      "number": 34,
+      "text": "Trong ký pháp Chen, hình dạng nào biểu diễn một mối quan hệ (relationship)?",
+      "options": [
+        "Hình lục giác",
+        "Hình elip (bầu dục)",
+        "Hình chữ nhật",
+        "Hình thoi"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-35",
+      "number": 35,
+      "text": "Trong ký pháp Chen, hình dạng nào biểu diễn một thuộc tính (attribute)?",
+      "options": [
+        "Hình thoi",
+        "Hình chữ nhật",
+        "Hình elip (bầu dục)",
+        "Hình tam giác"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-36",
+      "number": 36,
+      "text": "Thuộc tính khóa (key attribute) được thể hiện như thế nào trong sơ đồ ERD?",
+      "options": [
+        "Được vẽ dưới dạng hình elip nét đứt",
+        "Tên của thuộc tính được gạch chân",
+        "Tên của thuộc tính được viết bằng chữ in hoa",
+        "Được đặt bên trong hình chữ nhật nét đôi"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-37",
+      "number": 37,
+      "text": "Một thuộc tính khóa lý tưởng cần đáp ứng những yêu cầu nào?",
+      "options": [
+        "Phải là một chuỗi văn bản cực kỳ dài",
+        "Ổn định, không thay đổi, đáng tin cậy và dễ kiểm soát",
+        "Thay đổi giá trị thường xuyên để bảo mật",
+        "Phụ thuộc vào nhiều thực thể khác nhau"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-38",
+      "number": 38,
+      "text": "Thuộc tính không thể chia nhỏ thêm được nữa gọi là gì?",
+      "options": [
+        "Thuộc tính suy diễn (Derived attribute)",
+        "Thuộc tính nguyên tử / đơn (Atomic / simple attribute)",
+        "Thuộc tính đa trị (Multivalued attribute)",
+        "Thuộc tính phức hợp (Composite attribute)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-39",
+      "number": 39,
+      "text": "Xét theo cấu trúc, thuộc tính \"Địa chỉ\" (gồm số nhà, đường, quận/huyện, thành phố) thuộc loại thuộc tính nào?",
+      "options": [
+        "Thuộc tính suy diễn (Derived attribute)",
+        "Thuộc tính phức hợp (Composite attribute)",
+        "Thuộc tính nguyên tử (Atomic attribute)",
+        "Thuộc tính đa trị (Multivalued attribute)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-40",
+      "number": 40,
+      "text": "\"Ngày sinh\" của một nhân viên nhận chính xác một giá trị cho mỗi thực thể. Đây là loại thuộc tính nào?",
+      "options": [
+        "Thuộc tính phức hợp (Composite attribute)",
+        "Thuộc tính suy diễn (Derived attribute)",
+        "Thuộc tính đa trị (Multivalued attribute)",
+        "Thuộc tính đơn trị (Single-valued attribute)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-41",
+      "number": 41,
+      "text": "Phân loại đồng thời theo cả ba tiêu chí, thuộc tính \"Số điện thoại\" (lưu giữ nhiều số điện thoại khác nhau) có các đặc điểm gì?",
+      "options": [
+        "Phức hợp, đa trị, lưu trữ",
+        "Nguyên tử, đơn trị, lưu trữ",
+        "Nguyên tử, đa trị, suy diễn",
+        "Nguyên tử, đa trị, lưu trữ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-42",
+      "number": 42,
+      "text": "\"Tuổi\" được tính toán từ \"Ngày sinh\" và ngày hiện tại. Đây là loại thuộc tính nào?",
+      "options": [
+        "Thuộc tính suy diễn (Derived attribute)",
+        "Thuộc tính đa trị (Multivalued attribute)",
+        "Thuộc tính lưu trữ (Stored attribute)",
+        "Thuộc tính phức hợp (Composite attribute)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-43",
+      "number": 43,
+      "text": "Thuộc tính nào sau đây là thuộc tính lưu trữ (stored attribute)?",
+      "options": [
+        "Tuổi",
+        "Ngày sinh",
+        "Thâm niên công tác",
+        "Tổng tiền hóa đơn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-44",
+      "number": 44,
+      "text": "Hình elip của một thuộc tính suy diễn (derived attribute) thường được vẽ bằng loại đường nét nào?",
+      "options": [
+        "Đường nét liền đậm",
+        "Hình elip nét đôi",
+        "Đường nét đứt",
+        "Đường gạch chân"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-45",
+      "number": 45,
+      "text": "Sự khác biệt chính giữa thực thể mạnh (strong entity) và thực thể yếu (weak entity) là gì?",
+      "options": [
+        "Thực thể mạnh có nhiều thuộc tính hơn thực thể yếu",
+        "Thực thể mạnh không có thuộc tính khóa, trong khi thực thể yếu phải có khóa đơn thuộc tính",
+        "Thực thể mạnh tồn tại độc lập, trong khi thực thể yếu phụ thuộc vào sự tồn tại và phụ thuộc khóa vào thực thể cha của nó",
+        "Thực thể mạnh luôn được vẽ bằng hình thoi, còn thực thể yếu vẽ bằng hình chữ nhật"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-46",
+      "number": 46,
+      "text": "Khóa của một thực thể yếu được xác định như thế nào?",
+      "options": [
+        "Được sinh ngẫu nhiên một cách tự động",
+        "Được hình thành một phần hoặc toàn bộ từ thực thể mạnh mà nó có mối quan hệ",
+        "Không cần khóa chính cũng như khóa bộ phận (partial key)",
+        "Bất kỳ thuộc tính đa trị nào cũng được dùng làm khóa chính"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-47",
+      "number": 47,
+      "text": "Bậc của một mối quan hệ (degree of a relationship) trong mô hình hóa dữ liệu được định nghĩa như thế nào?",
+      "options": [
+        "Số lượng thực thể tham gia vào mối quan hệ đó",
+        "Số lượng thể hiện của một thực thể liên kết với thực thể kia",
+        "Mức độ quan trọng của mối quan hệ đối với doanh nghiệp",
+        "Số lượng thuộc tính khóa tham gia vào mối quan hệ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-48",
+      "number": 48,
+      "text": "Một mối quan hệ nhị nguyên (binary relationship - bậc 2) liên kết bao nhiêu thực thể?",
+      "options": [
+        "Ba thực thể",
+        "Bốn thực thể trở lên",
+        "Hai thực thể",
+        "Một thực thể duy nhất"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-49",
+      "number": 49,
+      "text": "Tên gọi khác của mối quan hệ một ngôi (unary relationship - bậc 1) là gì?",
+      "options": [
+        "Mối quan hệ tam nguyên (Ternary relationship)",
+        "Mối quan hệ nhị nguyên (Binary relationship)",
+        "Mối quan hệ đệ quy / vòng lặp (Recursive / loop relationship)",
+        "Mối quan hệ đa trị (Multivalued relationship)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-50",
+      "number": 50,
+      "text": "Khi nào thì một mối quan hệ đệ quy (recursive relationship) xảy ra?",
+      "options": [
+        "Khi một thực thể yếu có mối quan hệ với một thực thể mạnh",
+        "Khi ba thực thể kết hợp tạo thành một vòng khép kín",
+        "Khi một thực thể có mối quan hệ với chính nó, đóng các vai trò khác nhau",
+        "Khi hai thực thể liên kết chéo với nhau"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-51",
+      "number": 51,
+      "text": "Bản số (cardinality) biểu diễn những giá trị nào cho một mối quan hệ?",
+      "options": [
+        "Hai giá trị: tối thiểu và tối đa (min, max)",
+        "Số lượng thuộc tính của thực thể",
+        "Chỉ giá trị tối đa",
+        "Chỉ giá trị trung bình"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-52",
+      "number": 52,
+      "text": "Trong một mối quan hệ, bản số (1,1) biểu thị mức độ tham gia như thế nào?",
+      "options": [
+        "Một hoặc nhiều lần (tùy chọn)",
+        "Không tham gia, hoặc tham gia một lần",
+        "Tham gia tùy chọn, nhiều lần",
+        "Chính xác một lần (bắt buộc)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-53",
+      "number": 53,
+      "text": "Bên cạnh việc cho biết mối quan hệ là 1-1, 1-N hay N-N, cặp bản số (min, max) còn biểu thị điều gì?",
+      "options": [
+        "Kiểu dữ liệu lưu trữ của thuộc tính khóa",
+        "Số lượng bảng tối đa sẽ được tạo ra",
+        "Việc tham gia của mỗi thực thể là bắt buộc (mandatory) hay tùy chọn (optional)",
+        "Tốc độ xử lý của cơ sở dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-54",
+      "number": 54,
+      "text": "Nhân viên và Phòng ban có mối quan hệ theo quy tắc: \"Mỗi phòng ban có tối đa một trưởng phòng, và mỗi nhân viên làm trưởng phòng của tối đa một phòng ban.\" Xét theo bản số tối đa, đây là loại mối quan hệ nào?",
+      "options": [
+        "Mối quan hệ đệ quy",
+        "Mối quan hệ 1-1",
+        "Mối quan hệ N-N",
+        "Mối quan hệ 1-N"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-55",
+      "number": 55,
+      "text": "Mục tiêu chính của thiết kế logic (logical design) là gì?",
+      "options": [
+        "Ánh xạ mô hình quan niệm sang mô hình logic có thể triển khai được trên một hệ quản trị cơ sở dữ liệu quan hệ (RDBMS)",
+        "Phân tích tình hình tài chính của công ty",
+        "Thiết kế giao diện đồ họa cho người dùng cuối",
+        "Quyết định phương pháp lưu trữ vật lý cụ thể trên đĩa"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-56",
+      "number": 56,
+      "text": "Thiết kế logic gồm năm giai đoạn. Giai đoạn nào sau đây KHÔNG thuộc thiết kế logic?",
+      "options": [
+        "Định nghĩa các chỉ mục (indexes) và lựa chọn tổ chức tập tin",
+        "Hợp nhất các mô hình logic bộ phận và rà soát lại với người dùng",
+        "Tạo mô hình dữ liệu logic",
+        "Kiểm chứng mô hình thông qua chuẩn hóa và gán các ràng buộc toàn vẹn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-57",
+      "number": 57,
+      "text": "Có bao nhiêu giai đoạn trong việc chuyển đổi mô hình ER (mức quan niệm) sang mô hình dữ liệu quan hệ (mức logic)?",
+      "options": [
+        "6 giai đoạn",
+        "5 giai đoạn",
+        "3 giai đoạn",
+        "4 giai đoạn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-58",
+      "number": 58,
+      "text": "Trong quy trình chuyển đổi sơ đồ ERD sang mô hình dữ liệu quan hệ, những bảng nào nên được tạo trước tiên?",
+      "options": [
+        "Các quan hệ biểu diễn thực thể yếu",
+        "Các bảng có nhiều khóa ngoại nhất",
+        "Các quan hệ độc lập (không có khóa ngoại, không phụ thuộc vào bất kỳ bảng nào khác)",
+        "Các bảng trung gian (junction tables) của các mối quan hệ N-N"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-59",
+      "number": 59,
+      "text": "Mục tiêu chính của việc rà soát lại toàn bộ mô hình logic với người dùng ở cuối giai đoạn thiết kế logic là gì?",
+      "options": [
+        "Hướng dẫn người dùng cách viết câu lệnh truy vấn SQL",
+        "Thu thập ý kiến về màu sắc và bố cục của các biểu mẫu báo cáo trong ứng dụng khách",
+        "Đảm bảo rằng mọi yêu cầu dữ liệu và giao dịch đều được hỗ trợ trước khi chuyển sang giai đoạn thiết kế vật lý",
+        "Thống nhất cấu hình phần cứng máy chủ cho DBMS"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-60",
+      "number": 60,
+      "text": "Từ điển dữ liệu (data dictionary) thường được xây dựng và hoàn thiện ở những mức thiết kế nào?",
+      "options": [
+        "Được xây dựng sau khi toàn bộ hệ thống phần mềm đã được lập trình xong",
+        "Được xây dựng sau khi chuyển sang mô hình logic và hoàn thiện ở mức thiết kế vật lý",
+        "Được xây dựng ở mức thiết kế quan niệm (ERD) và hoàn thiện ở mức logic",
+        "Chỉ được xây dựng khi khách hàng yêu cầu bảo trì hệ thống"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-61",
+      "number": 61,
+      "text": "Trong mô hình dữ liệu quan hệ, người dùng nhìn thấy cơ sở dữ liệu dưới dạng tập hợp của các đối tượng nào?",
+      "options": [
+        "Các sơ đồ khối",
+        "Các bảng (một bảng là một quan hệ - relation)",
+        "Các cây phân cấp",
+        "Các tập tin nhị phân"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-62",
+      "number": 62,
+      "text": "Mô hình dữ liệu quan hệ được xây dựng trên nền tảng lý thuyết vững chắc nào?",
+      "options": [
+        "Lý thuyết xác suất",
+        "Lý thuyết hàng đợi",
+        "Lý thuyết tập hợp (Set theory)",
+        "Lý thuyết đồ thị"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-63",
+      "number": 63,
+      "text": "Mục nào sau đây KHÔNG phải là một thành phần của mô hình quan hệ theo định nghĩa?",
+      "options": [
+        "Quan hệ (Relation)",
+        "Sơ đồ thực thể kết hợp (ERD)",
+        "Khóa (Key)",
+        "Thuộc tính (Attribute)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-64",
+      "number": 64,
+      "text": "Tính chất nào sau đây là tính chất của các bộ (tuples) trong một quan hệ?",
+      "options": [
+        "Thứ tự các giá trị trong một bộ không cần khớp với thứ tự liệt kê của các thuộc tính",
+        "Thứ tự của các bộ là cực kỳ quan trọng và không thể thay đổi",
+        "Các hàng trong một quan hệ có thể trùng lặp hoàn toàn với nhau",
+        "Các bộ (hàng) của một quan hệ là duy nhất (không trùng lặp)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-65",
+      "number": 65,
+      "text": "Trong mô hình dữ liệu quan hệ, tại sao thứ tự của các bộ (hàng) trong một quan hệ lại không quan trọng?",
+      "options": [
+        "Vì RDBMS không cho phép người dùng thay đổi thứ tự các hàng",
+        "Vì các hàng luôn được sắp xếp tự động theo thứ tự bảng chữ cái tiếng Anh",
+        "Vì các hàng được lưu trữ dưới dạng các tập tin nhị phân có độ dài cố định",
+        "Vì một bảng là một khái niệm logic dựa trên lý thuyết tập hợp, trong đó các phần tử không có thứ tự định trước"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-66",
+      "number": 66,
+      "text": "Thuộc tính khóa chính được thể hiện như thế nào trong một lược đồ quan hệ?",
+      "options": [
+        "Được viết hoàn toàn bằng chữ in hoa",
+        "Được đánh dấu bằng chữ FK ở cuối tên thuộc tính",
+        "Được đặt trong dấu ngoặc nhọn {}",
+        "Được gạch chân trong lược đồ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-67",
+      "number": 67,
+      "text": "Siêu khóa (super key) được định nghĩa như thế nào trong mô hình dữ liệu quan hệ?",
+      "options": [
+        "Một ràng buộc miền giá trị trên một thuộc tính",
+        "Khóa chính của một bảng khác được đặt vào bảng hiện tại",
+        "Một tập hợp gồm một hoặc nhiều thuộc tính xác định duy nhất các hàng của một bảng và có thể chứa các thuộc tính dư thừa",
+        "Một tập tối thiểu các thuộc tính xác định duy nhất mà không có thuộc tính dư thừa"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-68",
+      "number": 68,
+      "text": "Khóa ứng viên (candidate key) được định nghĩa như thế nào?",
+      "options": [
+        "Một siêu khóa tối thiểu: không có tập con thực sự nào của nó cũng là một siêu khóa",
+        "Một khóa ngoại tham chiếu đến chính bảng của nó",
+        "Khóa có nhiều thuộc tính dư thừa nhất có thể",
+        "Tập hợp tất cả các cột trong bảng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-69",
+      "number": 69,
+      "text": "Một bảng có thể có bao nhiêu khóa ứng viên (candidate keys)?",
+      "options": [
+        "Có thể có nhiều khóa ứng viên",
+        "Không có khóa nào",
+        "Luôn có chính xác hai khóa",
+        "Chính xác một khóa"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-70",
+      "number": 70,
+      "text": "Khóa chính (primary key) được định nghĩa như thế nào?",
+      "options": [
+        "Một thuộc tính chứa thông tin nghiệp vụ dễ thay đổi",
+        "Một khóa ứng viên được chọn làm định danh duy nhất cho mỗi hàng",
+        "Bất kỳ thuộc tính nào không chứa giá trị NULL",
+        "Một khóa ngoại tham chiếu đến bảng cha"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-71",
+      "number": 71,
+      "text": "Phát biểu nào sau đây về mối quan hệ giữa siêu khóa (super key), khóa ứng viên (candidate key) và khóa chính (primary key) là đúng?",
+      "options": [
+        "Không có mối liên hệ nào giữa ba loại khóa này trong mô hình dữ liệu quan hệ",
+        "Siêu khóa là tập con của khóa ứng viên, và khóa chính có thể không phải là siêu khóa",
+        "Khóa chính vừa là siêu khóa vừa là khóa ứng viên, và khóa ứng viên là một siêu khóa tối thiểu",
+        "Khóa ứng viên là tập con của khóa chính, và siêu khóa là tập con của khóa ứng viên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-72",
+      "number": 72,
+      "text": "Tính chất nào sau đây KHÔNG phải là tính chất của khóa chính trong mô hình dữ liệu quan hệ?",
+      "options": [
+        "Được tạo thành từ càng nhiều thuộc tính càng tốt (tối đa)",
+        "Không được chứa giá trị NULL (Not NULL)",
+        "Ổn định và không chứa thông tin nghiệp vụ dễ thay đổi",
+        "Duy nhất (Unique)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-73",
+      "number": 73,
+      "text": "Toàn vẹn thực thể (Entity integrity) là ràng buộc đảm bảo điều kiện nào cho khóa chính?",
+      "options": [
+        "Mọi giá trị khóa chính đều duy nhất và không bao giờ được phép là NULL",
+        "Khóa chính có thể trùng lặp và có thể là NULL",
+        "Khóa chính phải luôn là một chuỗi ký tự dài",
+        "Khóa chính phải tham chiếu đến một khóa ngoại ở bảng khác"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-74",
+      "number": 74,
+      "text": "Phát biểu nào sau đây về giá trị NULL là đúng?",
+      "options": [
+        "NULL bắt buộc phải xuất hiện trong khóa chính",
+        "NULL có nghĩa là \"không có giá trị nào cả\" (no value at all)",
+        "NULL là số 0 hoặc một khoảng trắng",
+        "NULL không gây ra bất kỳ vấn đề gì cho các hàm COUNT, AVERAGE và SUM"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-75",
+      "number": 75,
+      "text": "Mục nào sau đây KHÔNG phải là một ý nghĩa có thể có của NULL?",
+      "options": [
+        "Một giá trị chưa biết (unknown value)",
+        "Một điều kiện \"không áp dụng\" (not applicable)",
+        "Một giá trị đã biết nhưng bị thiếu (known but missing value)",
+        "Một giá trị mặc định chắc chắn đúng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-76",
+      "number": 76,
+      "text": "Tại sao các giá trị NULL có thể gây ra những vấn đề nghiêm trọng trong cơ sở dữ liệu quan hệ?",
+      "options": [
+        "NULL có thể gây ra sai lệch với các hàm như COUNT, AVERAGE, SUM và khi kết nối (join) các bảng",
+        "NULL làm thay đổi giá trị của các thuộc tính lân cận theo thời gian",
+        "NULL ngăn cản việc tạo các thuộc tính đa trị trong các bảng phụ thuộc",
+        "NULL chiếm nhiều bộ nhớ hơn các kiểu dữ liệu khác"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-77",
+      "number": 77,
+      "text": "Khóa ngoại (foreign key) được sử dụng để làm gì?",
+      "options": [
+        "Đảm bảo không có hai hàng nào trùng lặp nhau",
+        "Đảm bảo dữ liệu nhập vào nằm trong một khoảng hợp lệ",
+        "Xác định duy nhất mỗi hàng trong bảng hiện tại",
+        "Liên kết hai bảng và bảo vệ tính toàn vẹn dữ liệu bằng cách tham chiếu đến khóa chính của một bảng khác"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-78",
+      "number": 78,
+      "text": "Điều kiện toàn vẹn tham chiếu (referential integrity) đối với một khóa ngoại (FK) là gì?",
+      "options": [
+        "FK phải luôn có giá trị NULL",
+        "FK phải có kiểu dữ liệu hoàn toàn khác với khóa chính được tham chiếu",
+        "Nếu FK có giá trị thì giá trị đó phải khớp với một giá trị khóa chính đang tồn tại trong bảng được tham chiếu, hoặc nếu không thì FK phải là NULL",
+        "FK phải luôn khớp với một khóa ngoại khác trong cùng một bảng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-79",
+      "number": 79,
+      "text": "Phát biểu nào sau đây về khóa ngoại (FK) là ĐÚNG?",
+      "options": [
+        "Một bảng chỉ được chứa tối đa một khóa ngoại",
+        "Một khóa ngoại phải có cùng miền giá trị (kiểu dữ liệu và độ dài) với khóa chính mà nó tham chiếu",
+        "Một khóa ngoại bắt buộc phải có tên giống hệt tên thuộc tính khóa chính mà nó tham chiếu",
+        "Một khóa ngoại không bao giờ có thể tham chiếu đến chính bảng của nó"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-80",
+      "number": 80,
+      "text": "Phát biểu nào sau đây về khóa ngoại tự tham chiếu / đệ quy (self-referencing / recursive foreign key) là ĐÚNG?",
+      "options": [
+        "Một khóa ngoại không bao giờ được tham chiếu đến khóa chính của chính bảng của nó",
+        "Tự tham chiếu chỉ xảy ra trong các mối quan hệ N-N bậc cao",
+        "Tự tham chiếu luôn yêu cầu tạo một bảng trung gian mới",
+        "Một khóa ngoại có thể tham chiếu đến khóa chính của chính bảng của nó (tự tham chiếu)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-81",
+      "number": 81,
+      "text": "Trong trường hợp nào một thuộc tính vừa là một phần của khóa chính vừa là khóa ngoại?",
+      "options": [
+        "Điều này không bao giờ xảy ra",
+        "Trong các bảng không có thuộc tính đa trị",
+        "Trong bảng trung gian của mối quan hệ N-N và trong thực thể yếu",
+        "Chỉ trong các thực thể mạnh độc lập"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-82",
+      "number": 82,
+      "text": "Ba loại ràng buộc toàn vẹn nào phải được kiểm chứng cho mỗi quan hệ?",
+      "options": [
+        "Ràng buộc miền giá trị, ràng buộc NOT NULL, ràng buộc DEFAULT",
+        "Ràng buộc miền giá trị (Domain constraints), toàn vẹn thực thể (Entity integrity), toàn vẹn tham chiếu (Referential integrity)",
+        "Ràng buộc miền giá trị, ràng buộc CHECK, ràng buộc UNIQUE",
+        "Toàn vẹn thực thể, toàn vẹn tham chiếu, ràng buộc UNIQUE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-83",
+      "number": 83,
+      "text": "Phát biểu nào sau đây về ràng buộc miền giá trị (domain constraint) là chính xác nhất?",
+      "options": [
+        "Nó đảm bảo không có thuộc tính nào của quan hệ bị NULL",
+        "Nó đảm bảo tên các thuộc tính không bị lặp lại giữa các bảng",
+        "Nó đảm bảo mọi giá trị của một thuộc tính đều nằm trong tập hợp các giá trị được phép",
+        "Nó đảm bảo mọi quan hệ đều có ít nhất một thuộc tính khóa ngoại"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-84",
+      "number": 84,
+      "text": "Một ràng buộc CHECK được đặt trên thuộc tính GENDER sao cho nó chỉ chấp nhận các giá trị 0 hoặc 1. Đây là loại ràng buộc nào?",
+      "options": [
+        "Ràng buộc miền giá trị (Domain constraint)",
+        "Ràng buộc khóa chính đệ quy",
+        "Ràng buộc toàn vẹn tham chiếu",
+        "Ràng buộc toàn vẹn thực thể"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-85",
+      "number": 85,
+      "text": "Ràng buộc CHECK có chức năng gì trong cơ sở dữ liệu?",
+      "options": [
+        "Đảm bảo một cột không bao giờ bị bỏ trống",
+        "Đảm bảo dữ liệu nhập vào có kiểu và phạm vi hợp lệ bằng cách quy định một điều kiện logic mà dữ liệu phải thỏa mãn",
+        "Gán một giá trị mặc định cho cột khi thêm bản ghi mới",
+        "Đảm bảo mọi bản ghi trong bảng là duy nhất"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-86",
+      "number": 86,
+      "text": "Ràng buộc NOT NULL đảm bảo điều gì về dữ liệu của một cột?",
+      "options": [
+        "Dữ liệu phải luôn được trùng lặp",
+        "Dữ liệu có thể được bỏ trống bất cứ lúc nào",
+        "Dữ liệu phải luôn là số 0",
+        "Dữ liệu không được phép bỏ trống (không được nhận giá trị NULL)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-87",
+      "number": 87,
+      "text": "Ràng buộc UNIQUE đảm bảo điều kiện gì cho dữ liệu của một cột?",
+      "options": [
+        "Các giá trị phải là NULL",
+        "Các giá trị có thể trùng lặp tự do",
+        "Các giá trị là duy nhất, không có sự trùng lặp trong cùng một cột",
+        "Các giá trị phải là số nguyên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-88",
+      "number": 88,
+      "text": "Ràng buộc DEFAULT thực hiện chức năng gì khi một bản ghi mới được thêm vào?",
+      "options": [
+        "Ngăn không cho lưu trữ dữ liệu",
+        "Kiểm tra xem dữ liệu có phải là dạng số hay không",
+        "Tự động gán một giá trị cho cột nếu người dùng không cung cấp giá trị",
+        "Buộc người dùng phải nhập dữ liệu mới"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-89",
+      "number": 89,
+      "text": "Theo các quy tắc chuyển đổi ERD sang mô hình dữ liệu quan hệ, mỗi thực thể mạnh (strong entity) sẽ trở thành gì?",
+      "options": [
+        "Một khóa ngoại",
+        "Một ràng buộc CHECK",
+        "Một thuộc tính của quan hệ khác",
+        "Một quan hệ (bảng) mới"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-90",
+      "number": 90,
+      "text": "Khi một thực thể mạnh được chuyển đổi thành một quan hệ, thuộc tính khóa của nó sẽ trở thành gì?",
+      "options": [
+        "Một ràng buộc CHECK",
+        "Khóa chính (Primary key)",
+        "Một miền giá trị",
+        "Một khóa ngoại"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-91",
+      "number": 91,
+      "text": "Theo quy tắc chuyển đổi thực thể yếu (weak entity), khóa chính của quan hệ mới được xác định như thế nào?",
+      "options": [
+        "Là một thuộc tính tự động tăng ngẫu nhiên không liên quan đến thực thể chủ",
+        "Là một khóa phức hợp (composite key) được tạo thành từ khóa chính của thực thể chủ và khóa bộ phận (partial key) của thực thể yếu",
+        "Là khóa bộ phận của thực thể yếu",
+        "Là khóa chính của thực thể chủ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-92",
+      "number": 92,
+      "text": "Khi một thực thể yếu được ánh xạ sang mô hình dữ liệu quan hệ, khóa ngoại được đặt trong bảng của thực thể yếu tham chiếu đến bảng nào?",
+      "options": [
+        "Một bảng trung gian được tạo từ mối quan hệ 1-1",
+        "Khóa chính của chính thực thể yếu đó",
+        "Khóa chính của thực thể chủ (owner entity) của nó",
+        "Bảng chứa thuộc tính đa trị của thực thể gốc"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-93",
+      "number": 93,
+      "text": "Một thuộc tính đa trị (multivalued attribute) được xử lý như thế nào khi chuyển đổi ERD sang mô hình dữ liệu quan hệ?",
+      "options": [
+        "Thuộc tính này được thêm trực tiếp vào quan hệ gốc",
+        "Thuộc tính đa trị được gộp với khóa chính của thực thể gốc để tạo thành một thuộc tính duy nhất",
+        "Thuộc tính đa trị bị xóa hoàn toàn khỏi lược đồ",
+        "Một quan hệ mới được tạo ra: khóa ngoại của nó là khóa chính của thực thể gốc, và khóa chính của nó là một khóa phức hợp (khóa gốc + thuộc tính đa trị)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-94",
+      "number": 94,
+      "text": "Mối quan hệ N-N giữa hai thực thể được chuyển đổi sang mô hình quan hệ như thế nào?",
+      "options": [
+        "Khóa chính của mỗi thực thể được đặt vào thực thể kia làm khóa ngoại",
+        "Một lược đồ quan hệ mới được tạo ra, có khóa chính là khóa phức hợp gồm các khóa chính của các thực thể tham gia (đồng thời cũng là các khóa ngoại)",
+        "Các thuộc tính riêng của mối quan hệ được thêm đơn thuần vào một trong hai quan hệ gốc",
+        "Hai thực thể được gộp lại thành một thực thể độc lập duy nhất"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-95",
+      "number": 95,
+      "text": "Khi một mối quan hệ tam nguyên (hoặc bậc cao hơn) trong ERD được chuyển đổi sang mô hình quan hệ, khóa chính của quan hệ mới thường là gì?",
+      "options": [
+        "Một khóa phức hợp được tạo thành từ các khóa chính của tất cả các thực thể tham gia (đồng thời cũng là các khóa ngoại)",
+        "Một thuộc tính thuộc về chính mối quan hệ tam nguyên đó",
+        "Khóa chính của thực thể có bậc cao nhất",
+        "Khóa chính của một thực thể mạnh được chọn ngẫu nhiên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-96",
+      "number": 96,
+      "text": "Các quan hệ được tạo ra từ mô hình ER cần đạt tới dạng chuẩn nào để tránh các bất thường (anomalies) khi chèn, cập nhật và xóa dữ liệu?",
+      "options": [
+        "Dạng chuẩn Boyce-Codd (BCNF)",
+        "Dạng chuẩn 1 (1NF)",
+        "Dạng chuẩn 2 (2NF)",
+        "Dạng chuẩn 3 (3NF)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-97",
+      "number": 97,
+      "text": "Người thiết kế cơ sở dữ liệu cần chuẩn bị những đầu vào nào trước khi bắt đầu giai đoạn thiết kế vật lý?",
+      "options": [
+        "Mô tả chưa chuẩn hóa về các quy tắc nghiệp vụ và sơ đồ ERD quan niệm ban đầu",
+        "Các quan hệ đã chuẩn hóa, ước tính khối lượng dữ liệu và thống kê mức độ sử dụng, ước tính dung lượng lưu trữ cho từng trường và các đặc tính lưu trữ vật lý của DBMS",
+        "Kế hoạch sao lưu phòng ngừa và danh sách các rủi ro hỏng hóc phần cứng",
+        "Các khung nhìn dữ liệu của người dùng cuối và danh sách phân quyền của DBA"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "2-98",
+      "number": 98,
+      "text": "Đâu là trình tự đúng của bảy giai đoạn trong thiết kế vật lý (physical design)?",
+      "options": [
+        "Chọn tổ chức tập tin → Định nghĩa chỉ mục → Định nghĩa khung nhìn → Phân tích khối lượng dữ liệu → Chuyển các quan hệ thành bảng → Ước tính lưu trữ → Xác định bảo mật người dùng",
+        "Định nghĩa khung nhìn → Chọn tổ chức tập tin → Định nghĩa chỉ mục → Ước tính lưu trữ → Chuyển các quan hệ thành bảng → Xác định bảo mật người dùng → Phân tích khối lượng dữ liệu",
+        "Phân tích khối lượng dữ liệu và mức độ sử dụng → Chuyển các quan hệ thành bảng → Chọn tổ chức tập tin → Định nghĩa chỉ mục → Định nghĩa khung nhìn → Ước tính nhu cầu lưu trữ → Xác định bảo mật người dùng",
+        "Chuyển các quan hệ thành bảng → Chọn tổ chức tập tin → Định nghĩa chỉ mục → Định nghĩa khung nhìn → Phân tích khối lượng dữ liệu → Ước tính lưu trữ → Xác định bảo mật người dùng"
+      ],
+      "answer": null,
+      "explanation": null
+    }
+  ],
+  "cases": [
+    {
+      "id": "2-case",
+      "title": "Bài tập vận dụng",
+      "paragraphs": [
+        "Một sinh viên có thể đăng ký nhiều lớp học phần và mỗi lớp có nhiều sinh viên. Hãy vẽ ERD, chọn khóa và ánh xạ thành các bảng."
+      ],
+      "supplemental": true
+    }
+  ]
+}

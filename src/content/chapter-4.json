@@ -1,0 +1,881 @@
+{
+  "id": 4,
+  "title": "Ngôn ngữ truy vấn SQL",
+  "sourceHeading": "CHƯƠNG 4: NGÔN NGỮ TRUY VẤN CÓ CẤU TRÚC SQL: DDL, DML VÀ DQL (64 CÂU)",
+  "description": "Định nghĩa, thao tác và truy vấn dữ liệu với SQL.",
+  "theory": [
+    {
+      "title": "DDL và DML",
+      "text": "CREATE, ALTER và DROP định nghĩa hoặc đổi cấu trúc. INSERT, UPDATE và DELETE thêm, sửa hoặc xóa hàng."
+    },
+    {
+      "title": "Truy vấn",
+      "text": "SELECT chọn cột và WHERE lọc hàng. GROUP BY gom nhóm và HAVING lọc các nhóm sau khi tổng hợp."
+    },
+    {
+      "title": "Phép kết và phép hợp",
+      "text": "INNER JOIN lấy các cặp khớp. LEFT JOIN giữ mọi hàng bên trái. UNION loại các hàng trùng, còn UNION ALL giữ chúng."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Ngôn ngữ định nghĩa dữ liệu",
+      "english": "DDL",
+      "definition": "Nhóm lệnh tạo và thay đổi cấu trúc dữ liệu."
+    },
+    {
+      "term": "Truy vấn con",
+      "english": "Subquery",
+      "definition": "Một truy vấn nằm bên trong truy vấn khác."
+    },
+    {
+      "term": "Phép kết trái",
+      "english": "LEFT JOIN",
+      "definition": "Phép kết giữ hàng bên trái kể cả khi không có hàng bên phải khớp."
+    }
+  ],
+  "questions": [
+    {
+      "id": "4-1",
+      "number": 1,
+      "text": "Lệnh nào sau đây KHÔNG thuộc nhóm DDL?",
+      "options": [
+        "ALTER",
+        "DELETE",
+        "DROP",
+        "CREATE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-2",
+      "number": 2,
+      "text": "Trong SQL Server, kiểu dữ liệu nào phù hợp nhất để lưu trữ họ tên tiếng Việt có dấu, có độ dài thay đổi?",
+      "options": [
+        "CHAR(10)",
+        "INT",
+        "NVARCHAR(50)",
+        "DATE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-3",
+      "number": 3,
+      "text": "(SQL Server) Câu lệnh nào thêm cột BirthDate có kiểu dữ liệu DATE vào bảng STUDENT?",
+      "options": [
+        "ALTER TABLE STUDENT ADD COLUMN BirthDate DATE",
+        "ALTER TABLE STUDENT INSERT BirthDate DATE",
+        "UPDATE STUDENT ADD BirthDate DATE",
+        "ALTER TABLE STUDENT ADD BirthDate DATE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-4",
+      "number": 4,
+      "text": "(SQL Server) Câu lệnh nào thêm đồng thời hai cột Email và Phone vào bảng STUDENT?",
+      "options": [
+        "ALTER TABLE STUDENT ADD (Email VARCHAR(100), Phone VARCHAR(15))",
+        "ALTER TABLE STUDENT ADD Email VARCHAR(100), Phone VARCHAR(15)",
+        "ALTER TABLE STUDENT ADD COLUMNS Email VARCHAR(100), Phone VARCHAR(15)",
+        "ALTER TABLE STUDENT ADD Email VARCHAR(100) AND Phone VARCHAR(15)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-5",
+      "number": 5,
+      "text": "(SQL Server) Câu lệnh nào xóa cột Email khỏi bảng STUDENT?",
+      "options": [
+        "DELETE Email FROM STUDENT",
+        "ALTER TABLE STUDENT DELETE COLUMN Email",
+        "ALTER TABLE STUDENT REMOVE Email",
+        "ALTER TABLE STUDENT DROP COLUMN Email"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-6",
+      "number": 6,
+      "text": "(SQL Server) Câu lệnh nào thay đổi cột FullName sang kiểu NVARCHAR(100) và không cho phép NULL?",
+      "options": [
+        "ALTER TABLE STUDENT CHANGE FullName NVARCHAR(100) NOT NULL",
+        "ALTER TABLE STUDENT ALTER COLUMN FullName SET NOT NULL",
+        "ALTER TABLE STUDENT ALTER COLUMN FullName NVARCHAR(100) NOT NULL",
+        "ALTER TABLE STUDENT MODIFY FullName NVARCHAR(100) NOT NULL"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-7",
+      "number": 7,
+      "text": "(SQL Server) Làm thế nào để đổi tên cột Phone của bảng STUDENT thành PhoneNo?",
+      "options": [
+        "EXEC sp_rename 'STUDENT.Phone', 'PhoneNo', 'COLUMN'",
+        "ALTER TABLE STUDENT MODIFY Phone AS PhoneNo",
+        "UPDATE STUDENT SET COLUMN Phone = PhoneNo",
+        "ALTER TABLE STUDENT ALTER COLUMN Phone TO PhoneNo"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-8",
+      "number": 8,
+      "text": "Ràng buộc nào đảm bảo rằng các giá trị của một cột vừa là duy nhất vừa không bao giờ nhận giá trị NULL?",
+      "options": [
+        "UNIQUE",
+        "DEFAULT",
+        "PRIMARY KEY",
+        "CHECK"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-9",
+      "number": 9,
+      "text": "Phát biểu nào sau đây về sự khác biệt giữa UNIQUE và PRIMARY KEY là đúng?",
+      "options": [
+        "Một bảng có thể có nhiều PRIMARY KEY nhưng chỉ có một UNIQUE",
+        "UNIQUE cho phép các giá trị trùng lặp, còn PRIMARY KEY thì không",
+        "UNIQUE chỉ áp dụng cho các cột kiểu số",
+        "Một bảng có thể có nhiều ràng buộc UNIQUE nhưng chỉ có duy nhất một PRIMARY KEY"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-10",
+      "number": 10,
+      "text": "Bảng RESULT(StudentID, CourseID, Score) có khóa chính được tạo thành từ hai cột StudentID và CourseID. Khai báo nào sau đây là đúng trong lệnh CREATE TABLE?",
+      "options": [
+        "PRIMARY KEY (StudentID) AND PRIMARY KEY (CourseID)",
+        "StudentID PRIMARY KEY, CourseID PRIMARY KEY",
+        "PRIMARY KEY (StudentID, CourseID)",
+        "FOREIGN KEY (StudentID, CourseID)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-11",
+      "number": 11,
+      "text": "Câu lệnh nào thêm khóa chính vào bảng CLASS (cột ClassID đã được khai báo NOT NULL)?",
+      "options": [
+        "ALTER TABLE CLASS ADD PRIMARY KEY FOR ClassID",
+        "UPDATE CLASS SET PRIMARY KEY = ClassID",
+        "ALTER TABLE CLASS ADD CONSTRAINT PK_CLASS PRIMARY KEY (ClassID)",
+        "ALTER TABLE CLASS ALTER COLUMN ClassID PRIMARY KEY"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-12",
+      "number": 12,
+      "text": "Trong bảng STUDENT, ràng buộc FOREIGN KEY (ClassID) REFERENCES CLASS(ClassID) đảm bảo điều gì?",
+      "options": [
+        "Các giá trị ClassID trong bảng STUDENT không được phép trùng lặp",
+        "Mọi giá trị ClassID trong bảng CLASS đều phải tồn tại trong bảng STUDENT",
+        "Cột ClassID trong bảng STUDENT không được phép nhận giá trị NULL",
+        "Mọi giá trị ClassID trong bảng STUDENT (nếu không phải NULL) đều phải tồn tại trong bảng CLASS"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-13",
+      "number": 13,
+      "text": "Câu lệnh nào thêm một khóa ngoại trên cột ClassID của bảng STUDENT tham chiếu đến bảng CLASS?",
+      "options": [
+        "ALTER TABLE STUDENT ADD CONSTRAINT FK_STUDENT_CLASS FOREIGN KEY (ClassID) REFERENCES CLASS(ClassID)",
+        "ALTER TABLE STUDENT ADD CONSTRAINT FK_STUDENT_CLASS REFERENCES CLASS FOR ClassID",
+        "ALTER TABLE CLASS ADD CONSTRAINT FK_STUDENT_CLASS FOREIGN KEY (ClassID) REFERENCES STUDENT(ClassID)",
+        "ALTER TABLE STUDENT ADD FOREIGN KEY CLASS(ClassID)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-14",
+      "number": 14,
+      "text": "Một khóa ngoại được khai báo với tùy chọn ON DELETE CASCADE. Điều gì sẽ xảy ra khi một hàng bị xóa khỏi bảng được tham chiếu (bảng cha)?",
+      "options": [
+        "Giá trị khóa ngoại trong bảng con được đặt thành NULL",
+        "Các hàng trong bảng con đang tham chiếu đến hàng đó cũng tự động bị xóa theo",
+        "Toàn bộ bảng con bị xóa",
+        "Thao tác xóa bị từ chối nếu vẫn còn các hàng đang tham chiếu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-15",
+      "number": 15,
+      "text": "Ràng buộc nào giới hạn cột Score của bảng RESULT chỉ nhận các giá trị từ 0 đến 10?",
+      "options": [
+        "CHECK (Score BETWEEN 0 AND 10)",
+        "UNIQUE (Score BETWEEN 0 AND 10)",
+        "DEFAULT (Score BETWEEN 0 AND 10)",
+        "FOREIGN KEY (Score BETWEEN 0 AND 10)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-16",
+      "number": 16,
+      "text": "Câu lệnh nào thêm một ràng buộc giới hạn Score trong khoảng từ 0 đến 10 ở bảng RESULT?",
+      "options": [
+        "ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score CHECK (Score >= 0 OR Score <= 10)",
+        "ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score DEFAULT (Score BETWEEN 0 AND 10)",
+        "ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score CHECK (Score >= 0 AND Score <= 10)",
+        "ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score CHECK (0, 10) FOR Score"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-17",
+      "number": 17,
+      "text": "(SQL Server) Bảng RESULT đã có sẵn một hàng với Score = 11. Điều gì xảy ra khi chạy lệnh ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score CHECK (Score BETWEEN 0 AND 10) (với tùy chọn mặc định là WITH CHECK)?",
+      "options": [
+        "Ràng buộc được tạo và dữ liệu cũ được bỏ qua",
+        "Câu lệnh báo lỗi và ràng buộc không được tạo",
+        "Ràng buộc được tạo và hàng có Score = 11 tự động bị xóa",
+        "Ràng buộc được tạo và Score = 11 được đổi thành 10"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-18",
+      "number": 18,
+      "text": "(SQL Server) Tùy chọn WITH NOCHECK trong câu lệnh ALTER TABLE RESULT WITH NOCHECK ADD CONSTRAINT CK_RESULT_Score CHECK (Score BETWEEN 0 AND 10) có ý nghĩa gì?",
+      "options": [
+        "Chỉ dữ liệu hiện có được kiểm tra, còn dữ liệu mới thì không",
+        "Dữ liệu hiện có không bị kiểm tra, và ràng buộc chỉ áp dụng cho dữ liệu được chèn hoặc cập nhật về sau",
+        "Các hàng vi phạm sẽ bị xóa trước khi ràng buộc được tạo",
+        "Ràng buộc được tạo ra nhưng không bao giờ được kiểm tra"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-19",
+      "number": 19,
+      "text": "Câu lệnh nào đảm bảo rằng tên các môn học (CourseName) không bị trùng lặp?",
+      "options": [
+        "ALTER TABLE COURSE ALTER COLUMN CourseName UNIQUE",
+        "ALTER TABLE COURSE ADD CONSTRAINT UQ_COURSE_CourseName DISTINCT (CourseName)",
+        "ALTER TABLE COURSE ADD CONSTRAINT UQ_COURSE_CourseName CHECK (CourseName UNIQUE)",
+        "ALTER TABLE COURSE ADD CONSTRAINT UQ_COURSE_CourseName UNIQUE (CourseName)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-20",
+      "number": 20,
+      "text": "Lợi ích chính của việc đặt tên cho ràng buộc (ví dụ: DF_COURSE_Credits hoặc FK_STUDENT_CLASS) khi sử dụng ADD CONSTRAINT là gì?",
+      "options": [
+        "Tên là bắt buộc để ràng buộc có thể hoạt động",
+        "Ràng buộc dễ dàng được xóa hoặc sửa đổi về sau thông qua tên của nó",
+        "Ràng buộc có thể áp dụng cho nhiều bảng cùng một lúc",
+        "Các câu truy vấn SELECT chạy nhanh hơn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-21",
+      "number": 21,
+      "text": "Câu lệnh nào xóa ràng buộc có tên FK_RESULT_STUDENT khỏi bảng RESULT?",
+      "options": [
+        "DROP TABLE RESULT CONSTRAINT FK_RESULT_STUDENT",
+        "DELETE CONSTRAINT FK_RESULT_STUDENT FROM RESULT",
+        "ALTER TABLE RESULT DROP CONSTRAINT FK_RESULT_STUDENT",
+        "UPDATE RESULT DROP FK_RESULT_STUDENT"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-22",
+      "number": 22,
+      "text": "(SQL Server) Câu lệnh nào thiết lập giá trị mặc định là 3 cho cột Credits đã tồn tại của bảng COURSE?",
+      "options": [
+        "ALTER TABLE COURSE ADD DEFAULT (Credits = 3)",
+        "ALTER TABLE COURSE ADD CONSTRAINT DF_COURSE_Credits DEFAULT Credits = 3",
+        "ALTER TABLE COURSE ADD CONSTRAINT DF_COURSE_Credits DEFAULT 3 FOR Credits",
+        "ALTER TABLE COURSE ALTER COLUMN Credits DEFAULT 3"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-23",
+      "number": 23,
+      "text": "(SQL Server) Trong câu lệnh ALTER TABLE STUDENT ADD CONSTRAINT DF_STUDENT_ClassID DEFAULT 'K48' FOR ClassID, từ khóa FOR chỉ định điều gì?",
+      "options": [
+        "Kiểu dữ liệu của giá trị mặc định",
+        "Điều kiện mà giá trị mặc định được áp dụng",
+        "Cột mà giá trị mặc định được áp dụng",
+        "Bảng mà ràng buộc được áp dụng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-24",
+      "number": 24,
+      "text": "(SQL Server) Bảng RESULT có cột EntryDate kiểu DATETIME với ràng buộc DEFAULT GETDATE() FOR EntryDate. Điều gì xảy ra khi một hàng được chèn vào mà không liệt kê cột EntryDate?",
+      "options": [
+        "EntryDate nhận giá trị ngày 1 tháng 1 năm 1900",
+        "EntryDate nhận ngày và giờ hiện tại của hệ thống",
+        "EntryDate nhận giá trị NULL",
+        "Lệnh INSERT thất bại vì thiếu cột EntryDate"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-25",
+      "number": 25,
+      "text": "(SQL Server) Bảng COURSE đã có một số hàng mang giá trị Credits = NULL. Điều gì xảy ra với các hàng đó sau khi chạy lệnh ADD CONSTRAINT DF_COURSE_Credits DEFAULT 3 FOR Credits?",
+      "options": [
+        "Chúng bị xóa khỏi bảng",
+        "Chúng vẫn giữ nguyên Credits = NULL, vì giá trị mặc định chỉ áp dụng cho các câu lệnh INSERT về sau",
+        "Chúng làm cho câu lệnh ALTER TABLE bị lỗi",
+        "Chúng tự động được cập nhật thành Credits = 3"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-26",
+      "number": 26,
+      "text": "(SQL Server) Cột Credits cho phép NULL và có ràng buộc DEFAULT 3 FOR Credits. Câu lệnh INSERT INTO COURSE(CourseID, CourseName, Credits) VALUES ('MH09', N'Artificial Intelligence', NULL) được thực thi. Giá trị Credits của hàng mới là gì?",
+      "options": [
+        "3",
+        "0",
+        "NULL",
+        "Câu lệnh báo lỗi"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-27",
+      "number": 27,
+      "text": "(SQL Server) Bảng STUDENT đã chứa sẵn dữ liệu. Câu lệnh nào thêm thành công một cột Status không cho phép NULL?",
+      "options": [
+        "ALTER TABLE STUDENT ADD Status NVARCHAR(20) NOT NULL CONSTRAINT DF_STUDENT_Status DEFAULT N'Enrolled'",
+        "ALTER TABLE STUDENT ALTER COLUMN Status NVARCHAR(20) NOT NULL",
+        "ALTER TABLE STUDENT ADD Status NVARCHAR(20) NOT NULL",
+        "ALTER TABLE STUDENT ADD Status NVARCHAR(20) NOT NULL FOR N'Enrolled'"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-28",
+      "number": 28,
+      "text": "(SQL Server) Làm thế nào để thay đổi giá trị mặc định của cột Credits từ 3 thành 4 (ràng buộc đang có tên là DF_COURSE_Credits)?",
+      "options": [
+        "DROP CONSTRAINT DF_COURSE_Credits, sau đó ADD CONSTRAINT DF_COURSE_Credits DEFAULT 4 FOR Credits",
+        "UPDATE CONSTRAINT DF_COURSE_Credits SET DEFAULT = 4",
+        "ALTER TABLE COURSE ALTER COLUMN Credits DEFAULT 4",
+        "ALTER CONSTRAINT DF_COURSE_Credits DEFAULT 4"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-29",
+      "number": 29,
+      "text": "(SQL Server) Cột Credits có gắn ràng buộc DF_COURSE_Credits. Cần phải làm gì để xóa cột Credits?",
+      "options": [
+        "Xóa ràng buộc DF_COURSE_Credits trước, sau đó mới dùng lệnh DROP COLUMN Credits",
+        "Đặt Credits = NULL ở mọi hàng, sau đó dùng DROP COLUMN",
+        "Sử dụng DELETE COLUMN Credits thay cho DROP COLUMN",
+        "Dùng trực tiếp DROP COLUMN Credits, và ràng buộc sẽ tự động bị xóa theo"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-30",
+      "number": 30,
+      "text": "Mục đích chính của lệnh CREATE INDEX là gì?",
+      "options": [
+        "Xóa các hàng bị trùng lặp",
+        "Tăng tốc độ tìm kiếm và truy vấn trên cột được đánh chỉ mục",
+        "Tạo một bản sao lưu của bảng",
+        "Tạo một ràng buộc khóa ngoại giữa hai bảng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-31",
+      "number": 31,
+      "text": "Lệnh CREATE VIEW được dùng để làm gì?",
+      "options": [
+        "Tạo một bảng ảo (virtual table) dựa trên kết quả của một câu truy vấn SELECT",
+        "Tạo một chỉ mục (index) cho một bảng",
+        "Tạo một bảng mới và sao chép vật lý toàn bộ dữ liệu",
+        "Cấp quyền cho người dùng được phép xem dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-32",
+      "number": 32,
+      "text": "Câu lệnh nào thêm đúng một sinh viên mới vào bảng STUDENT?",
+      "options": [
+        "ADD INTO STUDENT VALUES ('SV01', N'Nguyễn An', 'K48')",
+        "UPDATE STUDENT VALUES ('SV01', N'Nguyễn An', 'K48')",
+        "INSERT INTO STUDENT(StudentID, FullName, ClassID) VALUES ('SV01', N'Nguyễn An', 'K48')",
+        "INSERT STUDENT SET StudentID = 'SV01', FullName = N'Nguyễn An'"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-33",
+      "number": 33,
+      "text": "Câu lệnh có dạng INSERT INTO STUDENT_K48 SELECT * FROM STUDENT WHERE ClassID = 'K48' thực hiện việc gì?",
+      "options": [
+        "Tạo bảng STUDENT_K48 rồi sau đó chèn dữ liệu vào",
+        "Chỉ chèn hàng đầu tiên của kết quả truy vấn",
+        "Cập nhật các hàng đã có sẵn trong bảng STUDENT_K48",
+        "Chèn vào bảng STUDENT_K48 tất cả các hàng trả về từ câu truy vấn trên bảng STUDENT"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-34",
+      "number": 34,
+      "text": "Một hàng được chèn vào nhưng bỏ qua một cột được khai báo NOT NULL và không có giá trị DEFAULT. Kết quả là gì?",
+      "options": [
+        "Cột đó nhận giá trị NULL",
+        "Cột đó nhận giá trị 0",
+        "Câu lệnh INSERT bị lỗi (thất bại)",
+        "Cột đó nhận một chuỗi rỗng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-35",
+      "number": 35,
+      "text": "Cho STUDENT(StudentID, FullName, ClassID), CLASS(ClassID, ClassName), COURSE(CourseID, CourseName, Credits) và RESULT(StudentID, CourseID, Score). RESULT.StudentID là khóa ngoại tham chiếu đến STUDENT.StudentID. Điều gì xảy ra khi chèn một hàng vào RESULT với một StudentID không tồn tại trong STUDENT?",
+      "options": [
+        "Hàng được chèn với StudentID = NULL",
+        "Hệ thống tự động thêm sinh viên đó vào bảng STUDENT",
+        "Lệnh INSERT bị từ chối vì vi phạm ràng buộc khóa ngoại",
+        "Hàng được chèn bình thường"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-36",
+      "number": 36,
+      "text": "Câu lệnh nào đổi họ tên của sinh viên có mã SV01 thành Lê Bình?",
+      "options": [
+        "UPDATE STUDENT SET FullName = N'Lê Bình' WHERE StudentID = 'SV01'",
+        "UPDATE STUDENT FullName = N'Lê Bình' WHERE StudentID = 'SV01'",
+        "MODIFY STUDENT SET FullName = N'Lê Bình' WHERE StudentID = 'SV01'",
+        "ALTER STUDENT SET FullName = N'Lê Bình' WHERE StudentID = 'SV01'"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-37",
+      "number": 37,
+      "text": "Câu lệnh nào cập nhật đồng thời cả CourseName và Credits cho môn học MH01?",
+      "options": [
+        "UPDATE COURSE SET CourseName = N'Databases' SET Credits = 3 WHERE CourseID = 'MH01'",
+        "UPDATE COURSE (CourseName, Credits) = (N'Databases', 3) HAVING CourseID = 'MH01'",
+        "UPDATE COURSE SET CourseName = N'Databases', Credits = 3 WHERE CourseID = 'MH01'",
+        "UPDATE COURSE SET CourseName = N'Databases' AND Credits = 3 WHERE CourseID = 'MH01'"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-38",
+      "number": 38,
+      "text": "Câu lệnh nào cộng thêm 0.5 điểm cho những sinh viên học môn MH01 và có điểm dưới 5?",
+      "options": [
+        "UPDATE RESULT SET Score = Score + 0.5 GROUP BY CourseID HAVING Score < 5",
+        "UPDATE RESULT SET Score = Score + 0.5 WHERE CourseID = 'MH01' OR Score < 5",
+        "UPDATE RESULT SET Score = Score + 0.5 WHERE CourseID = 'MH01' AND Score < 5",
+        "UPDATE RESULT SET Score = Score + 0.5 HAVING CourseID = 'MH01' AND Score < 5"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-39",
+      "number": 39,
+      "text": "Kết quả của câu lệnh UPDATE RESULT SET Score = Score + 1 (không có mệnh đề WHERE) là gì?",
+      "options": [
+        "Mọi hàng trong bảng RESULT đều được cộng thêm 1 điểm",
+        "Không có hàng nào thay đổi",
+        "Chỉ hàng đầu tiên được cộng thêm 1 điểm",
+        "Câu lệnh báo lỗi vì thiếu mệnh đề WHERE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-40",
+      "number": 40,
+      "text": "Câu lệnh DELETE FROM STUDENT WHERE ClassID = 'K48' thực hiện việc gì?",
+      "options": [
+        "Xóa lớp K48 khỏi bảng CLASS",
+        "Xóa cột ClassID khỏi bảng STUDENT",
+        "Xóa các sinh viên thuộc lớp K48 khỏi bảng STUDENT",
+        "Xóa toàn bộ bảng STUDENT"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-41",
+      "number": 41,
+      "text": "Câu lệnh nào xóa những sinh viên hoàn toàn không có kết quả điểm nào trong bảng RESULT?",
+      "options": [
+        "DELETE FROM STUDENT WHERE StudentID NOT IN (SELECT StudentID FROM RESULT)",
+        "DELETE FROM RESULT WHERE StudentID NOT IN (SELECT StudentID FROM STUDENT)",
+        "DROP STUDENT WHERE StudentID NOT IN (SELECT StudentID FROM RESULT)",
+        "DELETE FROM STUDENT WHERE StudentID IN (SELECT StudentID FROM RESULT)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-42",
+      "number": 42,
+      "text": "Cho STUDENT(StudentID, FullName, ClassID), CLASS(ClassID, ClassName), COURSE(CourseID, CourseName, Credits) và RESULT(StudentID, CourseID, Score). RESULT.StudentID là khóa ngoại tham chiếu đến STUDENT.StudentID với tùy chọn mặc định (NO ACTION). Điều gì xảy ra khi xóa một sinh viên đang có các hàng dữ liệu trong bảng RESULT?",
+      "options": [
+        "StudentID trong bảng RESULT được đặt thành NULL",
+        "Sinh viên bị xóa và bảng RESULT giữ nguyên không đổi",
+        "Câu lệnh DELETE bị từ chối",
+        "Các hàng tương ứng trong bảng RESULT cũng bị xóa theo"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-43",
+      "number": 43,
+      "text": "Phát biểu nào sau đây về DELETE và TRUNCATE TABLE là đúng?",
+      "options": [
+        "Cả hai đều xóa bỏ cấu trúc bảng",
+        "TRUNCATE TABLE có thể dùng mệnh đề WHERE, còn DELETE thì không",
+        "DELETE có thể dùng mệnh đề WHERE để xóa một số hàng, còn TRUNCATE TABLE luôn xóa toàn bộ các hàng",
+        "DELETE thuộc nhóm DDL, còn TRUNCATE TABLE thuộc nhóm DML"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-44",
+      "number": 44,
+      "text": "Sự khác biệt giữa DROP TABLE và TRUNCATE TABLE là gì?",
+      "options": [
+        "DROP TABLE xóa cả cấu trúc lẫn dữ liệu, còn TRUNCATE TABLE xóa toàn bộ dữ liệu nhưng giữ lại cấu trúc bảng",
+        "TRUNCATE TABLE xóa các hàng thỏa mãn điều kiện WHERE, còn DROP TABLE xóa toàn bộ các hàng",
+        "DROP TABLE chỉ xóa dữ liệu, còn TRUNCATE TABLE xóa luôn cả cấu trúc bảng",
+        "Cả hai đều chỉ xóa dữ liệu và giữ lại cấu trúc bảng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-45",
+      "number": 45,
+      "text": "Một lệnh DELETE vừa được chạy bên trong một giao dịch chưa được xác nhận (commit). Lệnh nào dùng để hoàn tác thay đổi này?",
+      "options": [
+        "REVERT",
+        "UNDO",
+        "ROLLBACK",
+        "RESTORE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-46",
+      "number": 46,
+      "text": "Thứ tự xử lý logic của các mệnh đề trong một câu lệnh SELECT là gì?",
+      "options": [
+        "FROM → WHERE → HAVING → GROUP BY → ORDER BY → SELECT",
+        "SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY",
+        "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
+        "FROM → GROUP BY → WHERE → HAVING → SELECT → ORDER BY"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-47",
+      "number": 47,
+      "text": "Câu lệnh SELECT DISTINCT ClassID FROM STUDENT trả về kết quả gì?",
+      "options": [
+        "Các mã lớp chỉ có duy nhất một sinh viên",
+        "Tất cả các hàng của bảng STUDENT",
+        "Số lượng các lớp học",
+        "Danh sách các mã lớp, trong đó mỗi mã lớp chỉ xuất hiện một lần"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-48",
+      "number": 48,
+      "text": "Điều kiện WHERE FullName LIKE N'Nguyễn%' tìm kiếm những sinh viên có họ tên:",
+      "options": [
+        "Kết thúc bằng 'Nguyễn'",
+        "Bắt đầu bằng 'Nguyễn'",
+        "Chứa 'Nguyễn' ở bất kỳ vị trí nào",
+        "Chính xác là 'Nguyễn'"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-49",
+      "number": 49,
+      "text": "Trong toán tử LIKE, ký tự đại diện dấu gạch dưới (_) đại diện cho điều gì?",
+      "options": [
+        "Một khoảng trắng",
+        "Chính xác một ký tự bất kỳ",
+        "Không hoặc nhiều ký tự bất kỳ",
+        "Một chữ số"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-50",
+      "number": 50,
+      "text": "Điều kiện nào tìm kiếm chính xác những sinh viên chưa được xếp lớp (cột ClassID không có giá trị)?",
+      "options": [
+        "WHERE ClassID = ''",
+        "WHERE ClassID LIKE NULL",
+        "WHERE ClassID = NULL",
+        "WHERE ClassID IS NULL"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-51",
+      "number": 51,
+      "text": "Điều kiện WHERE Score BETWEEN 5 AND 8 tương đương với:",
+      "options": [
+        "WHERE Score >= 5 AND Score <= 8",
+        "WHERE Score >= 5 OR Score <= 8",
+        "WHERE Score IN (5, 8)",
+        "WHERE Score > 5 AND Score < 8"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-52",
+      "number": 52,
+      "text": "Mệnh đề ORDER BY Score DESC sắp xếp kết quả theo:",
+      "options": [
+        "Score theo thứ tự tăng dần",
+        "Score theo thứ tự giảm dần",
+        "Thứ tự mà dữ liệu được nhập vào",
+        "Score theo thứ tự tăng dần, với các giá trị NULL nằm ở cuối"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-53",
+      "number": 53,
+      "text": "Trong SQL Server, câu lệnh nào trả về 3 sinh viên có điểm cao nhất ở môn MH01?",
+      "options": [
+        "SELECT TOP 3 StudentID, Score FROM RESULT WHERE CourseID = 'MH01' ORDER BY Score ASC",
+        "SELECT TOP 3 StudentID, Score FROM RESULT WHERE CourseID = 'MH01' ORDER BY Score DESC",
+        "SELECT StudentID, MAX(Score, 3) FROM RESULT WHERE CourseID = 'MH01'",
+        "SELECT StudentID, Score FROM RESULT WHERE CourseID = 'MH01' AND TOP 3 ORDER BY Score DESC"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-54",
+      "number": 54,
+      "text": "Bảng RESULT có một số hàng mà cột Score mang giá trị NULL. Phát biểu nào sau đây là đúng?",
+      "options": [
+        "COUNT(*) đếm tất cả mọi hàng, còn COUNT(Score) chỉ đếm những hàng mà Score không phải là NULL",
+        "COUNT(*) bỏ qua các hàng có chứa giá trị NULL",
+        "COUNT(Score) cũng đếm cả những hàng mà Score mang giá trị NULL",
+        "COUNT(*) và COUNT(Score) luôn cho ra cùng một kết quả"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-55",
+      "number": 55,
+      "text": "Câu lệnh nào tính điểm trung bình của từng môn học?",
+      "options": [
+        "SELECT CourseID, AVG(Score) FROM RESULT GROUP BY Score",
+        "SELECT CourseID, AVG(Score) FROM RESULT GROUP BY CourseID",
+        "SELECT CourseID, AVG(Score) FROM RESULT ORDER BY CourseID",
+        "SELECT CourseID, AVG(Score) FROM RESULT"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-56",
+      "number": 56,
+      "text": "Phát biểu nào sau đây về WHERE và HAVING là đúng?",
+      "options": [
+        "WHERE lọc các nhóm, còn HAVING lọc các hàng",
+        "HAVING chỉ có thể được sử dụng khi không có GROUP BY",
+        "WHERE và HAVING hoàn toàn giống nhau",
+        "WHERE lọc các hàng trước khi gom nhóm, còn HAVING lọc các nhóm sau khi đã gom nhóm với GROUP BY"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-57",
+      "number": 57,
+      "text": "Câu lệnh nào liệt kê các môn học có điểm trung bình lớn hơn 7?",
+      "options": [
+        "SELECT CourseID, AVG(Score) FROM RESULT WHERE AVG(Score) > 7 GROUP BY CourseID",
+        "SELECT CourseID FROM RESULT HAVING Score > 7",
+        "SELECT CourseID, AVG(Score) FROM RESULT GROUP BY CourseID WHERE AVG(Score) > 7",
+        "SELECT CourseID, AVG(Score) FROM RESULT GROUP BY CourseID HAVING AVG(Score) > 7"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-58",
+      "number": 58,
+      "text": "Tại sao câu lệnh SELECT S.StudentID, S.FullName, COUNT(*) FROM STUDENT S JOIN RESULT K ON S.StudentID = K.StudentID GROUP BY S.StudentID lại báo lỗi trong SQL Server?",
+      "options": [
+        "Không thể sử dụng COUNT(*) chung với JOIN",
+        "Thiếu mệnh đề HAVING",
+        "Không thể đặt bí danh (aliases) cho các bảng",
+        "Cột FullName không nằm trong GROUP BY và cũng không nằm bên trong một hàm gộp (aggregate function)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-59",
+      "number": 59,
+      "text": "Câu lệnh SELECT * FROM STUDENT S INNER JOIN CLASS L ON S.ClassID = L.ClassID trả về kết quả gì?",
+      "options": [
+        "Mọi tổ hợp giữa sinh viên và lớp học",
+        "Tất cả sinh viên, bao gồm cả những sinh viên chưa có lớp",
+        "Chỉ những sinh viên có ClassID khớp với một hàng trong bảng CLASS, kèm theo thông tin chi tiết của lớp đó",
+        "Tất cả các lớp học, bao gồm cả những lớp không có sinh viên nào"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-60",
+      "number": 60,
+      "text": "Câu lệnh SELECT S.StudentID, K.CourseID FROM STUDENT S LEFT JOIN RESULT K ON S.StudentID = K.StudentID trả về kết quả gì?",
+      "options": [
+        "Mọi tổ hợp của STUDENT và RESULT",
+        "Tất cả các hàng của RESULT, bao gồm cả những StudentID không có trong STUDENT",
+        "Chỉ những sinh viên đã có điểm thi",
+        "Tất cả sinh viên, với cột CourseID hiển thị là NULL đối với những sinh viên chưa có kết quả điểm nào"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-61",
+      "number": 61,
+      "text": "Sử dụng LEFT JOIN, câu lệnh nào tìm ra những sinh viên chưa có kết quả điểm nào?",
+      "options": [
+        "SELECT S.StudentID FROM STUDENT S INNER JOIN RESULT K ON S.StudentID = K.StudentID WHERE K.StudentID IS NULL",
+        "SELECT S.StudentID FROM STUDENT S LEFT JOIN RESULT K ON S.StudentID = K.StudentID WHERE K.StudentID IS NOT NULL",
+        "SELECT S.StudentID FROM STUDENT S LEFT JOIN RESULT K ON S.StudentID = K.StudentID WHERE K.StudentID = NULL",
+        "SELECT S.StudentID FROM STUDENT S LEFT JOIN RESULT K ON S.StudentID = K.StudentID WHERE K.StudentID IS NULL"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-62",
+      "number": 62,
+      "text": "Câu lệnh nào tìm sinh viên có điểm cao nhất ở môn MH01?",
+      "options": [
+        "SELECT StudentID FROM RESULT WHERE CourseID = 'MH01' AND Score = MAX(Score)",
+        "SELECT StudentID, MAX(Score) FROM RESULT WHERE CourseID = 'MH01'",
+        "SELECT StudentID FROM RESULT WHERE CourseID = 'MH01' AND Score = (SELECT MAX(Score) FROM RESULT WHERE CourseID = 'MH01')",
+        "SELECT StudentID FROM RESULT WHERE CourseID = 'MH01' HAVING Score = MAX(Score)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-63",
+      "number": 63,
+      "text": "Khi nào thì điều kiện EXISTS (subquery) trả về giá trị TRUE?",
+      "options": [
+        "Khi truy vấn con trả về chính xác một hàng",
+        "Khi mọi giá trị trong truy vấn con đều không phải là NULL",
+        "Khi truy vấn con không trả về hàng nào",
+        "Khi truy vấn con trả về ít nhất một hàng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "4-64",
+      "number": 64,
+      "text": "Phát biểu nào sau đây về UNION và UNION ALL là đúng?",
+      "options": [
+        "UNION giữ lại các hàng trùng lặp, còn UNION ALL loại bỏ chúng",
+        "UNION chỉ trả về các hàng xuất hiện ở cả hai câu truy vấn",
+        "UNION loại bỏ các hàng trùng lặp, còn UNION ALL giữ lại tất cả các hàng, bao gồm cả các hàng trùng lặp",
+        "UNION ALL yêu cầu hai câu truy vấn phải có số lượng cột khác nhau"
+      ],
+      "answer": null,
+      "explanation": null
+    }
+  ],
+  "cases": [
+    {
+      "id": "4-case",
+      "title": "Bài tập vận dụng",
+      "paragraphs": [
+        "Cho bảng SINHVIEN(MaSV, HoTen) và KETQUA(MaSV, MaHP, Diem). Viết truy vấn tìm sinh viên chưa có kết quả và truy vấn tính điểm trung bình từng môn."
+      ],
+      "supplemental": true
+    }
+  ]
+}

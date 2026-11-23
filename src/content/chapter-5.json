@@ -1,0 +1,94 @@
+{
+  "id": 5,
+  "title": "Dữ liệu lớn và NoSQL",
+  "sourceHeading": "CHƯƠNG 5: DỮ LIỆU LỚN (BIG DATA) VÀ NOSQL (6 CÂU TỰ LUẬN)",
+  "description": "Mô hình 5V, ACID, BASE và các loại cơ sở dữ liệu NoSQL.",
+  "theory": [
+    {
+      "title": "Mô hình 5V",
+      "text": "Volume là khối lượng, Velocity là tốc độ, Variety là đa dạng, Veracity là độ đáng tin cậy và Value là giá trị."
+    },
+    {
+      "title": "Các mô hình NoSQL",
+      "text": "Khóa–giá trị phù hợp với tra cứu theo khóa, tài liệu phù hợp với dữ liệu linh hoạt, họ cột hỗ trợ truy cập theo mẫu định trước và đồ thị tập trung vào quan hệ giữa các nút."
+    },
+    {
+      "title": "ACID và BASE",
+      "text": "ACID mô tả tính nguyên tử, nhất quán, cô lập và bền vững của giao dịch. BASE nhấn mạnh tính sẵn sàng, trạng thái mềm và nhất quán cuối cùng."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Dữ liệu lớn",
+      "english": "Big Data",
+      "definition": "Dữ liệu có đặc điểm khiến cách xử lý thông thường khó đáp ứng nhu cầu."
+    },
+    {
+      "term": "Nhất quán cuối cùng",
+      "english": "Eventual consistency",
+      "definition": "Các bản sao hội tụ nếu ngừng phát sinh cập nhật và hệ thống tiếp tục đồng bộ."
+    },
+    {
+      "term": "Cơ sở dữ liệu đồ thị",
+      "english": "Graph database",
+      "definition": "Lưu nút, cạnh và thuộc tính để truy vấn mối liên hệ."
+    }
+  ],
+  "questions": [],
+  "cases": [
+    {
+      "id": "5-case-1",
+      "number": 1,
+      "title": "Dữ liệu lớn (Big Data) và mô hình 5V",
+      "paragraphs": [
+        "(a) Dữ liệu lớn (Big Data) là gì? Mô tả năm đặc trưng của nó (mô hình 5V).",
+        "(b) Tại sao Dữ liệu lớn được cho là \"không có ngưỡng cố định\"? Đặc trưng nào trong 5V quyết định việc doanh nghiệp có nên đầu tư vào Big Data hay không? Giải thích."
+      ]
+    },
+    {
+      "id": "5-case-2",
+      "number": 2,
+      "title": "Ba loại dữ liệu phân theo mức độ cấu trúc",
+      "paragraphs": [
+        "(a) Phân biệt dữ liệu có cấu trúc (structured), dữ liệu bán cấu trúc (semi-structured) và dữ liệu phi cấu trúc (unstructured), đồng thời cho ví dụ minh họa.",
+        "(b) Một nền tảng thương mại điện tử có: bảng đơn hàng (orders table), nhật ký luồng nhấp chuột (clickstream logs) định dạng JSON, hình ảnh sản phẩm và bình luận của khách hàng. Hãy phân loại từng mục vào đúng nhóm và nhận xét về mức độ phù hợp của cơ sở dữ liệu quan hệ khi lưu trữ từng loại dữ liệu đó."
+      ]
+    },
+    {
+      "id": "5-case-3",
+      "number": 3,
+      "title": "Thách thức đối với mô hình quan hệ và sự trỗi dậy của NoSQL",
+      "paragraphs": [
+        "(a) Nêu những thách thức mà Dữ liệu lớn đặt ra cho mô hình dữ liệu quan hệ và bối cảnh ra đời của NoSQL.",
+        "(b) Một số người cho rằng \"NoSQL được tạo ra để thay thế hoàn toàn SQL\". Bạn có đồng ý không? Hãy lập luận bảo vệ quan điểm của mình."
+      ]
+    },
+    {
+      "id": "5-case-4",
+      "number": 4,
+      "title": "ACID và BASE",
+      "paragraphs": [
+        "(a) Giải thích các khái niệm ACID và BASE (tính nhất quán cuối cùng - eventual consistency).",
+        "(b) Phân tích lý do tại sao một mạng xã hội có thể chấp nhận mô hình BASE nhưng một hệ thống chuyển khoản ngân hàng thì không."
+      ]
+    },
+    {
+      "id": "5-case-5",
+      "number": 5,
+      "title": "So sánh và lựa chọn bốn mô hình NoSQL",
+      "paragraphs": [
+        "(a) So sánh bốn mô hình cơ sở dữ liệu NoSQL dựa trên: đơn vị lưu trữ, lược đồ (schema), điểm mạnh và các hệ quản trị tiêu biểu.",
+        "(b) Một ứng dụng giao đồ ăn cần: lưu trữ phiên đăng nhập (login sessions), lưu trữ thực đơn nhà hàng (mỗi nhà hàng có các thuộc tính khác nhau), lưu trữ tọa độ GPS của tài xế mỗi 5 giây và gợi ý nhà hàng dựa trên bạn bè. Hãy chọn một mô hình NoSQL phù hợp cho từng nhu cầu và giải thích."
+      ]
+    },
+    {
+      "id": "5-case-6",
+      "number": 6,
+      "title": "Các xu hướng cơ sở dữ liệu và đánh giá về NoSQL",
+      "paragraphs": [
+        "(a) Giải thích các khái niệm: cơ sở dữ liệu đa mô hình (multi-model), cơ sở dữ liệu thuần đám mây (cloud-native) và cơ sở dữ liệu tích hợp trí tuệ nhân tạo (AI-integrated), kèm theo ví dụ.",
+        "(b) Xuất phát từ ưu điểm và nhược điểm của NoSQL, hãy phân tích lý do tại sao cơ sở dữ liệu đa mô hình và thuần đám mây có thể giúp doanh nghiệp khắc phục một số hạn chế của việc sử dụng nhiều cơ sở dữ liệu riêng lẻ."
+      ]
+    }
+  ]
+}

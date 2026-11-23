@@ -1,0 +1,1076 @@
+{
+  "id": 3,
+  "title": "Phụ thuộc hàm và chuẩn hóa",
+  "sourceHeading": "CHƯƠNG 3: PHỤ THUỘC HÀM, KHÓA VÀ CHUẨN HÓA (79 CÂU)",
+  "description": "Tìm khóa, phân tích phụ thuộc hàm và chuẩn hóa lược đồ.",
+  "theory": [
+    {
+      "title": "Phụ thuộc hàm và bao đóng",
+      "text": "X → Y nghĩa là hai bộ trùng giá trị trên X phải trùng trên Y. Bao đóng X⁺ là tập thuộc tính suy ra từ X theo các phụ thuộc hàm."
+    },
+    {
+      "title": "Khóa",
+      "text": "Siêu khóa xác định mọi thuộc tính. Khóa ứng viên là siêu khóa tối thiểu theo quan hệ bao hàm tập hợp."
+    },
+    {
+      "title": "Dạng chuẩn",
+      "text": "2NF loại phụ thuộc bộ phận của thuộc tính không khóa vào khóa ứng viên. Trong 3NF, với phụ thuộc hàm không tầm thường X → A, X là siêu khóa hoặc A là thuộc tính khóa. BCNF yêu cầu X là siêu khóa."
+    }
+  ],
+  "terms": [
+    {
+      "term": "Bao đóng",
+      "english": "Attribute closure",
+      "definition": "Tập thuộc tính mà một tập thuộc tính xác định được."
+    },
+    {
+      "term": "Khóa ứng viên",
+      "english": "Candidate key",
+      "definition": "Siêu khóa tối thiểu."
+    },
+    {
+      "term": "Phân rã không mất mát",
+      "english": "Lossless decomposition",
+      "definition": "Phân rã cho phép kết tự nhiên tái tạo đúng quan hệ ban đầu."
+    }
+  ],
+  "questions": [
+    {
+      "id": "3-1",
+      "number": 1,
+      "text": "Mục nào sau đây KHÔNG phải là hệ quả trực tiếp của sự dư thừa dữ liệu (data redundancy)?",
+      "options": [
+        "Mọi câu lệnh SELECT đều chạy chậm hơn",
+        "Nguy cơ dữ liệu không nhất quán tăng lên nếu một số bản ghi không được cập nhật",
+        "Lãng phí không gian lưu trữ vì dữ liệu bị trùng lặp",
+        "Việc bảo trì dữ liệu trở nên khó khăn hơn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-2",
+      "number": 2,
+      "text": "Công cụ nào được sử dụng để kiểm soát sự dư thừa dữ liệu thông qua các thuộc tính dùng chung giữa các bảng?",
+      "options": [
+        "Khóa ngoại (Foreign key)",
+        "Sơ đồ phụ thuộc hàm (Functional dependency diagram)",
+        "Hàm kết nối dữ liệu (Data join function)",
+        "Thuộc tính khóa chính (Primary key attribute)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-3",
+      "number": 3,
+      "text": "Phép thử để xác định sự dư thừa dữ liệu thực sự (true data redundancy) trong cơ sở dữ liệu là gì?",
+      "options": [
+        "Đếm xem có bao nhiêu bản sao của dữ liệu tồn tại trong bảng",
+        "Đo xem bảng chiếm bao nhiêu dung lượng đĩa",
+        "Kiểm tra xem giá trị đó có thể được suy diễn từ các dữ liệu khác hay không",
+        "Đếm số lượng thuộc tính khóa ngoại trong lược đồ quan hệ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-4",
+      "number": 4,
+      "text": "Phát biểu nào sau đây về dư thừa dữ liệu có kiểm soát (controlled redundancy) là ĐÚNG?",
+      "options": [
+        "Dư thừa dữ liệu có kiểm soát là điều bình thường trong một thiết kế cơ sở dữ liệu tốt nhằm đảm bảo tốc độ giao dịch hoặc tính đúng đắn",
+        "Dư thừa dữ liệu có kiểm soát không bao giờ được phép xuất hiện trong một thiết kế cơ sở dữ liệu tốt",
+        "Dư thừa dữ liệu có kiểm soát chỉ xảy ra khi một bảng không có khóa chính",
+        "Dư thừa dữ liệu có kiểm soát luôn dẫn đến các bất thường khi xóa và cập nhật"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-5",
+      "number": 5,
+      "text": "Sự dư thừa dữ liệu không kiểm soát dẫn đến bao nhiêu loại bất thường (anomaly) chính?",
+      "options": [
+        "Ba loại",
+        "Hai loại",
+        "Năm loại",
+        "Bốn loại"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-6",
+      "number": 6,
+      "text": "Hiện tượng không thể thêm dữ liệu vào cơ sở dữ liệu do thiếu các dữ liệu liên quan khác được gọi là gì?",
+      "options": [
+        "Dư thừa dữ liệu có kiểm soát (Controlled data redundancy)",
+        "Bất thường khi chèn (Insertion anomaly)",
+        "Bất thường khi cập nhật (Update anomaly)",
+        "Bất thường khi xóa (Deletion anomaly)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-7",
+      "number": 7,
+      "text": "Khi tên hoặc trưởng phòng của một phòng ban thay đổi, sự thay đổi đó phải được thực hiện ở nhiều dòng khác nhau. Đây là bất thường nào?",
+      "options": [
+        "Bất thường khi cập nhật (Update anomaly)",
+        "Bất thường khi chèn (Insertion anomaly)",
+        "Bất thường khi xóa (Deletion anomaly)",
+        "Bất thường khi phân rã (Decomposition anomaly)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-8",
+      "number": 8,
+      "text": "Hiện tượng khi xóa một hàng khỏi bảng làm mất luôn các thông tin khác một cách ngoài ý muốn được gọi là gì?",
+      "options": [
+        "Dư thừa dữ liệu (Data redundancy)",
+        "Bất thường khi xóa (Deletion anomaly)",
+        "Bất thường khi cập nhật (Update anomaly)",
+        "Bất thường khi chèn (Insertion anomaly)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-9",
+      "number": 9,
+      "text": "Trong một bộ (tuple) cụ thể, giá trị NULL ở một cột có thể mang ý nghĩa gì?",
+      "options": [
+        "Giá trị của cột đã bị xóa vĩnh viễn khỏi cơ sở dữ liệu và không thể phục hồi",
+        "Giá trị của thuộc tính là một chuỗi rỗng hoặc số 0",
+        "Thuộc tính đó chắc chắn là khóa ngoại của lược đồ",
+        "Thuộc tính đó không áp dụng cho bộ này, hoặc giá trị của nó hiện chưa được biết"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-10",
+      "number": 10,
+      "text": "Hệ quả gì xảy ra khi một quan hệ thường xuyên chứa nhiều giá trị NULL?",
+      "options": [
+        "Các truy vấn cơ sở dữ liệu chạy nhanh hơn",
+        "Nhiều phụ thuộc hàm mới được tạo ra cho quan hệ",
+        "Không gian lưu trữ bị lãng phí mà không mang lại lợi ích ngữ nghĩa nào trong thực tế",
+        "Lược đồ tự động được chuẩn hóa lên dạng chuẩn cao hơn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-11",
+      "number": 11,
+      "text": "Tên của ràng buộc toàn vẹn được biểu diễn dưới dạng toán học nhằm đảm bảo không làm mất thông tin khi phân rã hoặc kết nối các quan hệ là gì?",
+      "options": [
+        "Phụ thuộc hàm (Functional dependency)",
+        "Hệ tiên đề Armstrong mở rộng",
+        "Biểu đồ cấu trúc phân rã",
+        "Ràng buộc khóa ngoại"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-12",
+      "number": 12,
+      "text": "Nếu tồn tại một ánh xạ f từ tập thuộc tính A sang tập thuộc tính B (A và B là các tập con của U), phụ thuộc hàm này được ký hiệu như thế nào?",
+      "options": [
+        "A = B",
+        "f(A, B)",
+        "B → A",
+        "A → B"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-13",
+      "number": 13,
+      "text": "Trong phụ thuộc hàm A → B, mối quan hệ giữa A và B được phát biểu như thế nào?",
+      "options": [
+        "B xác định hàm A, hay A phụ thuộc hàm vào B",
+        "A xác định hàm B, hay B phụ thuộc hàm vào A",
+        "A và B không có ràng buộc ngữ nghĩa nào với nhau",
+        "A là khóa ngoại tham chiếu đến khóa chính B"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-14",
+      "number": 14,
+      "text": "Quan hệ EMPLOYEE có các thuộc tính (EmployeeID, EmployeeName, DepartmentID, DepartmentName, Salary). Phụ thuộc hàm nào biểu diễn quy tắc: \"Biết mã nhân viên sẽ xác định được tên nhân viên, mã phòng ban và mức lương\"?",
+      "options": [
+        "EmployeeID → EmployeeName, DepartmentID, Salary",
+        "EmployeeID → DepartmentName",
+        "EmployeeName → EmployeeID, DepartmentID, Salary",
+        "DepartmentID → DepartmentName"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-15",
+      "number": 15,
+      "text": "Quan hệ EMPLOYEE có các thuộc tính (EmployeeID, EmployeeName, DepartmentID, DepartmentName, Salary). Phụ thuộc hàm nào biểu diễn quy tắc: \"Mỗi phòng ban chỉ có duy nhất một tên\"?",
+      "options": [
+        "DepartmentID → EmployeeID",
+        "EmployeeID → DepartmentID",
+        "DepartmentName → DepartmentID",
+        "DepartmentID → DepartmentName"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-16",
+      "number": 16,
+      "text": "Yếu tố nào quyết định một phụ thuộc hàm (FD)?",
+      "options": [
+        "Nó phản ánh một ràng buộc ngữ nghĩa của thế giới thực và được thiết lập bởi các quy tắc nghiệp vụ",
+        "Các câu truy vấn SQL mà người dùng viết",
+        "Kích thước lưu trữ của bảng",
+        "Số lượng hàng hiện có trong bảng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-17",
+      "number": 17,
+      "text": "Phát biểu nào sau đây về sự tồn tại của một phụ thuộc hàm là ĐÚNG?",
+      "options": [
+        "Một phụ thuộc hàm chỉ tồn tại nếu bảng không chứa giá trị NULL",
+        "Một phụ thuộc hàm là ràng buộc trên mọi thể hiện hợp lệ của quan hệ và không thể suy diễn chắc chắn chỉ từ một bảng dữ liệu cụ thể",
+        "Một phụ thuộc hàm tự động biến mất khi các thuộc tính được đổi tên",
+        "Một phụ thuộc hàm có thể được suy diễn chắc chắn từ một bảng dữ liệu cụ thể tại một thời điểm"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-18",
+      "number": 18,
+      "text": "Theo tài liệu môn học, mục nào sau đây KHÔNG phải là vai trò của phụ thuộc hàm?",
+      "options": [
+        "Đảm bảo tính toàn vẹn dữ liệu và hỗ trợ tối ưu hóa thiết kế quan hệ",
+        "Giúp xác định khóa của bảng và phát hiện sự dư thừa dữ liệu",
+        "Tự động mã hóa dữ liệu nhạy cảm để nâng cao tính bảo mật",
+        "Làm cơ sở cho việc chuẩn hóa dữ liệu"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-19",
+      "number": 19,
+      "text": "Cho StudentID → (FullName, BirthDate). Theo quy tắc phân rã (decomposition rule), phụ thuộc hàm này có thể tách thành những phụ thuộc hàm nào?",
+      "options": [
+        "FullName → BirthDate và BirthDate → StudentID",
+        "StudentID → FullName và BirthDate → FullName",
+        "StudentID → FullName và FullName → BirthDate",
+        "StudentID → FullName và StudentID → BirthDate"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-20",
+      "number": 20,
+      "text": "Một lược đồ quan hệ R được định nghĩa trên tập thuộc tính U với tập phụ thuộc hàm F. Nói \"X → Y được suy diễn logic từ F\" (ký hiệu F ⊨ X → Y) có nghĩa là gì?",
+      "options": [
+        "X → Y xuất hiện trực tiếp trong tập F ban đầu",
+        "X là tập cha của Y, và Y phải là tập rỗng",
+        "X và Y phải là các thuộc tính khóa của lược đồ R",
+        "Với mọi thể hiện r của R, nếu r thỏa mãn tất cả các phụ thuộc hàm trong F thì r cũng thỏa mãn X → Y"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-21",
+      "number": 21,
+      "text": "Khi các phụ thuộc hàm được vẽ dưới dạng đồ thị có hướng, hình dạng nào biểu diễn một nút phụ thuộc hàm?",
+      "options": [
+        "Hình thoi thể hiện sự liên kết",
+        "Hình chữ nhật chứa tên thuộc tính",
+        "Hình tròn chứa số thứ tự của phụ thuộc hàm",
+        "Hình tam giác chỉ hướng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-22",
+      "number": 22,
+      "text": "Trong đồ thị phụ thuộc hàm, các cung đi từ các thuộc tính ở vế trái của một phụ thuộc hàm tới nút phụ thuộc hàm của nó được gọi là gì?",
+      "options": [
+        "Các cung đi vào nút phụ thuộc hàm",
+        "Các cung đi ra khỏi nút phụ thuộc hàm",
+        "Các đường đi vô hướng",
+        "Các cung hai chiều"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-23",
+      "number": 23,
+      "text": "Trong đồ thị phụ thuộc hàm, các cung đi từ một nút phụ thuộc hàm tới các thuộc tính ở vế phải được gọi là gì?",
+      "options": [
+        "Các cung đi vào nút phụ thuộc hàm",
+        "Các cung tăng trưởng",
+        "Các cung phản xạ",
+        "Các cung đi ra khỏi nút phụ thuộc hàm"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-24",
+      "number": 24,
+      "text": "Trong lý thuyết thiết kế cơ sở dữ liệu, ký hiệu X⁺ biểu diễn điều gì?",
+      "options": [
+        "Tập hợp tất cả các khóa ngoại liên quan đến X",
+        "Độ dài tối đa của thuộc tính X",
+        "Bao đóng của tập thuộc tính X (Closure of attribute set X)",
+        "Tập hợp các giá trị NULL xuất hiện trong cột X"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-25",
+      "number": 25,
+      "text": "Ý nghĩa cơ bản của bao đóng tập thuộc tính X⁺ là gì?",
+      "options": [
+        "Chứa tất cả các thuộc tính mà X xác định được",
+        "Chứa các thuộc tính có thể thay thế hoàn toàn X",
+        "Chứa các thuộc tính không có ràng buộc nào với X",
+        "Chứa các thuộc tính có giá trị trùng lặp với X"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-26",
+      "number": 26,
+      "text": "Tính chất nào sau đây luôn đúng giữa một tập thuộc tính X và bao đóng X⁺ của nó?",
+      "options": [
+        "X⁺ luôn bằng tập tất cả các thuộc tính U",
+        "X không bao giờ nằm trong X⁺",
+        "X⁺ chỉ chứa các thuộc tính khóa ngoại của R",
+        "X là tập con của X⁺ (X ⊆ X⁺)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-27",
+      "number": 27,
+      "text": "Lược đồ quan hệ R được định nghĩa trên tập thuộc tính U. Khi nào tập F được gọi là một họ đầy đủ các phụ thuộc hàm (full family of functional dependencies)?",
+      "options": [
+        "Khi U chứa tối đa ba thuộc tính",
+        "Khi X = X⁺ với mọi tập thuộc tính X",
+        "Khi khóa chính của R có ít nhất hai thuộc tính",
+        "Khi toàn bộ bảng không chứa giá trị NULL"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-28",
+      "number": 28,
+      "text": "Thuật toán tìm bao đóng X⁺ dừng lại khi nào?",
+      "options": [
+        "Khi mọi phụ thuộc hàm trong F đã được duyệt qua đúng một lần",
+        "Khi X⁺ không còn thay đổi sau một lượt duyệt qua toàn bộ các phụ thuộc hàm",
+        "Khi X⁺ có nhiều thuộc tính hơn U",
+        "Khi tìm thấy ít nhất một khóa ngoại trong X⁺"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-29",
+      "number": 29,
+      "text": "Cho lược đồ quan hệ R = {A, B, C, D, E, G} và F = {AB → C, BC → AD, D → E, CG → B}. Tập thuộc tính nào là bao đóng AB⁺?",
+      "options": [
+        "ABC",
+        "ABCDEG",
+        "ABCDE",
+        "ABCD"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-30",
+      "number": 30,
+      "text": "Biết AB⁺ = ABCDE với R = {A, B, C, D, E, G}, tập thuộc tính AB có phải là siêu khóa của R không và tại sao?",
+      "options": [
+        "Có, vì AB là vế trái của phụ thuộc hàm AB → C",
+        "Không, vì AB chứa từ hai thuộc tính trở lên",
+        "Không, vì AB⁺ = ABCDE chưa bằng toàn bộ tập thuộc tính U = ABCDEG",
+        "Có, vì AB⁺ chứa các thuộc tính A, B, C, D và E"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-31",
+      "number": 31,
+      "text": "Cho lược đồ quan hệ R = {A, B, C, D, E, G, H} và F = {B → A, DA → CE, D → H, GH → C, AC → D}. Tìm bao đóng AC⁺.",
+      "options": [
+        "ACD",
+        "ACDEGH",
+        "ACDE",
+        "ACDEH"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-32",
+      "number": 32,
+      "text": "Cho lược đồ quan hệ R = {A, B, C, D, E, G, H} và F = {B → A, DA → CE, D → H, GH → C, AC → D}. Phụ thuộc hàm AC → E có thuộc F⁺ không và tại sao?",
+      "options": [
+        "Không, vì trong F không có phụ thuộc hàm trực tiếp AC → E",
+        "Có, vì AC → D và D → H",
+        "Không, vì vế trái AC không chứa E",
+        "Có, vì E nằm trong bao đóng AC⁺ (AC⁺ = ACDEH)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-33",
+      "number": 33,
+      "text": "Với lược đồ quan hệ R = {A, B, C, D, E, G, H} và F = {B → A, DA → CE, D → H, GH → C, AC → D}, tập thuộc tính AC có phải là siêu khóa của R không và tại sao?",
+      "options": [
+        "Có, vì bao đóng AC⁺ = ACDEH chứa các thuộc tính khóa",
+        "Không, vì bao đóng AC⁺ = ACDEH không phủ hết tập thuộc tính U = ABCDEGH (thiếu B và G)",
+        "Không, vì AC không chứa thuộc tính H",
+        "Có, vì AC chứa hai thuộc tính quan trọng nhất là A và C"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-34",
+      "number": 34,
+      "text": "Cho lược đồ quan hệ R = {A, B, C, D, E, G} và F = {AB → C, BC → AD, D → E, G → B}. Phụ thuộc hàm D → A có thuộc F⁺ không và tại sao?",
+      "options": [
+        "Không, vì vế trái D là một thuộc tính đơn",
+        "Có, vì D → E và E → A",
+        "Có, vì D⁺ = DE, và E cùng D xác định được A",
+        "Không, vì bao đóng D⁺ = DE không chứa thuộc tính A"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-35",
+      "number": 35,
+      "text": "Cho lược đồ quan hệ R = {A, B, C, D, E, G} và F = {A → C, B → DE, AB → G, A → ED, D → E}. Tập nào là bao đóng BE⁺?",
+      "options": [
+        "BDE",
+        "BE",
+        "ABCDEG",
+        "BCDE"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-36",
+      "number": 36,
+      "text": "Cho lược đồ quan hệ R = {A, B, C, D, E, G} và F = {AB → C, C → A, BC → D, ACD → B, D → EG, BE → C, CG → BD, CE → AG}. Tìm bao đóng BD⁺.",
+      "options": [
+        "BD",
+        "BCDEG",
+        "ABCDEG",
+        "BDEG"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-37",
+      "number": 37,
+      "text": "Tập hợp tất cả các thuộc tính của một lược đồ quan hệ R thường được ký hiệu là gì?",
+      "options": [
+        "U",
+        "K",
+        "X⁺",
+        "F"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-38",
+      "number": 38,
+      "text": "Khi nào một tập thuộc tính K được gọi là siêu khóa (super key) của R?",
+      "options": [
+        "Khi K⁺ = K",
+        "Khi K chỉ chứa các thuộc tính từ vế trái của F",
+        "Khi K⁺ ⊂ K",
+        "Khi K⁺ = U"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-39",
+      "number": 39,
+      "text": "Nếu A⁺ ≠ U và C⁺ ≠ U nhưng (AC)⁺ = U, thì {A, C} là:",
+      "options": [
+        "Một khóa ứng viên (candidate key)",
+        "Một siêu khóa không tối thiểu",
+        "Một khóa ngoại",
+        "Không phải là siêu khóa"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-40",
+      "number": 40,
+      "text": "Điều kiện thứ hai (tính tối thiểu) để K là một khóa ứng viên là gì?",
+      "options": [
+        "Không tồn tại K' ⊂ K sao cho (K')⁺ = U",
+        "Mọi tập con K' của K đều có (K')⁺ = U",
+        "K⁺ ≠ U",
+        "Tồn tại K' ⊂ K sao cho (K')⁺ = U"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-41",
+      "number": 41,
+      "text": "Cho R = (A, B, C, D) và F = {A → B, B → C, AC → D}. Bao đóng (AC)⁺ là gì?",
+      "options": [
+        "ABCD",
+        "ACD",
+        "ABC",
+        "AC"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-42",
+      "number": 42,
+      "text": "Cho R = (A, B, C, D) và F = {A → B, B → C, AC → D}. Phát biểu nào sau đây là ĐÚNG?",
+      "options": [
+        "{A, C} là khóa ứng viên vì không thể loại bỏ A hay C",
+        "{A} là khóa ứng viên duy nhất, còn {A, C} chỉ là siêu khóa",
+        "{A} và {A, C} đều là khóa ứng viên",
+        "{C} là một khóa ứng viên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-43",
+      "number": 43,
+      "text": "Trong thuật toán tìm MỘT khóa của lược đồ quan hệ R(U, F), khóa K được khởi tạo bằng tập nào?",
+      "options": [
+        "Tập trung gian TG",
+        "Toàn bộ tập thuộc tính U",
+        "Tập rỗng",
+        "Tập nguồn TN"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-44",
+      "number": 44,
+      "text": "Trong thuật toán tìm một khóa, ta khởi tạo K = U vì U luôn là:",
+      "options": [
+        "Tập thuộc tính nguồn",
+        "Một siêu khóa của R",
+        "Khóa ứng viên duy nhất của R",
+        "Bao đóng của F"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-45",
+      "number": 45,
+      "text": "Ý tưởng của thuật toán tìm một khóa là bắt đầu từ toàn bộ tập U (một siêu khóa) và sau đó:",
+      "options": [
+        "Loại bỏ lần lượt các phụ thuộc hàm dư thừa khỏi F",
+        "Thêm lần lượt các thuộc tính còn thiếu",
+        "Loại bỏ lần lượt các thuộc tính dư thừa",
+        "Tách R thành các lược đồ con"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-46",
+      "number": 46,
+      "text": "Thuật toán tìm một khóa dựa trên phép toán nào?",
+      "options": [
+        "Phép chiếu (Projection)",
+        "Phủ tối thiểu của F (Minimal cover of F)",
+        "Phép kết nối tự nhiên (Natural join)",
+        "Bao đóng của một tập thuộc tính (Closure of an attribute set)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-47",
+      "number": 47,
+      "text": "Tại mỗi bước của thuật toán tìm một khóa, đặt K' = K − A. Khi nào ta gán K = K'?",
+      "options": [
+        "Khi K' ⊂ A⁺",
+        "Khi (K')⁺ = U",
+        "Khi A⁺ = U",
+        "Khi (K')⁺ ≠ U"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-48",
+      "number": 48,
+      "text": "Tại sao thuật toán chỉ gán K = K − A khi (K − A)⁺ = U?",
+      "options": [
+        "Để tập F không bị thay đổi",
+        "Để K luôn có ít nhất hai thuộc tính",
+        "Để K⁺ luôn khác U",
+        "Để K vẫn là một siêu khóa sau mỗi bước"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-49",
+      "number": 49,
+      "text": "Trong thuật toán tìm một khóa, điều gì xảy ra sau khi thuộc tính A được loại bỏ thành công?",
+      "options": [
+        "Dừng thuật toán và kết luận K là một khóa",
+        "Khởi tạo lại K = U",
+        "Quay lại bước 2 với tập K mới và kiểm tra thuộc tính tiếp theo",
+        "Thêm A vào cuối tập K"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-50",
+      "number": 50,
+      "text": "Điều kiện dừng của thuật toán tìm một khóa là gì?",
+      "options": [
+        "K = ∅",
+        "Không còn thuộc tính A nào trong K mà (K − A)⁺ vẫn bằng U",
+        "Tất cả các phụ thuộc hàm trong F đã được kiểm tra",
+        "K⁺ ≠ U"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-51",
+      "number": 51,
+      "text": "Tập K cuối cùng do thuật toán tìm một khóa tạo ra chắc chắn là gì?",
+      "options": [
+        "Một khóa (siêu khóa tối thiểu) của R",
+        "Một siêu khóa có thể không tối thiểu",
+        "Khóa của R có ít thuộc tính nhất",
+        "Tập rỗng nếu F chứa các phụ thuộc vòng"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-52",
+      "number": 52,
+      "text": "Thuật toán tìm một khóa được đảm bảo sẽ tìm ra điều gì?",
+      "options": [
+        "Tất cả các khóa của lược đồ",
+        "Một khóa của lược đồ quan hệ",
+        "Chính xác hai khóa của lược đồ",
+        "Khóa có số lượng thuộc tính ít nhất"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-53",
+      "number": 53,
+      "text": "Làm thế nào có thể sử dụng thuật toán tìm một khóa để tìm các khóa khác (nếu có)?",
+      "options": [
+        "Chạy lại thuật toán với cùng một thứ tự loại bỏ thuộc tính",
+        "Thay đổi thứ tự loại bỏ các thuộc tính của K",
+        "Khởi tạo K = ∅",
+        "Loại bỏ một phụ thuộc hàm khỏi F"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-54",
+      "number": 54,
+      "text": "Nếu R chỉ có một khóa duy nhất và khóa đó gồm một thuộc tính đơn X, thuật toán tìm một khóa sẽ trả về kết quả gì?",
+      "options": [
+        "K = {X}",
+        "K = ∅",
+        "K = U",
+        "K = U − {X}"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-55",
+      "number": 55,
+      "text": "Cho R(A, B, C, D, E) và F = {AB → C, AC → B, BC → DE}. Thuật toán tìm một khóa bắt đầu từ siêu khóa K = ABCDE và loại bỏ thuộc tính A để thử K' = BCDE. Bao đóng (K')⁺ là gì?",
+      "options": [
+        "{A, B, C, D, E}",
+        "{B, C, D, E}",
+        "{C, D, E}",
+        "{B, C, D}"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-56",
+      "number": 56,
+      "text": "Trong ví dụ R(A, B, C, D, E), F = {AB → C, AC → B, BC → DE}, ta nhận được gì khi kiểm tra ACDE?",
+      "options": [
+        "(ACDE)⁺ = ACD, nên phải giữ lại B",
+        "(ACDE)⁺ = ACDE, nên phải giữ lại B",
+        "(ACDE)⁺ = ABCD, nên phải giữ lại B",
+        "(ACDE)⁺ = ABCDE = U, nên có thể loại bỏ B"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-57",
+      "number": 57,
+      "text": "Trong ví dụ R(A, B, C, D, E), F = {AB → C, AC → B, BC → DE}: vì (ACE)⁺ = ACEBD = U, thuộc tính nào có thể được loại bỏ?",
+      "options": [
+        "D",
+        "E",
+        "A",
+        "C"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-58",
+      "number": 58,
+      "text": "Cho R(A, B, C, D, E) và F = {AB → C, AC → B, BC → DE}. Áp dụng thuật toán tìm một khóa, loại bỏ các thuộc tính theo thứ tự A, B, C, D, E. Khóa nào được tìm thấy?",
+      "options": [
+        "BC",
+        "AB",
+        "ACE",
+        "AC"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-59",
+      "number": 59,
+      "text": "Công thức nào xác định tập nguồn TN (source set) của một lược đồ quan hệ?",
+      "options": [
+        "TN = U − LeftF",
+        "TN = LeftF ∩ RightF",
+        "TN = U − RightF",
+        "TN = RightF − LeftF"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-60",
+      "number": 60,
+      "text": "Tập trung gian TG (intermediate set) của một lược đồ quan hệ R được định nghĩa như thế nào?",
+      "options": [
+        "Tập hợp các thuộc tính chỉ xuất hiện ở vế trái của các phụ thuộc hàm trong F",
+        "Giao của tập thuộc tính vế trái và tập thuộc tính vế phải của các phụ thuộc hàm trong F",
+        "Tập hợp các thuộc tính không xuất hiện trong F",
+        "Tập hợp các thuộc tính chỉ xuất hiện ở vế phải của các phụ thuộc hàm trong F"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-61",
+      "number": 61,
+      "text": "Phát biểu nào sau đây là ĐÚNG về các thuộc tính chỉ xuất hiện ở vế trái (LeftF) hoặc không xuất hiện trong F?",
+      "options": [
+        "Chúng không bao giờ nằm trong bất kỳ khóa ứng viên nào",
+        "Chúng bắt buộc phải có mặt trong mọi khóa ứng viên của lược đồ quan hệ",
+        "Chúng chỉ có thể thuộc về siêu khóa, không bao giờ thuộc về khóa ứng viên",
+        "Chúng chỉ nằm trong khóa ứng viên nếu bao đóng của chúng bằng U"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-62",
+      "number": 62,
+      "text": "Điều gì đúng với các thuộc tính chỉ xuất hiện ở vế phải (RightF − LeftF) của các phụ thuộc hàm trong F?",
+      "options": [
+        "Chúng có thể nằm trong khóa ứng viên nếu kết hợp với tập nguồn TN",
+        "Chúng chắc chắn không nằm trong bất kỳ khóa ứng viên nào của lược đồ quan hệ",
+        "Chúng là các khóa ngoại của lược đồ quan hệ",
+        "Chúng bắt buộc phải có mặt trong mọi khóa ứng viên của lược đồ quan hệ"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-63",
+      "number": 63,
+      "text": "Trong thuật toán tìm tất cả các khóa, ta kết luận điều gì nếu bao đóng của tập nguồn TN bằng toàn bộ tập thuộc tính U (TN⁺ = U)?",
+      "options": [
+        "Lược đồ quan hệ không có khóa ứng viên nào",
+        "Ta phải tiếp tục kiểm tra các tập con của tập trung gian TG",
+        "Tập nguồn TN là khóa duy nhất của lược đồ quan hệ",
+        "Lược đồ quan hệ có vô số khóa ứng viên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-64",
+      "number": 64,
+      "text": "Cho lược đồ quan hệ R(A, B, C, D) và F = {A → B, B → C}. Tập nguồn TN và tập trung gian TG là gì?",
+      "options": [
+        "TN = {A, D}, TG = {B}",
+        "TN = {A, D}, TG = {B, C}",
+        "TN = {A}, TG = {B}",
+        "TN = {A}, TG = {B, C}"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-65",
+      "number": 65,
+      "text": "Cho R(A, B, C, D) và F = {A → B, B → C}. Phát biểu nào sau đây về thuộc tính C là đúng?",
+      "options": [
+        "C là khóa chính của lược đồ quan hệ",
+        "C thuộc tập nguồn TN, nên nó bắt buộc phải có mặt trong mọi khóa",
+        "C chỉ xuất hiện ở vế phải (RightF − LeftF), nên nó chắc chắn không nằm trong bất kỳ khóa nào",
+        "C thuộc tập trung gian TG, nên nó có thể tham gia vào một khóa"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-66",
+      "number": 66,
+      "text": "Cho Q(A, B, C, D, E, G) và F = {AE → C, CG → A, BD → G, GA → E}. Xác định tập nguồn TN của Q.",
+      "options": [
+        "TN = {C, G}",
+        "TN = {A, E}",
+        "TN = {B, D}",
+        "TN = {B, D, G}"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-67",
+      "number": 67,
+      "text": "Cho R(ABCDEGHI) và F = {AC → B, BI → ACD, ABC → D, H → I, ACE → BCG, CG → AE}. Những thuộc tính nào KHÔNG xuất hiện ở vế phải của bất kỳ phụ thuộc hàm nào (và do đó phải nằm trong mọi khóa)?",
+      "options": [
+        "Chỉ có H",
+        "E và G",
+        "H và I",
+        "H và E"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-68",
+      "number": 68,
+      "text": "Cho R(ABCDEGHIJ) và F = {A → B, AD → C, D → EG, I → DH, AI → J}. Những thuộc tính nguồn nào bắt buộc phải có mặt trong mọi khóa?",
+      "options": [
+        "I và H",
+        "A và D",
+        "A, D và I",
+        "A và I"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-69",
+      "number": 69,
+      "text": "Mục đích chính của việc chuẩn hóa cơ sở dữ liệu (database normalisation) là gì?",
+      "options": [
+        "Đánh giá và hiệu chỉnh cấu trúc các bảng nhằm giảm thiểu sự dư thừa dữ liệu và nguy cơ xảy ra các bất thường",
+        "Chuyển đổi toàn bộ cơ sở dữ liệu quan hệ sang cơ sở dữ liệu phi quan hệ",
+        "Tối ưu hóa lưu trữ ổ đĩa cứng bằng cách nén dữ liệu",
+        "Tăng số lượng bảng để việc phân quyền truy cập trở nên dễ dàng hơn"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-70",
+      "number": 70,
+      "text": "Khi nào một lược đồ quan hệ đạt dạng chuẩn 1 (1NF)?",
+      "options": [
+        "Khi lược đồ quan hệ không có phụ thuộc bắc cầu",
+        "Khi không có thuộc tính đa trị, mọi thuộc tính đều đơn và chứa giá trị nguyên tử, và khóa chính đã được xác định",
+        "Khi lược đồ quan hệ không có phụ thuộc bộ phận",
+        "Khi mọi vế trái (determinant) của lược đồ quan hệ đều là khóa ứng viên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-71",
+      "number": 71,
+      "text": "Bảng STUDENT có cột Phone lưu trữ giá trị '0905111222, 0914333444' cho một sinh viên. Bảng này vi phạm dạng chuẩn nào?",
+      "options": [
+        "1NF",
+        "3NF, mặc dù vẫn thỏa mãn 2NF",
+        "2NF, mặc dù vẫn thỏa mãn 1NF",
+        "BCNF, mặc dù vẫn thỏa mãn 3NF"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-72",
+      "number": 72,
+      "text": "Khi nào thì phụ thuộc bộ phận (partial dependency) xảy ra?",
+      "options": [
+        "Khi có phụ thuộc đa trị giữa các thuộc tính không khóa",
+        "Khi một thuộc tính không khóa phụ thuộc bắc cầu vào khóa chính thông qua một thuộc tính không khóa khác",
+        "Khi một thuộc tính khóa phụ thuộc vào một thuộc tính không khóa khác",
+        "Khi một thuộc tính không khóa chỉ phụ thuộc vào một bộ phận của khóa phức hợp (khóa có nhiều hơn một thuộc tính)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-73",
+      "number": 73,
+      "text": "Một lược đồ quan hệ phải thỏa mãn điều kiện nào để đạt dạng chuẩn 2 (2NF)?",
+      "options": [
+        "Đạt 1NF và không chứa thuộc tính đa trị",
+        "Đạt 1NF và không có phụ thuộc bắc cầu giữa các thuộc tính không khóa",
+        "Đạt 1NF và mọi thuộc tính không khóa đều phụ thuộc đầy đủ vào mọi khóa ứng viên",
+        "Đạt 1NF và mọi vế trái (determinant) đều là khóa ứng viên"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-74",
+      "number": 74,
+      "text": "Một lược đồ đạt 1NF và mọi khóa ứng viên của nó đều chỉ gồm một thuộc tính đơn. Phát biểu nào sau đây chắc chắn đúng?",
+      "options": [
+        "Lược đồ đạt 2NF",
+        "Lược đồ đạt 3NF",
+        "Lược đồ đạt BCNF",
+        "Lược đồ không đạt 2NF"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-75",
+      "number": 75,
+      "text": "Việc chuyển đổi từ 1NF sang 2NF loại bỏ các phụ thuộc bộ phận bằng cách nào?",
+      "options": [
+        "Gộp tất cả các thuộc tính không khóa vào một bảng độc lập không có khóa",
+        "Tách tất cả các thuộc tính đa trị thành các hàng mới có cùng giá trị khóa",
+        "Viết từng thành phần của khóa phức hợp trên một dòng riêng, sau đó viết khóa phức hợp ở dòng cuối cùng và gán các thuộc tính phụ thuộc tương ứng cho từng dòng",
+        "Thêm một khóa chính tự động tăng (ID) mới để thay thế khóa phức hợp"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-76",
+      "number": 76,
+      "text": "Sự khác biệt lớn nhất giữa dạng chuẩn 2 (2NF) và dạng chuẩn 3 (3NF) là gì?",
+      "options": [
+        "2NF loại bỏ các phụ thuộc bộ phận, trong khi 3NF loại bỏ các phụ thuộc bắc cầu",
+        "2NF loại bỏ các thuộc tính đa trị, trong khi 3NF loại bỏ các nhóm lặp",
+        "2NF không cho phép khóa phức hợp, trong khi 3NF cho phép",
+        "2NF yêu cầu các vế trái (determinants) phải là khóa ứng viên, trong khi 3NF thì không"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-77",
+      "number": 77,
+      "text": "Khi nào một lược đồ quan hệ đạt dạng chuẩn 3 (3NF)?",
+      "options": [
+        "Khi đạt 1NF và mọi thuộc tính không khóa đều phụ thuộc đầy đủ vào khóa chính",
+        "Khi đạt 2NF và không có phụ thuộc bộ phận",
+        "Khi đạt BCNF và không có phụ thuộc đa trị",
+        "Khi đạt 2NF và không có phụ thuộc bắc cầu (không có thuộc tính không khóa nào phụ thuộc vào một thuộc tính không khóa khác)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-78",
+      "number": 78,
+      "text": "Dạng chuẩn 4 (4NF) được đưa ra nhằm xử lý và loại bỏ loại phụ thuộc nào?",
+      "options": [
+        "Phụ thuộc đa trị độc lập (Independent multivalued dependency)",
+        "Phụ thuộc bắc cầu (Transitive dependency)",
+        "Phụ thuộc hàm đầy đủ (Full functional dependency)",
+        "Phụ thuộc bộ phận (Partial dependency)"
+      ],
+      "answer": null,
+      "explanation": null
+    },
+    {
+      "id": "3-79",
+      "number": 79,
+      "text": "Phi chuẩn hóa (denormalisation) được hiểu như thế nào trong thực tế?",
+      "options": [
+        "Gộp tất cả các bảng của hệ thống thành một bảng duy nhất chứa mọi thứ",
+        "Một lỗi thiết kế nghiêm trọng phải tránh hoàn toàn trong mọi loại cơ sở dữ liệu",
+        "Một quy trình tự động chuyển đổi 4NF trở lại 1NF",
+        "Đưa các quan hệ về dạng chuẩn thấp hơn để cải thiện hiệu năng truy vấn, chấp nhận sự dư thừa dữ liệu có kiểm soát"
+      ],
+      "answer": null,
+      "explanation": null
+    }
+  ],
+  "cases": [
+    {
+      "id": "3-case",
+      "title": "Bài tập vận dụng",
+      "paragraphs": [
+        "Cho DIEM(MaSV, MaHP, TenSV, TenHP, Diem) với MaSV → TenSV, MaHP → TenHP và (MaSV, MaHP) → Diem. Hãy tìm khóa và phân rã để giảm dư thừa."
+      ],
+      "supplemental": true
+    }
+  ]
+}
