@@ -15,6 +15,7 @@ import c4 from './content/chapter-4.json';
 import c5 from './content/chapter-5.json';
 import { createExam, emptyProgress, examEligible, examLength, grade, normalize, recordAttempt, reviewQueue, shuffled } from './study.js';
 import '@fontsource-variable/montserrat/wght.css';
+import { CaseStudy } from './case-study.jsx';
 import { TheoryDiagram } from './theory-diagrams.jsx';
 import './style.css';
 
@@ -213,14 +214,18 @@ function Chapter({ chapter, requestedTab, targetId, progress, setProgress }) {
     {tab === 'theory' && <TheoryReading chapter={chapter} targetId={targetId} />}
     {tab === 'quiz' && <QuizHub key={targetId ?? 'setup'} chapter={chapter} questionId={targetId} setProgress={setProgress} />}
     {tab === 'cases' && <section className="reading"><h2>Bài tập tình huống</h2>
-      {chapter.cases.map(item => <article className="case-card" key={item.id} id={item.id} tabIndex={-1}>
-        <span className="pill">Tự luận · Câu {item.number}</span><h3>{item.title}</h3>
-        {item.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-        <label htmlFor={'draft-' + item.id}>Bài làm của bạn</label><textarea id={'draft-' + item.id} placeholder="Nhập ghi chú hoặc bài giải..." value={progress.drafts[item.id] ?? ''} onChange={event => {
-          const value = event.target.value;
-          setProgress(previous => ({ ...previous, drafts: { ...previous.drafts, [item.id]: value } }));
-        }} />
-      </article>)}
+      {chapter.cases.map(item => <CaseStudy key={item.id} item={item}
+        draft={progress.drafts[item.id] ?? ''}
+        assessment={progress.caseScores?.[item.id] ?? {}}
+        onDraft={value => setProgress(previous => ({ ...previous, drafts: { ...previous.drafts, [item.id]: value } }))}
+        onRate={(criterion, value) => setProgress(previous => ({
+          ...previous,
+          caseScores: {
+            ...previous.caseScores,
+            [item.id]: { ...previous.caseScores?.[item.id], [criterion]: value },
+          },
+        }))}
+      />)}
     </section>}
   </>;
 }
