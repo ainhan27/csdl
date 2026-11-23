@@ -1,37 +1,40 @@
 {
   "id": 5,
-  "title": "Dữ liệu lớn và NoSQL",
+  "title": "Chương 5",
   "sourceHeading": "CHƯƠNG 5: DỮ LIỆU LỚN (BIG DATA) VÀ NOSQL (6 CÂU TỰ LUẬN)",
   "description": "Mô hình 5V, ACID, BASE và các loại cơ sở dữ liệu NoSQL.",
   "theory": [
     {
-      "title": "Mô hình 5V",
-      "text": "Volume là khối lượng, Velocity là tốc độ, Variety là đa dạng, Veracity là độ đáng tin cậy và Value là giá trị."
+      "title": "Big Data và mô hình 5V",
+      "text": "Big Data là dữ liệu có quy mô hoặc đặc tính vượt khả năng xử lý hiệu quả của công cụ thông thường. Ngưỡng thay đổi theo hạ tầng, độ trễ kỳ vọng và bài toán. 5V gồm Volume (khối lượng), Velocity (tốc độ), Variety (đa dạng), Veracity (độ tin cậy) và Value (giá trị).\nBảng đơn hàng có lược đồ cố định, log JSON là bán cấu trúc, hình ảnh và bình luận tự do thường là phi cấu trúc. Các loại dữ liệu có thể cùng xuất hiện trong một hệ thống, khiến một lược đồ bảng cứng khó bao phủ mọi nhu cầu.",
+      "source": "Chương 5, tr. 5–15"
     },
     {
-      "title": "Các mô hình NoSQL",
-      "text": "Khóa–giá trị phù hợp với tra cứu theo khóa, tài liệu phù hợp với dữ liệu linh hoạt, họ cột hỗ trợ truy cập theo mẫu định trước và đồ thị tập trung vào quan hệ giữa các nút."
+      "title": "NoSQL, mở rộng và tính nhất quán",
+      "text": "NoSQL là nhóm hệ phi quan hệ với lược đồ linh hoạt và khả năng phân tán theo thiết kế của từng hệ. Mở rộng dọc là tăng tài nguyên một máy, mở rộng ngang là thêm nút. Phân mảnh phân phối dữ liệu. Nhân bản tạo bản sao để tăng sẵn sàng và độ bền.\nACID nhấn mạnh tính chất giao dịch. BASE (Basically Available, Soft state, Eventually consistent) chấp nhận bản sao chưa đồng nhất tức thời nếu cuối cùng hội tụ khi không có cập nhật mới. Khả năng giao dịch và mức nhất quán thực tế phụ thuộc sản phẩm và cấu hình, không suy ra chỉ từ nhãn SQL hay NoSQL.",
+      "source": "Chương 5, tr. 11–15, 35–37"
     },
     {
-      "title": "ACID và BASE",
-      "text": "ACID mô tả tính nguyên tử, nhất quán, cô lập và bền vững của giao dịch. BASE nhấn mạnh tính sẵn sàng, trạng thái mềm và nhất quán cuối cùng."
-    }
-  ],
-  "terms": [
-    {
-      "term": "Dữ liệu lớn",
-      "english": "Big Data",
-      "definition": "Dữ liệu có đặc điểm khiến cách xử lý thông thường khó đáp ứng nhu cầu."
+      "title": "Khóa–giá trị và tài liệu",
+      "text": "Kho khóa–giá trị như Redis phục vụ đọc và ghi theo khóa, phù hợp phiên đăng nhập, giỏ hàng và bộ nhớ đệm. Truy vấn theo thuộc tính bên trong giá trị có thể hạn chế tùy hệ.\nCSDL tài liệu như MongoDB lưu JSON/BSON, truy vấn theo trường và có thể đánh chỉ mục trường lồng. Có thể nhúng thông tin cùng đọc vào một tài liệu và tham chiếu thông tin dùng chung hoặc tăng không giới hạn.",
+      "source": "Chương 5, tr. 17–22",
+      "example": "db.Customer.find({ city: \"Da Nang\" })"
     },
     {
-      "term": "Nhất quán cuối cùng",
-      "english": "Eventual consistency",
-      "definition": "Các bản sao hội tụ nếu ngừng phát sinh cập nhật và hệ thống tiếp tục đồng bộ."
+      "title": "Họ cột và đồ thị",
+      "text": "Cassandra và HBase tổ chức dữ liệu theo hàng có khóa và nhóm cột. Chọn khóa phân vùng theo mẫu đọc và ghi. Ví dụ nhật ký vị trí truy vấn theo (tài xế, ngày) và sắp theo thời điểm trong phân vùng.\nNeo4j dùng nút, cạnh và thuộc tính. Duyệt quan hệ phù hợp gợi ý bạn bè, phát hiện mẫu liên kết và mạng xã hội. Khi yêu cầu chính là giao dịch và truy vấn bảng tổng quát, có thể phù hợp hơn với RDBMS.",
+      "source": "Chương 5, tr. 23–27",
+      "example": "MATCH (p:Person {name: \"An\"})-[:FRIEND]->(f) RETURN f.name"
     },
     {
-      "term": "Cơ sở dữ liệu đồ thị",
-      "english": "Graph database",
-      "definition": "Lưu nút, cạnh và thuộc tính để truy vấn mối liên hệ."
+      "title": "Hadoop, HDFS và MapReduce",
+      "text": "Hadoop là nền tảng phân tán. HDFS chia tệp thành khối và nhân bản trên DataNode. NameNode giữ siêu dữ liệu và vị trí khối. YARN điều phối tài nguyên cho công việc.\nMap biến dữ liệu đầu vào thành cặp khóa–giá trị. Shuffle/Sort gom giá trị theo khóa. Reduce tổng hợp theo khóa. Khi đếm từ, Map sinh (từ, 1), Shuffle gom theo từ, Reduce cộng số lần. HBase cung cấp truy cập dữ liệu họ cột, Hive hỗ trợ truy vấn phân tích trên hệ sinh thái.",
+      "source": "Chương 5, tr. 28–33"
+    },
+    {
+      "title": "Chọn công nghệ và xu hướng",
+      "text": "Dùng SQL cho dữ liệu có lược đồ rõ, ràng buộc mạnh và giao dịch như chuyển khoản. Dùng khóa–giá trị cho phiên, tài liệu cho danh mục linh hoạt, họ cột cho log ghi lớn, đồ thị cho quan hệ nhiều bước. Polyglot persistence chọn nhiều hệ theo đúng mẫu truy cập, đồng thời tăng công quản trị và đồng bộ.\nMulti-model hỗ trợ nhiều mô hình trong một hệ. Cloud-native thiết kế cho đám mây và mở rộng linh hoạt. AI-integrated dùng AI hỗ trợ tối ưu truy vấn, chỉ mục hoặc tài nguyên. NewSQL kết hợp giao dịch ACID và SQL với mở rộng ngang, ví dụ Spanner và CockroachDB.",
+      "source": "Chương 5, tr. 34–43"
     }
   ],
   "questions": [],

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
-import { emptyProgress, grade, normalize, recordAttempt, reviewQueue, shuffled } from '../src/study.js';
+import { createExam, examEligible, emptyProgress, grade, normalize, recordAttempt, reviewQueue, shuffled } from '../src/study.js';
 
 const chapters = [1, 2, 3, 4, 5].map(id =>
   JSON.parse(readFileSync(new URL(`../src/content/chapter-${id}.json`, import.meta.url), 'utf8')),
@@ -48,6 +48,16 @@ test('shuffle preserves every question and keeps the source order intact', () =>
   const items = [1, 2, 3, 4];
   assert.deepEqual(shuffled(items, () => 0), [2, 3, 4, 1]);
   assert.deepEqual(items, [1, 2, 3, 4]);
+});
+
+test('each quiz scope can generate a 45-question exam without unresolved answers', () => {
+  for (const questions of [...chapters.slice(0, 4).map(chapter => chapter.questions), chapters.flatMap(chapter => chapter.questions)]) {
+    const items = createExam(examEligible(questions), () => 0.25);
+    assert.equal(items.length, 45);
+    assert.equal(new Set(items.map(item => item.id)).size, 45);
+    assert.ok(items.every(item => item.answer != null && item.explanation));
+  }
+  assert.deepEqual(createExam(examEligible([{ answer: null }])), []);
 });
 
 test('search accepts Vietnamese text with or without accents', () => {

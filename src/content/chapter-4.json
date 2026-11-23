@@ -1,37 +1,56 @@
 {
   "id": 4,
-  "title": "Ngôn ngữ truy vấn SQL",
+  "title": "Chương 4",
   "sourceHeading": "CHƯƠNG 4: NGÔN NGỮ TRUY VẤN CÓ CẤU TRÚC SQL: DDL, DML VÀ DQL (64 CÂU)",
   "description": "Định nghĩa, thao tác và truy vấn dữ liệu với SQL.",
   "theory": [
     {
-      "title": "DDL và DML",
-      "text": "CREATE, ALTER và DROP định nghĩa hoặc đổi cấu trúc. INSERT, UPDATE và DELETE thêm, sửa hoặc xóa hàng."
+      "title": "Nhóm lệnh và quy ước SQL Server",
+      "text": "DDL thay đổi lược đồ, DML thay đổi bản ghi, DQL truy vấn, DCL cấp hoặc thu hồi quyền và TCL điều khiển giao dịch. Bài giảng dùng cú pháp SQL Server. Chuỗi đặt trong dấu nháy đơn, hằng Unicode dùng tiền tố N như N'Nguyễn'. Dấu ngoặc vuông có thể bao tên đối tượng đặc biệt và GO tách batch trong công cụ hỗ trợ.",
+      "source": "Chương 4, Phần 1, tr. 5–13"
     },
     {
-      "title": "Truy vấn",
-      "text": "SELECT chọn cột và WHERE lọc hàng. GROUP BY gom nhóm và HAVING lọc các nhóm sau khi tổng hợp."
+      "title": "Tạo và thay đổi cơ sở dữ liệu, bảng và kiểu dữ liệu",
+      "text": "CREATE DATABASE tạo CSDL, ALTER DATABASE thay đổi cấu hình, DROP DATABASE xóa. CREATE TABLE khai báo tên, kiểu, NULL và ràng buộc. ALTER TABLE ADD thêm cột hoặc ràng buộc, ALTER COLUMN thay kiểu và khả năng NULL, DROP COLUMN xóa cột. SQL Server đổi tên cột bằng sp_rename. DROP TABLE xóa cả bảng và dữ liệu.\nDùng INT cho số nguyên, DECIMAL(p,s) cho số chính xác, DATE hoặc DATETIME2 cho ngày giờ, CHAR/NCHAR cho độ dài cố định, VARCHAR/NVARCHAR cho độ dài biến thiên và VARBINARY cho nhị phân. NVARCHAR phù hợp họ tên tiếng Việt. Chọn kiểu và giới hạn theo dữ liệu thật.",
+      "source": "Chương 4, Phần 1, tr. 14–43"
     },
     {
-      "title": "Phép kết và phép hợp",
-      "text": "INNER JOIN lấy các cặp khớp. LEFT JOIN giữ mọi hàng bên trái. UNION loại các hàng trùng, còn UNION ALL giữ chúng."
-    }
-  ],
-  "terms": [
-    {
-      "term": "Ngôn ngữ định nghĩa dữ liệu",
-      "english": "DDL",
-      "definition": "Nhóm lệnh tạo và thay đổi cấu trúc dữ liệu."
+      "title": "Ràng buộc và giá trị mặc định",
+      "text": "PRIMARY KEY duy nhất và không NULL, có thể gồm nhiều cột. UNIQUE cưỡng chế không trùng theo quy tắc NULL của DBMS. FOREIGN KEY kiểm tra tham chiếu, ON DELETE CASCADE xóa bản ghi phụ thuộc, còn NO ACTION từ chối thao tác làm mất tham chiếu. CHECK kiểm tra miền và cần kết hợp NOT NULL nếu cột bắt buộc.\nDEFAULT áp dụng khi bỏ cột hoặc dùng từ khóa DEFAULT ở INSERT, không thay NULL explicit khi cột cho phép NULL. Thêm DEFAULT cho cột hiện hữu không cập nhật hàng cũ. Với CHECK hoặc FK mới, WITH CHECK kiểm tra dữ liệu cũ; WITH NOCHECK bỏ qua dữ liệu cũ. Đặt tên ràng buộc giúp sửa đổi và đọc lỗi.",
+      "source": "Chương 4, Phần 1, tr. 32–43",
+      "example": "ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score CHECK (Score BETWEEN 0 AND 10);\nALTER TABLE COURSE ADD CONSTRAINT DF_COURSE_Credits DEFAULT 3 FOR Credits;"
     },
     {
-      "term": "Truy vấn con",
-      "english": "Subquery",
-      "definition": "Một truy vấn nằm bên trong truy vấn khác."
+      "title": "Thêm, sửa và xóa dữ liệu",
+      "text": "INSERT nhận VALUES hoặc kết quả SELECT có số lượng và kiểu cột tương thích. UPDATE dùng SET và có thể gán nhiều cột. DELETE dùng WHERE để giới hạn các hàng cần xóa. Thiếu WHERE, UPDATE và DELETE tác động toàn bộ hàng đủ điều kiện ràng buộc. ROLLBACK hoàn tác thay đổi chưa COMMIT.\nTRUNCATE TABLE xóa toàn bộ dữ liệu và giữ cấu trúc, không nhận WHERE. Trong SQL Server nó thường đặt lại IDENTITY và chịu giới hạn nếu bảng bị khóa ngoại tham chiếu. DROP TABLE xóa luôn định nghĩa bảng.",
+      "source": "Chương 4, Phần 2, tr. 5–20"
     },
     {
-      "term": "Phép kết trái",
-      "english": "LEFT JOIN",
-      "definition": "Phép kết giữ hàng bên trái kể cả khi không có hàng bên phải khớp."
+      "title": "SELECT, WHERE, NULL, hàm và thứ tự xử lý",
+      "text": "Thứ tự logic đi từ FROM/JOIN đến WHERE, GROUP BY, HAVING, SELECT, DISTINCT và ORDER BY. DISTINCT loại hàng trùng trên tổ hợp cột được chọn. BETWEEN gồm hai cận. LIKE dùng % cho chuỗi bất kỳ và _ cho đúng một ký tự. Kiểm tra thiếu dữ liệu bằng IS NULL, không dùng = NULL.\nHàm số như ROUND, hàm chuỗi như CONCAT và SUBSTRING, hàm ngày như GETDATE và DATEADD, CAST/CONVERT để đổi kiểu. CASE phân nhánh theo điều kiện. TOP trong SQL Server và OFFSET/FETCH cần ORDER BY rõ ràng khi muốn kết quả nhất quán.",
+      "source": "Chương 4, Phần 3, tr. 5–43"
+    },
+    {
+      "title": "Kết bảng và phép tập hợp",
+      "text": "INNER JOIN chỉ giữ cặp khớp. LEFT/RIGHT JOIN giữ thêm hàng không khớp phía tương ứng. FULL OUTER JOIN giữ hàng không khớp ở cả hai phía. Lọc cột phía phải trong WHERE của LEFT JOIN có thể loại hàng NULL do kết ngoài tạo ra, vì vậy cần chọn vị trí điều kiện ON hoặc WHERE theo mục đích.\nUNION loại trùng và UNION ALL giữ trùng. INTERSECT lấy phần chung, EXCEPT lấy phần chỉ có ở truy vấn đầu. Các vế phải có cùng số cột với kiểu tương thích theo vị trí.",
+      "source": "Chương 4, Phần 3, tr. 16–20, 45–54"
+    },
+    {
+      "title": "Truy vấn lồng và tìm hàng thiếu liên kết",
+      "text": "Truy vấn vô hướng trả tối đa một giá trị và có thể dùng với phép so sánh. IN kiểm tra thành viên, ANY/ALL so sánh với tập, EXISTS kiểm tra có ít nhất một hàng. Truy vấn tương quan dùng giá trị từ hàng ở truy vấn ngoài. NOT EXISTS tránh bẫy NULL thường gặp với NOT IN.",
+      "source": "Chương 4, Phần 3, tr. 56–62",
+      "example": "SELECT s.StudentID\nFROM STUDENT AS s\nWHERE NOT EXISTS (SELECT 1 FROM RESULT AS r WHERE r.StudentID = s.StudentID);"
+    },
+    {
+      "title": "Tổng hợp và lọc nhóm",
+      "text": "COUNT(*) đếm hàng, COUNT(cột) đếm giá trị khác NULL. AVG, SUM, MIN và MAX bỏ NULL. Các cột đưa ra SELECT cần được tổng hợp hoặc có mặt trong GROUP BY theo quy tắc SQL Server. Dùng WHERE để lọc hàng đầu vào và HAVING để lọc kết quả của nhóm.",
+      "source": "Chương 4, Phần 3, tr. 29, 64–66",
+      "example": "SELECT CourseID, AVG(Score) AS AvgScore\nFROM RESULT\nGROUP BY CourseID\nHAVING AVG(Score) > 7;"
+    },
+    {
+      "title": "Khung nhìn và chỉ mục",
+      "text": "VIEW biểu diễn một truy vấn dưới dạng bảng ảo để đơn giản hóa truy vấn và giới hạn cột/hàng lộ ra. Dùng CREATE VIEW, ALTER VIEW, DROP VIEW. Khung nhìn tổng hợp, DISTINCT hoặc kết nhiều bảng thường có hạn chế khi sửa dữ liệu qua khung nhìn.\nIndex là cấu trúc hỗ trợ tìm kiếm, kết và sắp xếp. Clustered sắp cấu trúc dữ liệu theo khóa và chỉ có tối đa một trên bảng. Nonclustered là cấu trúc bổ sung. Index tăng chi phí ghi và dung lượng, nên chọn dựa trên cột thường lọc hoặc kết, độ chọn lọc và kế hoạch truy vấn.",
+      "source": "Chương 4, Phần 4, tr. 5–19"
     }
   ],
   "questions": [
@@ -45,8 +64,8 @@
         "DROP",
         "CREATE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "DELETE xóa hàng chứ không thay lược đồ. CREATE, ALTER và DROP định nghĩa hoặc thay đổi đối tượng."
     },
     {
       "id": "4-2",
@@ -58,8 +77,8 @@
         "NVARCHAR(50)",
         "DATE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "NVARCHAR lưu Unicode và có độ dài biến đổi, phù hợp họ tên. CHAR(10) có độ dài cố định và không phải kiểu Unicode mặc định."
     },
     {
       "id": "4-3",
@@ -71,8 +90,8 @@
         "UPDATE STUDENT ADD BirthDate DATE",
         "ALTER TABLE STUDENT ADD BirthDate DATE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "T-SQL dùng ALTER TABLE tên_bảng ADD tên_cột kiểu. Từ khóa COLUMN không đứng sau ADD trong cú pháp này."
     },
     {
       "id": "4-4",
@@ -84,8 +103,8 @@
         "ALTER TABLE STUDENT ADD COLUMNS Email VARCHAR(100), Phone VARCHAR(15)",
         "ALTER TABLE STUDENT ADD Email VARCHAR(100) AND Phone VARCHAR(15)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Mỗi cột khai báo tên và kiểu sau ADD, phân cách các khai báo bằng dấu phẩy."
     },
     {
       "id": "4-5",
@@ -97,8 +116,8 @@
         "ALTER TABLE STUDENT REMOVE Email",
         "ALTER TABLE STUDENT DROP COLUMN Email"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "DROP COLUMN xóa định nghĩa và dữ liệu của một cột. DELETE xử lý hàng, không dùng để xóa cột."
     },
     {
       "id": "4-6",
@@ -110,8 +129,8 @@
         "ALTER TABLE STUDENT ALTER COLUMN FullName NVARCHAR(100) NOT NULL",
         "ALTER TABLE STUDENT MODIFY FullName NVARCHAR(100) NOT NULL"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "ALTER COLUMN của SQL Server ghi lại tên cột, kiểu mới và NOT NULL. Dữ liệu hiện hữu phải chuyển kiểu được và không còn giá trị NULL."
     },
     {
       "id": "4-7",
@@ -123,8 +142,8 @@
         "UPDATE STUDENT SET COLUMN Phone = PhoneNo",
         "ALTER TABLE STUDENT ALTER COLUMN Phone TO PhoneNo"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "sp_rename nhận tên cũ, tên mới và loại COLUMN. Các truy vấn phụ thuộc tên cũ cần được cập nhật riêng."
     },
     {
       "id": "4-8",
@@ -136,8 +155,8 @@
         "PRIMARY KEY",
         "CHECK"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "PRIMARY KEY kết hợp duy nhất và không NULL. UNIQUE riêng lẻ có quy tắc NULL tùy DBMS."
     },
     {
       "id": "4-9",
@@ -149,8 +168,8 @@
         "UNIQUE chỉ áp dụng cho các cột kiểu số",
         "Một bảng có thể có nhiều ràng buộc UNIQUE nhưng chỉ có duy nhất một PRIMARY KEY"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Một bảng chỉ có một ràng buộc PK dù khóa có thể gồm nhiều cột. Có thể tạo nhiều UNIQUE cho các khóa thay thế."
     },
     {
       "id": "4-10",
@@ -162,8 +181,8 @@
         "PRIMARY KEY (StudentID, CourseID)",
         "FOREIGN KEY (StudentID, CourseID)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Khai báo một khóa chính cấp bảng trên cặp mã. Mỗi cột riêng có thể lặp miễn tổ hợp không lặp."
     },
     {
       "id": "4-11",
@@ -175,8 +194,8 @@
         "ALTER TABLE CLASS ADD CONSTRAINT PK_CLASS PRIMARY KEY (ClassID)",
         "ALTER TABLE CLASS ALTER COLUMN ClassID PRIMARY KEY"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "ADD CONSTRAINT ... PRIMARY KEY khai báo khóa trên ClassID. Dữ liệu cột còn phải duy nhất để tạo thành công."
     },
     {
       "id": "4-12",
@@ -188,8 +207,8 @@
         "Cột ClassID trong bảng STUDENT không được phép nhận giá trị NULL",
         "Mọi giá trị ClassID trong bảng STUDENT (nếu không phải NULL) đều phải tồn tại trong bảng CLASS"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "FK yêu cầu ClassID khác NULL trong bảng con phải khớp lớp tồn tại. Nhiều sinh viên có thể cùng ClassID."
     },
     {
       "id": "4-13",
@@ -201,8 +220,8 @@
         "ALTER TABLE CLASS ADD CONSTRAINT FK_STUDENT_CLASS FOREIGN KEY (ClassID) REFERENCES STUDENT(ClassID)",
         "ALTER TABLE STUDENT ADD FOREIGN KEY CLASS(ClassID)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Khai báo FK trên bảng con STUDENT và dùng REFERENCES trỏ tới CLASS(ClassID), tức khóa đích."
     },
     {
       "id": "4-14",
@@ -214,8 +233,8 @@
         "Toàn bộ bảng con bị xóa",
         "Thao tác xóa bị từ chối nếu vẫn còn các hàng đang tham chiếu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "CASCADE xóa các bản ghi con đang trỏ đúng hàng cha bị xóa. SET NULL là tùy chọn khác."
     },
     {
       "id": "4-15",
@@ -227,8 +246,8 @@
         "DEFAULT (Score BETWEEN 0 AND 10)",
         "FOREIGN KEY (Score BETWEEN 0 AND 10)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "BETWEEN lấy cả hai cận 0 và 10. Nếu muốn cấm NULL, bổ sung NOT NULL cho Score."
     },
     {
       "id": "4-16",
@@ -240,8 +259,8 @@
         "ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score CHECK (Score >= 0 AND Score <= 10)",
         "ALTER TABLE RESULT ADD CONSTRAINT CK_RESULT_Score CHECK (0, 10) FOR Score"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Phải đúng đồng thời cả cận dưới và trên. Dùng OR sẽ cho qua hầu hết giá trị, ví dụ 11 vẫn lớn hơn 0."
     },
     {
       "id": "4-17",
@@ -253,8 +272,8 @@
         "Ràng buộc được tạo và hàng có Score = 11 tự động bị xóa",
         "Ràng buộc được tạo và Score = 11 được đổi thành 10"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "WITH CHECK kiểm cả dữ liệu cũ. Score = 11 vi phạm điều kiện nên câu lệnh không tạo ràng buộc."
     },
     {
       "id": "4-18",
@@ -266,8 +285,8 @@
         "Các hàng vi phạm sẽ bị xóa trước khi ràng buộc được tạo",
         "Ràng buộc được tạo ra nhưng không bao giờ được kiểm tra"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "WITH NOCHECK bỏ kiểm tra dữ liệu đang có khi thêm ràng buộc. Chèn và cập nhật về sau vẫn được kiểm tra."
     },
     {
       "id": "4-19",
@@ -279,8 +298,8 @@
         "ALTER TABLE COURSE ADD CONSTRAINT UQ_COURSE_CourseName CHECK (CourseName UNIQUE)",
         "ALTER TABLE COURSE ADD CONSTRAINT UQ_COURSE_CourseName UNIQUE (CourseName)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "UNIQUE là ràng buộc lược đồ ngăn tên lặp. DISTINCT chỉ loại trùng trong kết quả truy vấn."
     },
     {
       "id": "4-20",
@@ -292,8 +311,8 @@
         "Ràng buộc có thể áp dụng cho nhiều bảng cùng một lúc",
         "Các câu truy vấn SELECT chạy nhanh hơn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Tên ổn định cho phép dùng DROP CONSTRAINT và xác định đúng ràng buộc qua thông báo lỗi."
     },
     {
       "id": "4-21",
@@ -305,8 +324,8 @@
         "ALTER TABLE RESULT DROP CONSTRAINT FK_RESULT_STUDENT",
         "UPDATE RESULT DROP FK_RESULT_STUDENT"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "ALTER TABLE thay lược đồ của RESULT, DROP CONSTRAINT xóa ràng buộc đã chọn và giữ bảng."
     },
     {
       "id": "4-22",
@@ -318,8 +337,8 @@
         "ALTER TABLE COURSE ADD CONSTRAINT DF_COURSE_Credits DEFAULT 3 FOR Credits",
         "ALTER TABLE COURSE ALTER COLUMN Credits DEFAULT 3"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "SQL Server đặt biểu thức mặc định trước FOR và cột đích sau FOR. Giá trị 3 áp dụng khi INSERT phù hợp."
     },
     {
       "id": "4-23",
@@ -331,8 +350,8 @@
         "Cột mà giá trị mặc định được áp dụng",
         "Bảng mà ràng buộc được áp dụng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "FOR ClassID gắn ràng buộc DEFAULT với đúng cột đã có trên STUDENT."
     },
     {
       "id": "4-24",
@@ -344,8 +363,8 @@
         "EntryDate nhận giá trị NULL",
         "Lệnh INSERT thất bại vì thiếu cột EntryDate"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Khi không cung cấp EntryDate, SQL Server tính GETDATE() tại lúc chèn và dùng ngày giờ đó."
     },
     {
       "id": "4-25",
@@ -357,8 +376,8 @@
         "Chúng làm cho câu lệnh ALTER TABLE bị lỗi",
         "Chúng tự động được cập nhật thành Credits = 3"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Gắn DEFAULT lên cột hiện hữu không sửa hàng cũ. Có thể dùng UPDATE riêng nếu cần điền các giá trị thiếu."
     },
     {
       "id": "4-26",
@@ -370,8 +389,8 @@
         "NULL",
         "Câu lệnh báo lỗi"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "NULL được cung cấp tường minh và cột cho phép NULL. DEFAULT chỉ chạy khi bỏ cột hoặc chỉ định DEFAULT."
     },
     {
       "id": "4-27",
@@ -383,8 +402,8 @@
         "ALTER TABLE STUDENT ADD Status NVARCHAR(20) NOT NULL",
         "ALTER TABLE STUDENT ADD Status NVARCHAR(20) NOT NULL FOR N'Enrolled'"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Thêm cột NOT NULL cùng DEFAULT cho phép SQL Server có giá trị hợp lệ cho các hàng cũ. Thiếu DEFAULT thì bảng không rỗng sẽ không thể thỏa NOT NULL."
     },
     {
       "id": "4-28",
@@ -396,8 +415,8 @@
         "ALTER TABLE COURSE ALTER COLUMN Credits DEFAULT 4",
         "ALTER CONSTRAINT DF_COURSE_Credits DEFAULT 4"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "DEFAULT là một đối tượng ràng buộc. Xóa ràng buộc cũ bằng ALTER TABLE ... DROP CONSTRAINT rồi thêm lại với biểu thức 4."
     },
     {
       "id": "4-29",
@@ -409,8 +428,8 @@
         "Sử dụng DELETE COLUMN Credits thay cho DROP COLUMN",
         "Dùng trực tiếp DROP COLUMN Credits, và ràng buộc sẽ tự động bị xóa theo"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "SQL Server kiểm tra phụ thuộc trước khi xóa cột. Cần bỏ ràng buộc DEFAULT đang trỏ tới Credits rồi mới DROP COLUMN."
     },
     {
       "id": "4-30",
@@ -422,8 +441,8 @@
         "Tạo một bản sao lưu của bảng",
         "Tạo một ràng buộc khóa ngoại giữa hai bảng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Chỉ mục tạo đường truy cập hỗ trợ tìm kiếm theo cột và một số phép kết hoặc sắp xếp, đổi lại tốn dung lượng và công cập nhật."
     },
     {
       "id": "4-31",
@@ -435,8 +454,8 @@
         "Tạo một bảng mới và sao chép vật lý toàn bộ dữ liệu",
         "Cấp quyền cho người dùng được phép xem dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "VIEW thông thường lưu định nghĩa SELECT và cung cấp một bảng ảo. Nó không sao chép vật lý toàn bộ dữ liệu nguồn."
     },
     {
       "id": "4-32",
@@ -448,8 +467,8 @@
         "INSERT INTO STUDENT(StudentID, FullName, ClassID) VALUES ('SV01', N'Nguyễn An', 'K48')",
         "INSERT STUDENT SET StudentID = 'SV01', FullName = N'Nguyễn An'"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "INSERT INTO liệt kê ba cột và VALUES cung cấp đúng một bộ giá trị. Tiền tố N giữ hằng tiếng Việt Unicode trong SQL Server."
     },
     {
       "id": "4-33",
@@ -461,8 +480,8 @@
         "Cập nhật các hàng đã có sẵn trong bảng STUDENT_K48",
         "Chèn vào bảng STUDENT_K48 tất cả các hàng trả về từ câu truy vấn trên bảng STUDENT"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "INSERT ... SELECT nạp mọi hàng lọc được vào bảng đích đã có, với điều kiện thứ tự và kiểu cột tương thích."
     },
     {
       "id": "4-34",
@@ -474,8 +493,8 @@
         "Câu lệnh INSERT bị lỗi (thất bại)",
         "Cột đó nhận một chuỗi rỗng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Giả sử cột thường không tự sinh giá trị, khi bỏ qua cột thì không có giá trị hợp lệ cho NOT NULL nên INSERT lỗi."
     },
     {
       "id": "4-35",
@@ -487,8 +506,8 @@
         "Lệnh INSERT bị từ chối vì vi phạm ràng buộc khóa ngoại",
         "Hàng được chèn bình thường"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "FK kiểm tra mã sinh viên trong bảng cha. Một mã khác NULL không tồn tại làm INSERT thất bại."
     },
     {
       "id": "4-36",
@@ -500,8 +519,8 @@
         "MODIFY STUDENT SET FullName = N'Lê Bình' WHERE StudentID = 'SV01'",
         "ALTER STUDENT SET FullName = N'Lê Bình' WHERE StudentID = 'SV01'"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "UPDATE ... SET thay đúng cột, còn WHERE StudentID = 'SV01' giới hạn hàng được sửa."
     },
     {
       "id": "4-37",
@@ -513,8 +532,8 @@
         "UPDATE COURSE SET CourseName = N'Databases', Credits = 3 WHERE CourseID = 'MH01'",
         "UPDATE COURSE SET CourseName = N'Databases' AND Credits = 3 WHERE CourseID = 'MH01'"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Một mệnh đề SET chứa hai phép gán phân cách bằng dấu phẩy. WHERE giới hạn cập nhật vào mã MH01."
     },
     {
       "id": "4-38",
@@ -526,8 +545,8 @@
         "UPDATE RESULT SET Score = Score + 0.5 WHERE CourseID = 'MH01' AND Score < 5",
         "UPDATE RESULT SET Score = Score + 0.5 HAVING CourseID = 'MH01' AND Score < 5"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "WHERE phải dùng AND để cả mã môn và điều kiện dưới 5 đều đúng. Dùng OR sẽ sửa thêm hàng ngoài phạm vi."
     },
     {
       "id": "4-39",
@@ -539,8 +558,8 @@
         "Chỉ hàng đầu tiên được cộng thêm 1 điểm",
         "Câu lệnh báo lỗi vì thiếu mệnh đề WHERE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Không có WHERE nên biểu thức được áp cho mọi hàng. Score đã NULL vẫn là NULL, và nếu kết quả vi phạm ràng buộc thì lệnh có thể bị từ chối."
     },
     {
       "id": "4-40",
@@ -552,8 +571,8 @@
         "Xóa các sinh viên thuộc lớp K48 khỏi bảng STUDENT",
         "Xóa toàn bộ bảng STUDENT"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "DELETE chỉ tác động bảng STUDENT và WHERE giới hạn theo mã lớp K48. Định nghĩa bảng và bản ghi của CLASS không bị xóa."
     },
     {
       "id": "4-41",
@@ -565,8 +584,8 @@
         "DROP STUDENT WHERE StudentID NOT IN (SELECT StudentID FROM RESULT)",
         "DELETE FROM STUDENT WHERE StudentID IN (SELECT StudentID FROM RESULT)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Lựa chọn A lọc các mã sinh viên không xuất hiện trong RESULT. Với lược đồ RESULT ở bộ đề, StudentID là phần khóa chính nên không NULL. Nếu có thể NULL, dùng NOT EXISTS để tránh bẫy ba giá trị logic."
     },
     {
       "id": "4-42",
@@ -578,8 +597,8 @@
         "Câu lệnh DELETE bị từ chối",
         "Các hàng tương ứng trong bảng RESULT cũng bị xóa theo"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "NO ACTION bảo vệ các hàng điểm đang tham chiếu sinh viên. Lệnh xóa cha bị từ chối khi còn bản ghi con."
     },
     {
       "id": "4-43",
@@ -591,8 +610,8 @@
         "DELETE có thể dùng mệnh đề WHERE để xóa một số hàng, còn TRUNCATE TABLE luôn xóa toàn bộ các hàng",
         "DELETE thuộc nhóm DDL, còn TRUNCATE TABLE thuộc nhóm DML"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "DELETE có WHERE để chọn hàng. TRUNCATE không có điều kiện lọc và làm rỗng toàn bảng khi các ràng buộc cho phép."
     },
     {
       "id": "4-44",
@@ -604,8 +623,8 @@
         "DROP TABLE chỉ xóa dữ liệu, còn TRUNCATE TABLE xóa luôn cả cấu trúc bảng",
         "Cả hai đều chỉ xóa dữ liệu và giữ lại cấu trúc bảng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "DROP TABLE xóa cả đối tượng lẫn dữ liệu. TRUNCATE giữ cấu trúc để có thể nạp dữ liệu lại."
     },
     {
       "id": "4-45",
@@ -617,8 +636,8 @@
         "ROLLBACK",
         "RESTORE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "ROLLBACK hoàn tác thay đổi chưa COMMIT trong giao dịch. Các lệnh còn lại không thực hiện chức năng đó trong SQL Server."
     },
     {
       "id": "4-46",
@@ -630,8 +649,8 @@
         "FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY",
         "FROM → GROUP BY → WHERE → HAVING → SELECT → ORDER BY"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Trước tiên xác định nguồn và lọc hàng, sau đó gom và lọc nhóm, cuối cùng chiếu cột rồi sắp xếp. Thứ tự logic khác thứ tự viết."
     },
     {
       "id": "4-47",
@@ -643,8 +662,8 @@
         "Số lượng các lớp học",
         "Danh sách các mã lớp, trong đó mỗi mã lớp chỉ xuất hiện một lần"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "DISTINCT loại hàng trùng trên cột đã chọn. Nếu có ClassID NULL, kết quả có thể chứa một NULL."
     },
     {
       "id": "4-48",
@@ -656,8 +675,8 @@
         "Chứa 'Nguyễn' ở bất kỳ vị trí nào",
         "Chính xác là 'Nguyễn'"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Mẫu có văn bản đứng đầu và % ở cuối, nên khớp Nguyễn cộng chuỗi hậu tố bất kỳ, kể cả rỗng."
     },
     {
       "id": "4-49",
@@ -669,8 +688,8 @@
         "Không hoặc nhiều ký tự bất kỳ",
         "Một chữ số"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Dấu _ yêu cầu đúng một ký tự ở vị trí đó. Dấu % mới khớp không hoặc nhiều ký tự."
     },
     {
       "id": "4-50",
@@ -682,8 +701,8 @@
         "WHERE ClassID = NULL",
         "WHERE ClassID IS NULL"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "IS NULL kiểm tra thiếu giá trị. So sánh bằng với NULL cho kết quả UNKNOWN và không chọn được hàng."
     },
     {
       "id": "4-51",
@@ -695,8 +714,8 @@
         "WHERE Score IN (5, 8)",
         "WHERE Score > 5 AND Score < 8"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "BETWEEN bao gồm cả 5 và 8, và cần đồng thời lớn hơn hoặc bằng 5 và nhỏ hơn hoặc bằng 8."
     },
     {
       "id": "4-52",
@@ -708,8 +727,8 @@
         "Thứ tự mà dữ liệu được nhập vào",
         "Score theo thứ tự tăng dần, với các giá trị NULL nằm ở cuối"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "DESC là giảm dần. ASC là tăng dần, cũng là mặc định nếu không chỉ định."
     },
     {
       "id": "4-53",
@@ -721,8 +740,8 @@
         "SELECT StudentID, MAX(Score, 3) FROM RESULT WHERE CourseID = 'MH01'",
         "SELECT StudentID, Score FROM RESULT WHERE CourseID = 'MH01' AND TOP 3 ORDER BY Score DESC"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Lọc MH01 trước, sắp điểm giảm dần rồi lấy TOP 3. Nếu cần thứ tự nhất quán khi đồng điểm, thêm cột phụ vào ORDER BY."
     },
     {
       "id": "4-54",
@@ -734,8 +753,8 @@
         "COUNT(Score) cũng đếm cả những hàng mà Score mang giá trị NULL",
         "COUNT(*) và COUNT(Score) luôn cho ra cùng một kết quả"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "COUNT(*) đếm hàng bất kể giá trị từng cột. COUNT(Score) bỏ các hàng có Score NULL."
     },
     {
       "id": "4-55",
@@ -747,8 +766,8 @@
         "SELECT CourseID, AVG(Score) FROM RESULT ORDER BY CourseID",
         "SELECT CourseID, AVG(Score) FROM RESULT"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "GROUP BY CourseID tạo một nhóm cho mỗi môn. AVG tính trung bình các điểm khác NULL trong nhóm."
     },
     {
       "id": "4-56",
@@ -760,8 +779,8 @@
         "WHERE và HAVING hoàn toàn giống nhau",
         "WHERE lọc các hàng trước khi gom nhóm, còn HAVING lọc các nhóm sau khi đã gom nhóm với GROUP BY"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "WHERE lọc hàng trước tổng hợp; HAVING có thể kiểm tra kết quả tổng hợp như AVG(Score) > 7."
     },
     {
       "id": "4-57",
@@ -773,8 +792,8 @@
         "SELECT CourseID, AVG(Score) FROM RESULT GROUP BY CourseID WHERE AVG(Score) > 7",
         "SELECT CourseID, AVG(Score) FROM RESULT GROUP BY CourseID HAVING AVG(Score) > 7"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "AVG được tính theo nhóm CourseID. HAVING giữ nhóm có trung bình lớn hơn 7; WHERE không dùng để lọc trực tiếp kết quả AVG của nhóm."
     },
     {
       "id": "4-58",
@@ -786,8 +805,8 @@
         "Không thể đặt bí danh (aliases) cho các bảng",
         "Cột FullName không nằm trong GROUP BY và cũng không nằm bên trong một hàm gộp (aggregate function)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "SQL Server yêu cầu cột SELECT không nằm trong hàm tổng hợp phải xuất hiện trong GROUP BY. Có thể thêm S.FullName vào GROUP BY."
     },
     {
       "id": "4-59",
@@ -799,8 +818,8 @@
         "Chỉ những sinh viên có ClassID khớp với một hàng trong bảng CLASS, kèm theo thông tin chi tiết của lớp đó",
         "Tất cả các lớp học, bao gồm cả những lớp không có sinh viên nào"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "INNER JOIN chỉ giữ các cặp mà S.ClassID bằng L.ClassID. Sinh viên không khớp lớp không xuất hiện."
     },
     {
       "id": "4-60",
@@ -812,8 +831,8 @@
         "Chỉ những sinh viên đã có điểm thi",
         "Tất cả sinh viên, với cột CourseID hiển thị là NULL đối với những sinh viên chưa có kết quả điểm nào"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "LEFT JOIN giữ mọi sinh viên, kể cả không có kết quả, với cột phía RESULT bằng NULL. Sinh viên nhiều kết quả có thể xuất hiện nhiều hàng."
     },
     {
       "id": "4-61",
@@ -825,8 +844,8 @@
         "SELECT S.StudentID FROM STUDENT S LEFT JOIN RESULT K ON S.StudentID = K.StudentID WHERE K.StudentID = NULL",
         "SELECT S.StudentID FROM STUDENT S LEFT JOIN RESULT K ON S.StudentID = K.StudentID WHERE K.StudentID IS NULL"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "LEFT JOIN tạo hàng có K.StudentID NULL khi không có kết quả khớp. IS NULL giữ đúng các hàng này."
     },
     {
       "id": "4-62",
@@ -838,8 +857,8 @@
         "SELECT StudentID FROM RESULT WHERE CourseID = 'MH01' AND Score = (SELECT MAX(Score) FROM RESULT WHERE CourseID = 'MH01')",
         "SELECT StudentID FROM RESULT WHERE CourseID = 'MH01' HAVING Score = MAX(Score)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Truy vấn con tính MAX trong phạm vi MH01. Truy vấn ngoài lọc cùng môn và giữ mọi sinh viên đồng điểm cao nhất."
     },
     {
       "id": "4-63",
@@ -851,8 +870,8 @@
         "Khi truy vấn con không trả về hàng nào",
         "Khi truy vấn con trả về ít nhất một hàng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "EXISTS chỉ xét có hàng nào thỏa truy vấn con hay không. Một hàng chứa NULL vẫn làm EXISTS đúng."
     },
     {
       "id": "4-64",
@@ -864,18 +883,9 @@
         "UNION loại bỏ các hàng trùng lặp, còn UNION ALL giữ lại tất cả các hàng, bao gồm cả các hàng trùng lặp",
         "UNION ALL yêu cầu hai câu truy vấn phải có số lượng cột khác nhau"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "UNION loại các hàng trùng trên toàn bộ cột kết quả; UNION ALL giữ tất cả lần xuất hiện. Hai vế đều cần số cột và kiểu tương thích."
     }
   ],
-  "cases": [
-    {
-      "id": "4-case",
-      "title": "Bài tập vận dụng",
-      "paragraphs": [
-        "Cho bảng SINHVIEN(MaSV, HoTen) và KETQUA(MaSV, MaHP, Diem). Viết truy vấn tìm sinh viên chưa có kết quả và truy vấn tính điểm trung bình từng môn."
-      ],
-      "supplemental": true
-    }
-  ]
+  "cases": []
 }

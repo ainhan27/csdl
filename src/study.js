@@ -40,3 +40,13 @@ export function reviewQueue(questions, attempts) {
     return question.answer != null && attempt && attempt.selected !== question.answer;
   });
 }
+
+export const examLength = 45;
+
+export function examEligible(questions) {
+  return questions.filter(question => question.answer != null);
+}
+
+export function createExam(eligible, random = Math.random) {
+  return eligible.length < examLength ? [] : shuffled(eligible, random).slice(0, examLength);
+}

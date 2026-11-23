@@ -1,37 +1,50 @@
 {
   "id": 3,
-  "title": "Phụ thuộc hàm và chuẩn hóa",
+  "title": "Chương 3",
   "sourceHeading": "CHƯƠNG 3: PHỤ THUỘC HÀM, KHÓA VÀ CHUẨN HÓA (79 CÂU)",
   "description": "Tìm khóa, phân tích phụ thuộc hàm và chuẩn hóa lược đồ.",
   "theory": [
     {
-      "title": "Phụ thuộc hàm và bao đóng",
-      "text": "X → Y nghĩa là hai bộ trùng giá trị trên X phải trùng trên Y. Bao đóng X⁺ là tập thuộc tính suy ra từ X theo các phụ thuộc hàm."
+      "title": "Dư thừa, dị thường và NULL",
+      "text": "Lưu tên khoa ở mọi dòng sinh viên khiến việc đổi tên phải cập nhật nhiều nơi, không thêm được khoa chưa có sinh viên và có thể mất thông tin khoa khi xóa sinh viên cuối. Đó lần lượt là dị thường cập nhật, thêm và xóa. Lặp khóa ngoại có chủ đích để nối bảng khác với lặp toàn bộ thông tin mô tả.\nNhiều NULL thường báo hiệu bảng đang gộp nhiều loại sự kiện hoặc thuộc tính tùy chọn. NULL có thể là chưa biết hoặc không áp dụng và ảnh hưởng đến so sánh, kết bảng, đếm và tổng hợp.",
+      "source": "Chương 3, Phần 1, tr. 5–11"
     },
     {
-      "title": "Khóa",
-      "text": "Siêu khóa xác định mọi thuộc tính. Khóa ứng viên là siêu khóa tối thiểu theo quan hệ bao hàm tập hợp."
+      "title": "Phụ thuộc hàm và cách đọc đồ thị",
+      "text": "X → Y nghĩa là với mọi thể hiện hợp lệ, hai bộ giống nhau trên X phải giống nhau trên Y. Một mẫu dữ liệu có thể bác bỏ PTH nhưng không đủ chứng minh nó luôn đúng. PTH xuất phát từ ngữ nghĩa nghiệp vụ, ví dụ MaKhoa → TenKhoa.\nĐồ thị có nút thuộc tính và nút phụ thuộc hàm. Cung vào mang các thuộc tính vế trái, cung ra mang vế phải. Toàn bộ vế trái phải có mặt trước khi suy ra vế phải.",
+      "source": "Chương 3, Phần 1, tr. 12–20"
     },
     {
-      "title": "Dạng chuẩn",
-      "text": "2NF loại phụ thuộc bộ phận của thuộc tính không khóa vào khóa ứng viên. Trong 3NF, với phụ thuộc hàm không tầm thường X → A, X là siêu khóa hoặc A là thuộc tính khóa. BCNF yêu cầu X là siêu khóa."
-    }
-  ],
-  "terms": [
-    {
-      "term": "Bao đóng",
-      "english": "Attribute closure",
-      "definition": "Tập thuộc tính mà một tập thuộc tính xác định được."
+      "title": "Tiên đề Armstrong và suy diễn",
+      "text": "Phản xạ: nếu Y ⊆ X thì X → Y. Tăng cường: nếu X → Y thì XZ → YZ. Bắc cầu: X → Y và Y → Z suy ra X → Z. Từ đó có phép hợp (X → Y, X → Z ⇒ X → YZ), phân rã (X → YZ ⇒ X → Y và X → Z) và giả bắc cầu.\nF⁺ là mọi PTH suy được từ F. F ⊨ X → Y nghĩa là mọi thể hiện thỏa F cũng thỏa X → Y.",
+      "source": "Chương 3, Phần 1, tr. 20–23"
     },
     {
-      "term": "Khóa ứng viên",
-      "english": "Candidate key",
-      "definition": "Siêu khóa tối thiểu."
+      "title": "Bao đóng và bài toán thành viên",
+      "text": "Đặt X⁺ = X. Duyệt các PTH L → R. Khi L ⊆ X⁺, thêm R vào X⁺. Lặp đến khi không còn tăng. X → Y thuộc F⁺ khi và chỉ khi Y ⊆ X⁺. X là siêu khóa nếu X⁺ chứa toàn bộ thuộc tính.",
+      "source": "Chương 3, Phần 1, tr. 24–29",
+      "example": "U = ABCDEG, F = {AB → C, BC → AD, D → E, CG → B}\n(AB)⁺: AB → ABC → ABCD → ABCDE, thiếu G nên AB không là siêu khóa."
     },
     {
-      "term": "Phân rã không mất mát",
-      "english": "Lossless decomposition",
-      "definition": "Phân rã cho phép kết tự nhiên tái tạo đúng quan hệ ban đầu."
+      "title": "Tìm một khóa và toàn bộ khóa",
+      "text": "Bắt đầu K = U. Với từng thuộc tính A trong K, thử bỏ A và tính bao đóng. Chỉ bỏ nếu (K − A)⁺ = U. K cuối cùng là khóa ứng viên, nhưng thứ tự thử khác nhau có thể cho khóa khác.\nĐể tìm mọi khóa, đặt TN = U − Right(F), TG = Left(F) ∩ Right(F). Mọi khóa chứa TN. Thuộc tính chỉ ở vế phải không cần đưa vào khóa tối thiểu. Thử TN hợp từng tập con của TG theo kích thước tăng dần và bỏ các siêu tập của khóa đã tìm.",
+      "source": "Chương 3, Phần 2, tr. 5–19",
+      "example": "U = ABCD, F = {A → B, B → C}\nTN = AD; TG = B; (AD)⁺ = ABCD nên AD là khóa duy nhất."
+    },
+    {
+      "title": "1NF, 2NF và 3NF",
+      "text": "1NF yêu cầu một giá trị nguyên tử theo miền trong mỗi ô và không có nhóm lặp. 2NF yêu cầu 1NF và không có thuộc tính không khóa phụ thuộc vào một tập con thực sự của bất kỳ khóa ứng viên nào. Kiểm tra trên mọi khóa ứng viên, không chỉ khóa chính.\n3NF yêu cầu với mỗi X → A không tầm thường, X là siêu khóa hoặc A là thuộc tính khóa (nằm trong ít nhất một khóa ứng viên). Với ví dụ DIEM(MaSV, MaHP, TenSV, TenHP, Diem), tách TenSV theo MaSV và TenHP theo MaHP để lần lượt bỏ phụ thuộc bộ phận.",
+      "source": "Chương 3, Phần 2, tr. 20–33"
+    },
+    {
+      "title": "BCNF, 4NF và kiểm tra phân rã",
+      "text": "BCNF yêu cầu mọi vế trái của PTH không tầm thường là siêu khóa, mạnh hơn 3NF. 4NF áp dụng điều kiện tương tự cho phụ thuộc đa trị không tầm thường. Ví dụ sở thích và ngoại ngữ độc lập của một người nên ở hai bảng để tránh tích chéo.\nPhân rã phải nối không mất mát. Với hai bảng, phần giao xác định trọn một trong hai bảng là điều kiện kiểm tra theo PTH. Bảo toàn PTH là mục tiêu riêng để kiểm tra ràng buộc mà không cần kết bảng. Phân rã BCNF có thể làm mất khả năng bảo toàn một số PTH.",
+      "source": "Chương 3, Phần 2, tr. 34–39"
+    },
+    {
+      "title": "Phi chuẩn hóa có kiểm soát",
+      "text": "Có thể thêm dữ liệu dẫn xuất hoặc lưu bản tổng hợp để giảm phép kết đắt đỏ sau khi đo hiệu năng. Cần chỉ rõ nguồn chuẩn, cách đồng bộ khi dữ liệu thay đổi và cách kiểm tra sai lệch. Báo cáo tổng hợp theo ngày là một ví dụ.",
+      "source": "Chương 3, Phần 2, tr. 40–42"
     }
   ],
   "questions": [
@@ -45,8 +58,8 @@
         "Lãng phí không gian lưu trữ vì dữ liệu bị trùng lặp",
         "Việc bảo trì dữ liệu trở nên khó khăn hơn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Dư thừa có thể tốn dung lượng, bảo trì và làm dữ liệu mâu thuẫn. Tốc độ SELECT tùy truy vấn và chỉ mục; lưu dư có chủ đích còn có thể giảm số phép kết."
     },
     {
       "id": "3-2",
@@ -58,8 +71,8 @@
         "Hàm kết nối dữ liệu (Data join function)",
         "Thuộc tính khóa chính (Primary key attribute)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Khóa ngoại cho phép lưu mã tham chiếu thay vì lặp thông tin mô tả của bảng cha ở nhiều hàng."
     },
     {
       "id": "3-3",
@@ -71,8 +84,8 @@
         "Kiểm tra xem giá trị đó có thể được suy diễn từ các dữ liệu khác hay không",
         "Đếm số lượng thuộc tính khóa ngoại trong lược đồ quan hệ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Bài giảng dùng khả năng suy ra làm phép thử. Chẳng hạn tổng tiền có thể tính từ số lượng và đơn giá, nên lưu thêm tổng là dư thừa có thể kiểm soát."
     },
     {
       "id": "3-4",
@@ -84,8 +97,8 @@
         "Dư thừa dữ liệu có kiểm soát chỉ xảy ra khi một bảng không có khóa chính",
         "Dư thừa dữ liệu có kiểm soát luôn dẫn đến các bất thường khi xóa và cập nhật"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Lưu tổng đã tính có thể tăng tốc đọc, miễn có cơ chế luôn tính lại khi dữ liệu nguồn đổi."
     },
     {
       "id": "3-5",
@@ -97,8 +110,8 @@
         "Năm loại",
         "Bốn loại"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Ba loại là dị thường chèn, cập nhật và xóa. Các loại khác trong lựa chọn không phải nhóm phân loại của chương."
     },
     {
       "id": "3-6",
@@ -110,8 +123,8 @@
         "Bất thường khi cập nhật (Update anomaly)",
         "Bất thường khi xóa (Deletion anomaly)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Không thể chèn thông tin độc lập, như một phòng ban mới, vì thiết kế bắt buộc phải có thêm một nhân viên đi cùng."
     },
     {
       "id": "3-7",
@@ -123,8 +136,8 @@
         "Bất thường khi xóa (Deletion anomaly)",
         "Bất thường khi phân rã (Decomposition anomaly)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Phải sửa cùng sự kiện ở nhiều hàng. Bỏ sót một bản sao làm kết quả sau cập nhật không nhất quán."
     },
     {
       "id": "3-8",
@@ -136,8 +149,8 @@
         "Bất thường khi cập nhật (Update anomaly)",
         "Bất thường khi chèn (Insertion anomaly)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Xóa sinh viên cuối cùng không nên xóa luôn mô tả khoa. Việc mất thông tin ngoài ý muốn là dị thường xóa."
     },
     {
       "id": "3-9",
@@ -149,8 +162,8 @@
         "Thuộc tính đó chắc chắn là khóa ngoại của lược đồ",
         "Thuộc tính đó không áp dụng cho bộ này, hoặc giá trị của nó hiện chưa được biết"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "NULL là thiếu một giá trị xác định, chẳng hạn chưa biết ngày kết thúc hoặc ngày đó không áp dụng. Số 0 và chuỗi rỗng là giá trị thật."
     },
     {
       "id": "3-10",
@@ -162,8 +175,8 @@
         "Không gian lưu trữ bị lãng phí mà không mang lại lợi ích ngữ nghĩa nào trong thực tế",
         "Lược đồ tự động được chuẩn hóa lên dạng chuẩn cao hơn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Slide dùng nhiều NULL như dấu hiệu lược đồ kém hiệu quả về lưu trữ và ý nghĩa. Dung lượng thực tế còn phụ thuộc cách DBMS mã hóa NULL."
     },
     {
       "id": "3-11",
@@ -175,8 +188,8 @@
         "Biểu đồ cấu trúc phân rã",
         "Ràng buộc khóa ngoại"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Phần 1, trang 13 gọi phụ thuộc hàm là biểu diễn toán học của ràng buộc toàn vẹn. PTH cung cấp căn cứ để kiểm tra phép phân rã có nối không mất mát."
     },
     {
       "id": "3-12",
@@ -188,8 +201,8 @@
         "B → A",
         "A → B"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Mũi tên đi từ tập dùng để xác định A tới tập bị xác định B."
     },
     {
       "id": "3-13",
@@ -201,8 +214,8 @@
         "A và B không có ràng buộc ngữ nghĩa nào với nhau",
         "A là khóa ngoại tham chiếu đến khóa chính B"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Với hai bộ trùng trên A, chúng phải trùng trên B. Không thể đổi chiều mũi tên nếu thiếu quy tắc bổ sung."
     },
     {
       "id": "3-14",
@@ -214,8 +227,8 @@
         "EmployeeName → EmployeeID, DepartmentID, Salary",
         "DepartmentID → DepartmentName"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Các đại lượng cần suy ra đều ở vế phải. Biết mã nhân viên thì có thể xác định tên, mã phòng và lương theo giả thiết."
     },
     {
       "id": "3-15",
@@ -227,8 +240,8 @@
         "DepartmentName → DepartmentID",
         "DepartmentID → DepartmentName"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Hai hàng cùng DepartmentID phải có cùng DepartmentName. Tên có thể trùng giữa các phòng nếu không có quy tắc khác."
     },
     {
       "id": "3-16",
@@ -240,8 +253,8 @@
         "Kích thước lưu trữ của bảng",
         "Số lượng hàng hiện có trong bảng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Ràng buộc do nghiệp vụ quyết định, ví dụ mỗi phòng có đúng một tên. Dung lượng hoặc số hàng không quyết định chiều phụ thuộc."
     },
     {
       "id": "3-17",
@@ -253,8 +266,8 @@
         "Một phụ thuộc hàm tự động biến mất khi các thuộc tính được đổi tên",
         "Một phụ thuộc hàm có thể được suy diễn chắc chắn từ một bảng dữ liệu cụ thể tại một thời điểm"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "F phải đúng đối với mọi thể hiện hợp lệ. Một bảng mẫu có thể tình cờ đúng và không chứng minh được quy tắc."
     },
     {
       "id": "3-18",
@@ -266,8 +279,8 @@
         "Tự động mã hóa dữ liệu nhạy cảm để nâng cao tính bảo mật",
         "Làm cơ sở cho việc chuẩn hóa dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "PTH hỗ trợ tìm khóa, chuẩn hóa và kiểm tra dư thừa. Mã hóa dữ liệu dùng cơ chế bảo mật riêng."
     },
     {
       "id": "3-19",
@@ -279,8 +292,8 @@
         "StudentID → FullName và FullName → BirthDate",
         "StudentID → FullName và StudentID → BirthDate"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Phân rã giữ nguyên vế trái StudentID và tách từng thuộc tính từ vế phải."
     },
     {
       "id": "3-20",
@@ -292,8 +305,8 @@
         "X và Y phải là các thuộc tính khóa của lược đồ R",
         "Với mọi thể hiện r của R, nếu r thỏa mãn tất cả các phụ thuộc hàm trong F thì r cũng thỏa mãn X → Y"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Suy diễn logic bao gồm cả các PTH không viết trực tiếp trong F. Chỉ cần mọi thể hiện thỏa F cũng thỏa PTH đang xét."
     },
     {
       "id": "3-21",
@@ -305,8 +318,8 @@
         "Hình tròn chứa số thứ tự của phụ thuộc hàm",
         "Hình tam giác chỉ hướng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Theo ký hiệu trong bài giảng, nút PTH là hình tròn có số thứ tự. Nút thuộc tính mang tên thuộc tính."
     },
     {
       "id": "3-22",
@@ -318,8 +331,8 @@
         "Các đường đi vô hướng",
         "Các cung hai chiều"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Cung vào nối từng thuộc tính cần có ở vế trái tới nút PTH. Phải có đủ các thuộc tính đó để áp dụng."
     },
     {
       "id": "3-23",
@@ -331,8 +344,8 @@
         "Các cung phản xạ",
         "Các cung đi ra khỏi nút phụ thuộc hàm"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Cung ra đi từ nút PTH tới thuộc tính kết quả ở vế phải, biểu diễn những gì suy được khi áp dụng."
     },
     {
       "id": "3-24",
@@ -344,8 +357,8 @@
         "Bao đóng của tập thuộc tính X (Closure of attribute set X)",
         "Tập hợp các giá trị NULL xuất hiện trong cột X"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "X⁺ là tập các thuộc tính suy được từ X theo F, còn F⁺ là tập phụ thuộc hàm suy được từ F."
     },
     {
       "id": "3-25",
@@ -357,8 +370,8 @@
         "Chứa các thuộc tính không có ràng buộc nào với X",
         "Chứa các thuộc tính có giá trị trùng lặp với X"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "X⁺ gồm X và mọi thuộc tính nhận thêm từ các PTH áp dụng liên tiếp."
     },
     {
       "id": "3-26",
@@ -370,8 +383,8 @@
         "X⁺ chỉ chứa các thuộc tính khóa ngoại của R",
         "X là tập con của X⁺ (X ⊆ X⁺)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Tính phản xạ cho X xác định mọi thuộc tính trong chính X. Vì vậy bao đóng khởi tạo bằng X."
     },
     {
       "id": "3-27",
@@ -384,7 +397,7 @@
         "Khi toàn bộ bảng không chứa giá trị NULL"
       ],
       "answer": null,
-      "explanation": null
+      "explanation": "Đề dùng ký hiệu X = X⁺ theo cách diễn đạt trong slide 24, nhưng đang hỏi tính đầy đủ của họ phụ thuộc F. Điều kiện đóng theo suy diễn phải xét F = F⁺, không phải X = X⁺ cho mọi tập thuộc tính. Các phương án hiện có chưa diễn đạt đúng."
     },
     {
       "id": "3-28",
@@ -396,8 +409,8 @@
         "Khi X⁺ có nhiều thuộc tính hơn U",
         "Khi tìm thấy ít nhất một khóa ngoại trong X⁺"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Nếu một lượt duyệt không bổ sung thuộc tính thì đã đạt điểm cố định. Khi có thuộc tính mới, cần duyệt lại vì có thể kích hoạt PTH đã đi qua."
     },
     {
       "id": "3-29",
@@ -409,8 +422,8 @@
         "ABCDE",
         "ABCD"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Từ AB suy C, có BC suy thêm D, rồi D suy E. Thiếu G nên CG → B không bổ sung gì."
     },
     {
       "id": "3-30",
@@ -422,8 +435,8 @@
         "Không, vì AB⁺ = ABCDE chưa bằng toàn bộ tập thuộc tính U = ABCDEG",
         "Có, vì AB⁺ chứa các thuộc tính A, B, C, D và E"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Siêu khóa phải xác định toàn bộ U. Bao đóng của AB thiếu G nên không thể định danh bằng điều kiện đó."
     },
     {
       "id": "3-31",
@@ -435,8 +448,8 @@
         "ACDE",
         "ACDEH"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "AC suy D. Có D và A suy E, D tiếp tục suy H. Không có B hay G, nên tập cuối là ACDEH."
     },
     {
       "id": "3-32",
@@ -448,8 +461,8 @@
         "Không, vì vế trái AC không chứa E",
         "Có, vì E nằm trong bao đóng AC⁺ (AC⁺ = ACDEH)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Từ AC suy D, sau đó DA suy CE. Do E thuộc AC⁺, AC → E là hệ quả của F."
     },
     {
       "id": "3-33",
@@ -461,8 +474,8 @@
         "Không, vì AC không chứa thuộc tính H",
         "Có, vì AC chứa hai thuộc tính quan trọng nhất là A và C"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "AC⁺ chỉ có A, C, D, E, H. Thiếu B và G nên AC không xác định được toàn bộ U."
     },
     {
       "id": "3-34",
@@ -474,8 +487,8 @@
         "Có, vì D⁺ = DE, và E cùng D xác định được A",
         "Không, vì bao đóng D⁺ = DE không chứa thuộc tính A"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khởi tạo bằng D, chỉ áp dụng được D → E. Bao đóng DE không chứa A nên không có suy diễn D → A."
     },
     {
       "id": "3-35",
@@ -487,8 +500,8 @@
         "ABCDEG",
         "BCDE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Từ BE dùng B → DE, thêm D. Không có A nên không dùng được A → C hay AB → G."
     },
     {
       "id": "3-36",
@@ -500,8 +513,8 @@
         "ABCDEG",
         "BDEG"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "BD có D nên thêm E và G. BE cho C, C cho A. Lúc đó bao đóng đã bằng toàn bộ U."
     },
     {
       "id": "3-37",
@@ -513,8 +526,8 @@
         "X⁺",
         "F"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "U là tập thuộc tính của lược đồ. F là tập phụ thuộc, K thường ký hiệu tập khóa và X⁺ là bao đóng."
     },
     {
       "id": "3-38",
@@ -526,8 +539,8 @@
         "Khi K⁺ ⊂ K",
         "Khi K⁺ = U"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khi K⁺ = U, K xác định mọi thuộc tính. Điều kiện tối thiểu chỉ cần thêm khi xét khóa ứng viên."
     },
     {
       "id": "3-39",
@@ -539,8 +552,8 @@
         "Một khóa ngoại",
         "Không phải là siêu khóa"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "AC là siêu khóa, trong khi bỏ A hoặc C đều không đủ. Do đó AC là siêu khóa tối thiểu."
     },
     {
       "id": "3-40",
@@ -552,8 +565,8 @@
         "K⁺ ≠ U",
         "Tồn tại K' ⊂ K sao cho (K')⁺ = U"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Tối thiểu theo quan hệ bao hàm nghĩa là không thể lấy tập con thực sự nào vẫn phủ U, dù có thể có khóa khác ít thuộc tính hơn."
     },
     {
       "id": "3-41",
@@ -565,8 +578,8 @@
         "ABC",
         "AC"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "AC đã có A và C, A → B bổ sung B, AC → D bổ sung D. Kết quả bằng U."
     },
     {
       "id": "3-42",
@@ -578,8 +591,8 @@
         "{A} và {A, C} đều là khóa ứng viên",
         "{C} là một khóa ứng viên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "A suy B rồi C, có AC nên suy D. A không nằm ở vế phải nên mọi khóa phải có A, và AC dư C."
     },
     {
       "id": "3-43",
@@ -591,8 +604,8 @@
         "Tập rỗng",
         "Tập nguồn TN"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "U tự xác định toàn bộ U theo phản xạ. Thuật toán dùng U làm siêu khóa ban đầu rồi bỏ thuộc tính dư."
     },
     {
       "id": "3-44",
@@ -604,8 +617,8 @@
         "Khóa ứng viên duy nhất của R",
         "Bao đóng của F"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "U⁺ = U vì bao đóng luôn chứa tập đầu vào và không thể vượt ra ngoài U."
     },
     {
       "id": "3-45",
@@ -617,8 +630,8 @@
         "Loại bỏ lần lượt các thuộc tính dư thừa",
         "Tách R thành các lược đồ con"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Thử bỏ một thuộc tính mỗi lần và giữ phần còn lại nếu vẫn xác định được U. Không cần đổi F."
     },
     {
       "id": "3-46",
@@ -630,8 +643,8 @@
         "Phép kết nối tự nhiên (Natural join)",
         "Bao đóng của một tập thuộc tính (Closure of an attribute set)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Bao đóng cho biết tập K sau khi thử bỏ thuộc tính còn xác định được mọi cột hay không."
     },
     {
       "id": "3-47",
@@ -643,8 +656,8 @@
         "Khi A⁺ = U",
         "Khi (K')⁺ ≠ U"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Khi (K′)⁺ = U, K′ vẫn là siêu khóa, nên có thể cập nhật K thành K′."
     },
     {
       "id": "3-48",
@@ -656,8 +669,8 @@
         "Để K⁺ luôn khác U",
         "Để K vẫn là một siêu khóa sau mỗi bước"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Điều kiện đó duy trì bất biến K xác định toàn bộ quan hệ sau mọi bước loại bỏ."
     },
     {
       "id": "3-49",
@@ -669,8 +682,8 @@
         "Quay lại bước 2 với tập K mới và kiểm tra thuộc tính tiếp theo",
         "Thêm A vào cuối tập K"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Thuật toán dùng K đã rút gọn để thử tiếp. Việc bỏ được một thuộc tính chưa chứng minh K đã tối thiểu."
     },
     {
       "id": "3-50",
@@ -682,8 +695,8 @@
         "Tất cả các phụ thuộc hàm trong F đã được kiểm tra",
         "K⁺ ≠ U"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Dừng khi mọi thuộc tính còn lại đều cần thiết. K vẫn là siêu khóa và không thể thu nhỏ thêm."
     },
     {
       "id": "3-51",
@@ -695,8 +708,8 @@
         "Khóa của R có ít thuộc tính nhất",
         "Tập rỗng nếu F chứa các phụ thuộc vòng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "K phủ U và không còn phần tử có thể bỏ, do đó là khóa ứng viên. Khóa tìm được không nhất thiết có kích thước nhỏ nhất trong các khóa."
     },
     {
       "id": "3-52",
@@ -708,8 +721,8 @@
         "Chính xác hai khóa của lược đồ",
         "Khóa có số lượng thuộc tính ít nhất"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Mỗi lần chạy theo một thứ tự cho một khóa ứng viên. Cần duyệt có hệ thống để tìm tất cả khóa."
     },
     {
       "id": "3-53",
@@ -721,8 +734,8 @@
         "Khởi tạo K = ∅",
         "Loại bỏ một phụ thuộc hàm khỏi F"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Nếu có nhiều khóa, thay thứ tự thử bỏ có thể giữ lại tổ hợp khác. Đây là cách thử, chưa thay cho thuật toán liệt kê đầy đủ."
     },
     {
       "id": "3-54",
@@ -734,8 +747,8 @@
         "K = U",
         "K = U − {X}"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Nếu chỉ có khóa {X}, bất kỳ kết quả tối thiểu nào của thuật toán cũng phải là {X}."
     },
     {
       "id": "3-55",
@@ -747,8 +760,8 @@
         "{C, D, E}",
         "{B, C, D}"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "A không xuất hiện ở vế phải. Từ BCDE không thể suy thêm A, nên A phải được giữ."
     },
     {
       "id": "3-56",
@@ -760,8 +773,8 @@
         "(ACDE)⁺ = ABCD, nên phải giữ lại B",
         "(ACDE)⁺ = ABCDE = U, nên có thể loại bỏ B"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "AC → B phục hồi B đã thử bỏ. Kết quả gồm đủ A, B, C, D, E."
     },
     {
       "id": "3-57",
@@ -773,8 +786,8 @@
         "A",
         "C"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "ACE đã có E và thiếu D. AC → B rồi BC → DE suy lại D, nên D có thể bỏ."
     },
     {
       "id": "3-58",
@@ -786,8 +799,8 @@
         "ACE",
         "AC"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Không bỏ được A; bỏ B nhờ AC → B; không bỏ được C; bỏ D và E vì AC suy B rồi BC suy DE."
     },
     {
       "id": "3-59",
@@ -799,8 +812,8 @@
         "TN = U − RightF",
         "TN = RightF − LeftF"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Thuộc tính không ở vế phải không thể được bổ sung khi tính bao đóng, nên phải nằm trong tập nguồn."
     },
     {
       "id": "3-60",
@@ -812,8 +825,8 @@
         "Tập hợp các thuộc tính không xuất hiện trong F",
         "Tập hợp các thuộc tính chỉ xuất hiện ở vế phải của các phụ thuộc hàm trong F"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "TG gồm thuộc tính vừa có thể nhận được ở vế phải, vừa có thể tham gia suy ra giá trị khác ở vế trái."
     },
     {
       "id": "3-61",
@@ -825,8 +838,8 @@
         "Chúng chỉ có thể thuộc về siêu khóa, không bao giờ thuộc về khóa ứng viên",
         "Chúng chỉ nằm trong khóa ứng viên nếu bao đóng của chúng bằng U"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Các thuộc tính này không xuất hiện ở vế phải. Muốn bao đóng chứa chúng, khóa phải chứa sẵn chúng."
     },
     {
       "id": "3-62",
@@ -838,8 +851,8 @@
         "Chúng là các khóa ngoại của lược đồ quan hệ",
         "Chúng bắt buộc phải có mặt trong mọi khóa ứng viên của lược đồ quan hệ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Khi dùng các phụ thuộc không tầm thường, thuộc tính chỉ ở vế phải không cần kích hoạt quy tắc nào. Nếu xuất hiện trong siêu khóa, nó có thể suy lại và không cần nằm trong khóa tối thiểu."
     },
     {
       "id": "3-63",
@@ -851,8 +864,8 @@
         "Tập nguồn TN là khóa duy nhất của lược đồ quan hệ",
         "Lược đồ quan hệ có vô số khóa ứng viên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "TN phải có mặt trong mọi khóa. Nếu riêng TN đã phủ U, thêm thuộc tính sẽ làm mất tính tối thiểu."
     },
     {
       "id": "3-64",
@@ -864,8 +877,8 @@
         "TN = {A}, TG = {B}",
         "TN = {A}, TG = {B, C}"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Left(F) là AB, Right(F) là BC. Hiệu U − BC là AD và giao AB ∩ BC là B."
     },
     {
       "id": "3-65",
@@ -877,8 +890,8 @@
         "C chỉ xuất hiện ở vế phải (RightF − LeftF), nên nó chắc chắn không nằm trong bất kỳ khóa nào",
         "C thuộc tập trung gian TG, nên nó có thể tham gia vào một khóa"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "C chỉ ở vế phải và không dùng để kích hoạt PTH nào. Khóa AD suy ra B rồi C."
     },
     {
       "id": "3-66",
@@ -890,8 +903,8 @@
         "TN = {B, D}",
         "TN = {B, D, G}"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Các vế phải chứa C, A, G, E. Hai thuộc tính còn lại trong U là B và D."
     },
     {
       "id": "3-67",
@@ -903,8 +916,8 @@
         "H và I",
         "H và E"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "H là thuộc tính duy nhất không xuất hiện ở vế phải. Từ H suy I và I có thể tham gia các suy diễn khác."
     },
     {
       "id": "3-68",
@@ -916,8 +929,8 @@
         "A, D và I",
         "A và I"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Vế phải chứa B, C, E, G, D, H, J. Chỉ A và I không thể suy ra từ các PTH đã cho."
     },
     {
       "id": "3-69",
@@ -929,8 +942,8 @@
         "Tối ưu hóa lưu trữ ổ đĩa cứng bằng cách nén dữ liệu",
         "Tăng số lượng bảng để việc phân quyền truy cập trở nên dễ dàng hơn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Chuẩn hóa dùng phụ thuộc dữ liệu giúp giảm lặp và hạn chế lỗi thêm, sửa, xóa, đồng thời kiểm tra khả năng nối lại dữ liệu."
     },
     {
       "id": "3-70",
@@ -942,8 +955,8 @@
         "Khi lược đồ quan hệ không có phụ thuộc bộ phận",
         "Khi mọi vế trái (determinant) của lược đồ quan hệ đều là khóa ứng viên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Trong bài giảng, 1NF yêu cầu giá trị nguyên tử, bỏ nhóm lặp và xác định khóa. Nó chưa đòi loại phụ thuộc bộ phận."
     },
     {
       "id": "3-71",
@@ -955,8 +968,8 @@
         "2NF, mặc dù vẫn thỏa mãn 1NF",
         "BCNF, mặc dù vẫn thỏa mãn 3NF"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Danh sách hai số trong một ô là nhóm lặp theo mô hình này. Tách sang bảng số điện thoại với một số mỗi hàng."
     },
     {
       "id": "3-72",
@@ -968,8 +981,8 @@
         "Khi một thuộc tính khóa phụ thuộc vào một thuộc tính không khóa khác",
         "Khi một thuộc tính không khóa chỉ phụ thuộc vào một bộ phận của khóa phức hợp (khóa có nhiều hơn một thuộc tính)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Ví dụ (MaSV, MaHP) là khóa nhưng TenSV chỉ phụ thuộc MaSV. TenSV vì vậy phụ thuộc bộ phận vào khóa ghép."
     },
     {
       "id": "3-73",
@@ -981,8 +994,8 @@
         "Đạt 1NF và mọi thuộc tính không khóa đều phụ thuộc đầy đủ vào mọi khóa ứng viên",
         "Đạt 1NF và mọi vế trái (determinant) đều là khóa ứng viên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "2NF cần 1NF và mọi thuộc tính không khóa phụ thuộc đầy đủ vào mỗi khóa ứng viên, không chỉ khóa chính đã chọn."
     },
     {
       "id": "3-74",
@@ -994,8 +1007,8 @@
         "Lược đồ đạt BCNF",
         "Lược đồ không đạt 2NF"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Theo quy ước của bài giảng, khóa một thuộc tính không có bộ phận thuộc tính nhỏ hơn để gây phụ thuộc bộ phận. 3NF còn phải xét phụ thuộc bắc cầu."
     },
     {
       "id": "3-75",
@@ -1007,8 +1020,8 @@
         "Viết từng thành phần của khóa phức hợp trên một dòng riêng, sau đó viết khóa phức hợp ở dòng cuối cùng và gán các thuộc tính phụ thuộc tương ứng cho từng dòng",
         "Thêm một khóa chính tự động tăng (ID) mới để thay thế khóa phức hợp"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Đưa từng thuộc tính bị phụ thuộc vào bảng có khóa là phần xác định nó. Bảng gốc giữ khóa ghép và các thuộc tính cần cả khóa đó."
     },
     {
       "id": "3-76",
@@ -1020,8 +1033,8 @@
         "2NF không cho phép khóa phức hợp, trong khi 3NF cho phép",
         "2NF yêu cầu các vế trái (determinants) phải là khóa ứng viên, trong khi 3NF thì không"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "2NF xử lý phụ thuộc vào một phần khóa. 3NF xử lý tiếp phụ thuộc bắc cầu của thuộc tính không khóa theo cách diễn đạt của bài giảng."
     },
     {
       "id": "3-77",
@@ -1033,8 +1046,8 @@
         "Khi đạt BCNF và không có phụ thuộc đa trị",
         "Khi đạt 2NF và không có phụ thuộc bắc cầu (không có thuộc tính không khóa nào phụ thuộc vào một thuộc tính không khóa khác)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Theo cách diễn đạt nhập môn của bài giảng, 3NF bổ sung điều kiện không có phụ thuộc bắc cầu qua thuộc tính không khóa. Điều kiện tổng quát xét mọi X → A không tầm thường: X là siêu khóa hoặc A là thuộc tính khóa."
     },
     {
       "id": "3-78",
@@ -1046,8 +1059,8 @@
         "Phụ thuộc hàm đầy đủ (Full functional dependency)",
         "Phụ thuộc bộ phận (Partial dependency)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "4NF xử lý hai tập giá trị đa trị độc lập, như nhiều sở thích và nhiều ngoại ngữ. Tách chúng tránh sinh mọi tổ hợp chéo."
     },
     {
       "id": "3-79",
@@ -1059,18 +1072,9 @@
         "Một quy trình tự động chuyển đổi 4NF trở lại 1NF",
         "Đưa các quan hệ về dạng chuẩn thấp hơn để cải thiện hiệu năng truy vấn, chấp nhận sự dư thừa dữ liệu có kiểm soát"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Phi chuẩn hóa chấp nhận lặp có chủ đích để giảm phép kết hoặc chi phí đọc. Phải duy trì giá trị lặp nhất quán khi cập nhật."
     }
   ],
-  "cases": [
-    {
-      "id": "3-case",
-      "title": "Bài tập vận dụng",
-      "paragraphs": [
-        "Cho DIEM(MaSV, MaHP, TenSV, TenHP, Diem) với MaSV → TenSV, MaHP → TenHP và (MaSV, MaHP) → Diem. Hãy tìm khóa và phân rã để giảm dư thừa."
-      ],
-      "supplemental": true
-    }
-  ]
+  "cases": []
 }

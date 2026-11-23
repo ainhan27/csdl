@@ -1,37 +1,54 @@
 {
   "id": 2,
-  "title": "Thiết kế CSDL và mô hình ER",
+  "title": "Chương 2",
   "sourceHeading": "CHƯƠNG 2: THIẾT KẾ CƠ SỞ DỮ LIỆU, MÔ HÌNH ER VÀ MÔ HÌNH QUAN HỆ (98 CÂU)",
   "description": "Từ yêu cầu nghiệp vụ đến sơ đồ ER và lược đồ quan hệ.",
   "theory": [
     {
-      "title": "Thiết kế khái niệm",
-      "text": "Xác định thực thể, thuộc tính và quan hệ từ yêu cầu. Bản số và mức tham gia diễn đạt các ràng buộc nghiệp vụ."
+      "title": "Vòng đời DBLC và vận hành",
+      "text": "DBLC gồm khởi tạo, thiết kế, triển khai và nạp dữ liệu, kiểm thử và đánh giá, vận hành, bảo trì và phát triển. Khởi tạo xác định vấn đề, mục tiêu, phạm vi và tính khả thi. Triển khai tạo cấu trúc, chuyển đổi và nạp dữ liệu. Kiểm thử xác nhận tính đúng, bảo mật, hiệu năng và khả năng phục hồi trước vận hành.\nBảo mật nhằm bảo đảm bí mật, toàn vẹn và sẵn sàng. Các lớp bảo vệ gồm kiểm soát vật lý, xác thực, phân quyền, kiểm toán và mã hóa. Bản sao đầy đủ ghi toàn bộ dữ liệu, sao lưu vi sai ghi thay đổi từ bản đầy đủ gần nhất, sao lưu gia tăng ghi thay đổi từ lần sao lưu trước. DBA lập kế hoạch và thử phục hồi định kỳ.",
+      "source": "Chương 2, Phần 1, tr. 5–17"
     },
     {
-      "title": "Ánh xạ ER sang quan hệ",
-      "text": "Với quan hệ 1–N, khóa ngoại thường nằm ở phía N. Quan hệ N–N cần một bảng liên kết chứa khóa ngoại tới hai bảng tham gia."
+      "title": "Cách tiếp cận và ba mức thiết kế",
+      "text": "Top-down đi từ nghiệp vụ và thực thể đến thuộc tính. Bottom-up bắt đầu từ biểu mẫu, trường dữ liệu hoặc tài liệu sẵn có, rồi nhóm thành thực thể. Có thể dùng top-down cho phạm vi toàn cục và bottom-up để rà soát chi tiết.\nMức khái niệm mô tả yêu cầu bằng ERD và độc lập công nghệ. Mức logic ánh xạ sang bảng, khóa và ràng buộc theo mô hình dữ liệu. Mức vật lý lựa chọn kiểu lưu trữ, chỉ mục, phân vùng và đường truy cập theo DBMS. Quy tắc nghiệp vụ nên ngắn, rõ, có thể kiểm chứng với người phụ trách và người dùng.",
+      "source": "Chương 2, Phần 1, tr. 18–28"
     },
     {
-      "title": "Toàn vẹn dữ liệu",
-      "text": "Khóa chính định danh bộ và không nhận NULL. Khóa ngoại tham chiếu khóa của bảng đích theo ràng buộc toàn vẹn tham chiếu."
-    }
-  ],
-  "terms": [
-    {
-      "term": "Thực thể",
-      "english": "Entity",
-      "definition": "Đối tượng có thể phân biệt trong miền nghiệp vụ."
+      "title": "Thực thể, thuộc tính và ký pháp ER",
+      "text": "Một tập thực thể chứa các đối tượng cùng loại, như SINHVIEN. Thuộc tính mô tả đặc điểm của từng thể hiện. Theo cấu trúc có đơn và phức hợp, theo số giá trị có đơn trị và đa trị, theo nguồn có lưu trữ và suy diễn. Ví dụ ngày sinh thường lưu, tuổi có thể suy từ ngày sinh.\nChen dùng hình chữ nhật cho thực thể, hình thoi cho mối kết hợp và elip cho thuộc tính. Thuộc tính khóa được gạch chân, đa trị có elip kép, suy diễn dùng nét đứt. Crow’s Foot thuận tiện để đọc bản số trong thiết kế logic. IDEF1X nhấn mạnh khóa và các quan hệ định danh.",
+      "source": "Chương 2, Phần 1, tr. 29–33; Phần 2, tr. 5–12"
     },
     {
-      "term": "Bản số",
-      "english": "Cardinality",
-      "definition": "Số lượng đối tượng có thể tham gia vào một quan hệ."
+      "title": "Mối kết hợp, bản số và thực thể yếu",
+      "text": "Bản số (min, max) cho biết số lần tham gia tối thiểu và tối đa. Min = 0 là tùy chọn, min = 1 là bắt buộc. Max phân biệt 1–1, 1–N và N–N. Bậc mối kết hợp đếm số loại thực thể tham gia, như tự kết hợp NHANVIEN quản lý NHANVIEN (bậc 1), nhị nguyên và tam nguyên.\nThực thể yếu phụ thuộc chủ sở hữu để được định danh. Chẳng hạn THANNHAN có thể dùng (MaNV, SoThuTu) làm khóa chính, với MaNV vừa là một phần khóa vừa tham chiếu NHANVIEN.",
+      "source": "Chương 2, Phần 2, tr. 13–26"
     },
     {
-      "term": "Khóa ngoại",
-      "english": "Foreign key",
-      "definition": "Thuộc tính hoặc nhóm thuộc tính tham chiếu một khóa của quan hệ đích."
+      "title": "Quy trình dựng ERD",
+      "text": "Liệt kê và chọn lọc thông tin để lập từ điển dữ liệu, xác định thực thể và thuộc tính, rồi xác định khóa, mối kết hợp và bản số. Sau đó chuẩn hóa và đối chiếu với quy tắc nghiệp vụ. Một ERD phù hợp chứa đủ thông tin cần thiết và tránh lưu chi tiết dư thừa.\nTính toàn vẹn nên được bảo đảm trước. Khi cân nhắc khả năng truy xuất, hiệu năng và đơn giản hóa thiết kế, dựa vào mẫu truy vấn và số liệu đo để quyết định chỉ mục hoặc phi chuẩn hóa.",
+      "source": "Chương 2, Phần 2, tr. 27–31"
+    },
+    {
+      "title": "Mô hình quan hệ và ràng buộc",
+      "text": "Lược đồ R(A, B, …) mô tả tên quan hệ và tập thuộc tính. Thể hiện là tập bộ ở một thời điểm, không có bộ trùng và không phụ thuộc thứ tự. Miền quy định tập giá trị có thể nhận. NULL diễn đạt giá trị chưa biết, thiếu hoặc không áp dụng tùy ngữ cảnh.\nSiêu khóa định danh duy nhất một bộ, khóa ứng viên là siêu khóa tối thiểu, và khóa chính là khóa ứng viên được chọn. Toàn vẹn thực thể yêu cầu thành phần khóa chính không NULL. Khóa ngoại trỏ tới khóa hợp lệ của bảng đích hoặc có thể NULL khi mô hình cho phép. CHECK, NOT NULL, UNIQUE và DEFAULT hỗ trợ kiểm soát dữ liệu tại lược đồ.",
+      "source": "Chương 2, Phần 3, tr. 5–23"
+    },
+    {
+      "title": "Ánh xạ ERD và kiểm tra lược đồ",
+      "text": "Mỗi thực thể mạnh thành bảng. Thực thể yếu mang khóa chủ sở hữu và khóa bộ phận. Với 1–N, khóa ngoại nằm phía N. Với 1–1, thường chọn phía tham gia bắt buộc để đặt khóa ngoại UNIQUE. Với N–N, tạo bảng liên kết chứa khóa của hai đầu và thuộc tính của mối kết hợp.\nThuộc tính đa trị được tách thành bảng riêng (khóa chủ, giá trị). Với kết hợp bậc cao, tạo bảng chứa các khóa ngoại và xác định khóa chính theo bản số, thường là tổ hợp khóa các bên nếu không có ràng buộc chặt hơn. Kiểm tra chuẩn hóa, toàn vẹn tham chiếu, từ điển dữ liệu và rà soát lược đồ với người dùng.",
+      "source": "Chương 2, Phần 3, tr. 24–37"
+    },
+    {
+      "title": "Đại số quan hệ: chọn, chiếu và phép tập hợp",
+      "text": "Chọn σ lọc bộ theo điều kiện, chiếu π chọn thuộc tính và loại bộ trùng theo ngữ nghĩa tập hợp. Hợp ∪ lấy các bộ của hai vế, giao ∩ lấy phần chung, hiệu − lấy những bộ chỉ ở vế trái. Phép tập hợp cần cùng số thuộc tính và miền tương thích theo vị trí. Hiệu phụ thuộc thứ tự đối số.",
+      "source": "Chương 2, Phần 4, tr. 5–18",
+      "example": "π_HoTen(σ_MaLop='K48'(SINHVIEN))"
+    },
+    {
+      "title": "Đại số quan hệ: tích, chia, kết và gom nhóm",
+      "text": "Tích Descartes tạo mọi cặp bộ. Kết theta là chọn trên tích theo điều kiện, kết bằng dùng điều kiện bằng, kết tự nhiên tự ghép theo tên thuộc tính chung và giữ một bản của cột chung. Kết ngoài giữ các bộ không khớp tương ứng và điền NULL. Phép chia R(X,Y) ÷ S(Y) tìm các giá trị X liên kết với mọi Y trong S.\nĐổi tên ρ hữu ích cho tự kết hoặc tránh trùng tên. Phép gán đặt tên kết quả trung gian. Gom nhóm và tổng hợp tính COUNT, SUM, AVG, MIN, MAX theo từng nhóm.",
+      "source": "Chương 2, Phần 4, tr. 19–31"
     }
   ],
   "questions": [
@@ -45,8 +62,8 @@
         "5 giai đoạn",
         "6 giai đoạn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Sáu pha là khởi tạo, thiết kế, triển khai và nạp, kiểm thử và đánh giá, vận hành, bảo trì và phát triển."
     },
     {
       "id": "2-2",
@@ -58,8 +75,8 @@
         "Kiểm thử và đánh giá (Testing and evaluation)",
         "Thiết kế cơ sở dữ liệu (Database design)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Phải hiểu tình hình, vấn đề và phạm vi trước khi có thể thiết kế lược đồ hoặc cài đặt."
     },
     {
       "id": "2-3",
@@ -71,8 +88,8 @@
         "Phân tích tình hình thực tế của công ty",
         "Lựa chọn phần mềm hệ quản trị cơ sở dữ liệu (DBMS)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khởi tạo làm rõ nhu cầu và ranh giới. Chọn DBMS cụ thể thuộc quyết định thiết kế và triển khai."
     },
     {
       "id": "2-4",
@@ -84,8 +101,8 @@
         "Quy trình này chỉ diễn ra một lần duy nhất",
         "Quy trình này có tính lặp (iterative) và không hoàn toàn tuần tự nghiêm ngặt"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Kiểm thử hay vận hành có thể bộc lộ yêu cầu mới dẫn tới quay lại các pha trước để sửa."
     },
     {
       "id": "2-5",
@@ -97,8 +114,8 @@
         "Storage group → Table → Table space",
         "Table space → Storage group → Table"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Storage group cung cấp vùng lưu trữ, tablespace nằm trong cách tổ chức vùng đó và bảng được đặt trong tablespace theo mô hình bài giảng."
     },
     {
       "id": "2-6",
@@ -110,8 +127,8 @@
         "Tính toàn vẹn (Integrity), tính khả thi (Feasibility), nhật ký kiểm toán (Audit trails)",
         "Tính sẵn sàng (Availability), xác thực (Authentication), mã hóa (Encryption)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Bí mật giới hạn người xem, toàn vẹn bảo vệ tính đúng và sẵn sàng bảo đảm dữ liệu dùng được khi cần."
     },
     {
       "id": "2-7",
@@ -123,8 +140,8 @@
         "Tường lửa (Firewall)",
         "Phân quyền truy cập (Access permissions)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Phần 1, trang 12 gọi nhật ký kiểm toán là tuyến cuối vì nó ghi hoạt động để phát hiện và điều tra vi phạm."
     },
     {
       "id": "2-8",
@@ -136,8 +153,8 @@
         "Khóa công khai (public key) dùng để mã hóa và khóa bí mật (private key) dùng để giải mã",
         "Khóa bí mật (private key) dùng để mã hóa và khóa công khai (public key) dùng để giải mã"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Để giữ bí mật, người gửi mã hóa bằng khóa công khai của người nhận. Chỉ khóa bí mật tương ứng giải mã."
     },
     {
       "id": "2-9",
@@ -149,8 +166,8 @@
         "Người dùng cuối",
         "Người quản trị cơ sở dữ liệu (DBA)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "DBA lập chính sách sao lưu, xác định lịch, quản lý bản sao và chịu trách nhiệm thử quy trình khôi phục."
     },
     {
       "id": "2-10",
@@ -162,8 +179,8 @@
         "Sao lưu đầy đủ (Full backup)",
         "Sao lưu khác biệt (Differential backup)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Sao lưu vi sai tính mọi thay đổi từ bản đầy đủ gần nhất. Sao lưu gia tăng tính từ lần sao lưu trước."
     },
     {
       "id": "2-11",
@@ -175,8 +192,8 @@
         "Bằng cách cài đặt một hệ quản trị cơ sở dữ liệu (DBMS) mới",
         "Bằng cách xóa các bảng bị hỏng và tạo các bảng mới"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Khôi phục bản nhất quán rồi áp nhật ký để tái hiện giao dịch hợp lệ. Khi phục hồi sự cố, DBMS có thể hoàn tác phần chưa COMMIT."
     },
     {
       "id": "2-12",
@@ -188,8 +205,8 @@
         "Bảo trì phòng ngừa (Preventive maintenance)",
         "Bảo trì khắc phục (Corrective maintenance)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Bảo trì hoàn thiện cải tiến chức năng hay hiệu năng. Khắc phục sửa lỗi, thích ứng đáp ứng môi trường mới."
     },
     {
       "id": "2-13",
@@ -201,8 +218,8 @@
         "4 mức",
         "3 mức"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khái niệm diễn đạt nghiệp vụ, logic biểu diễn theo mô hình dữ liệu, vật lý cụ thể hóa cách lưu và truy cập."
     },
     {
       "id": "2-14",
@@ -214,8 +231,8 @@
         "Mức quan niệm (phụ thuộc DBMS) → Mức logic (độc lập cả hai) → Mức vật lý (độc lập cả hai)",
         "Mức quan niệm (độc lập cả hai) → Mức logic (phụ thuộc DBMS, độc lập phần cứng) → Mức vật lý (phụ thuộc cả hai)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khái niệm độc lập phần cứng và DBMS. Logic theo mô hình của DBMS, chưa cần phần cứng cụ thể. Vật lý phụ thuộc cả nền tảng và cách cài đặt."
     },
     {
       "id": "2-15",
@@ -227,8 +244,8 @@
         "Đi thẳng từ thiết kế vật lý lên thiết kế quan niệm",
         "Bắt đầu ở mức quan niệm với mức độ trừu tượng cao và mô hình hóa các chi tiết một cách tiệm tiến"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Top-down bắt đầu bằng cái nhìn toàn cục, sau đó làm rõ thuộc tính và ràng buộc chi tiết."
     },
     {
       "id": "2-16",
@@ -240,8 +257,8 @@
         "Các hệ thống lớn và cực kỳ phức tạp",
         "Các hệ cơ sở dữ liệu phân tán toàn cầu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Đi từ dữ liệu hiện có phù hợp khi tập biểu mẫu và thực thể đủ nhỏ để tổng hợp được."
     },
     {
       "id": "2-17",
@@ -253,8 +270,8 @@
         "Mô hình hóa ER là quy trình top-down còn chuẩn hóa là kỹ thuật bottom-up, và cả hai bổ trợ cho nhau tùy thuộc vào quy mô của hệ thống",
         "Bottom-up chỉ được dùng cho các hệ thống lớn, phức tạp, còn top-down dùng cho các hệ thống nhỏ có ít thực thể"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "ERD đi từ mô hình tổng quát xuống; chuẩn hóa đi từ thuộc tính và phụ thuộc lên các quan hệ. Kết quả của hai hướng có thể đối chiếu."
     },
     {
       "id": "2-18",
@@ -266,8 +283,8 @@
         "Tiêu chuẩn thiết kế, tốc độ xử lý và các yêu cầu thông tin",
         "Số lượng bảng, dung lượng lưu trữ và giao diện"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Thiết kế phải cân bằng độ đúng theo chuẩn, tốc độ xử lý và khả năng đáp ứng yêu cầu thông tin."
     },
     {
       "id": "2-19",
@@ -279,8 +296,8 @@
         "Thiết kế vì tính toàn vẹn dữ liệu trước (chuẩn hóa), và chỉ phi chuẩn hóa sau đó nếu thực sự cần thiết",
         "Gộp tất cả các thực thể vào một bảng duy nhất"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Chuẩn hóa và kiểm tra ràng buộc giữ dữ liệu đúng trước. Chỉ phi chuẩn hóa sau khi có lý do hiệu năng được kiểm chứng."
     },
     {
       "id": "2-20",
@@ -292,8 +309,8 @@
         "Mức cài đặt (mức logic)",
         "Mức phụ thuộc DBMS"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "ERD khái niệm mô tả thực thể và mối kết hợp ở mức nghiệp vụ trước khi ánh xạ thành bảng."
     },
     {
       "id": "2-21",
@@ -305,8 +322,8 @@
         "Quy tắc dữ liệu tối thiểu (Minimal data rule)",
         "Quy tắc cấu trúc chuẩn hóa (Normalised structure rule)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Quy tắc dữ liệu tối thiểu yêu cầu có đủ dữ liệu cho nghiệp vụ và tránh mang thêm những phần không cần."
     },
     {
       "id": "2-22",
@@ -318,8 +335,8 @@
         "Quy tắc nghiệp vụ, thực thể chính, mối quan hệ, khóa chính và khóa ngoại",
         "Khối lượng dữ liệu, cấu trúc lưu trữ, chỉ mục, khung nhìn dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Cần biết thông tin gì, ai dùng, lấy từ đâu và thông tin gồm những thành phần nào."
     },
     {
       "id": "2-23",
@@ -331,8 +348,8 @@
         "Phỏng vấn người dùng cuối là nguồn gián tiếp và luôn hoàn toàn đáng tin cậy",
         "Phỏng vấn người dùng cuối là nguồn trực tiếp, nhanh chóng nhưng độ tin cậy có thể thấp do nhận thức khác nhau, vì vậy người thiết kế phải đối chiếu và xác minh lại các quy tắc"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Người dùng cuối hiểu tác nghiệp thực tế nhưng cách hiểu có thể khác nhau. Cần đối chiếu lời phỏng vấn với tài liệu và người phụ trách."
     },
     {
       "id": "2-24",
@@ -344,8 +361,8 @@
         "Quy tắc nghiệp vụ làm giảm sự giao tiếp giữa người thiết kế và người dùng cuối",
         "Quy tắc nghiệp vụ không áp dụng cho các tổ chức nhỏ hoặc nhóm nghiên cứu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Điều kiện phức tạp hoặc phụ thuộc nhiều bước có thể vượt khả năng biểu diễn trực tiếp bằng ERD và phải thực thi tại ứng dụng hoặc CSDL."
     },
     {
       "id": "2-25",
@@ -357,8 +374,8 @@
         "Sơ đồ luồng dữ liệu (DFD)",
         "Ý kiến cá nhân của lập trình viên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Quy tắc nghiệp vụ cho biết thực thể cần quản lý, thuộc tính, cách liên kết và mức tham gia."
     },
     {
       "id": "2-26",
@@ -370,8 +387,8 @@
         "Chuẩn hóa → Xác định thực thể → Xác định thuộc tính → Xác định mối quan hệ → Người dùng xác minh → Hoàn thiện ERD",
         "Xác định thực thể → Xác định thuộc tính → Chuẩn hóa → Xác định quy tắc nghiệp vụ → Xác định mối quan hệ → Chỉnh sửa ERD"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Đi từ quy tắc nghiệp vụ, xác định thực thể và cấu trúc, rồi đưa ERD cho người dùng kiểm tra và chỉnh sửa."
     },
     {
       "id": "2-27",
@@ -383,8 +400,8 @@
         "Xác định các tập thực thể chính",
         "Vẽ sơ đồ bằng phần mềm MS Visio"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Từ danh sách thông tin đã sàng lọc, từ điển dữ liệu giúp thống nhất nghĩa các trường trước khi vẽ."
     },
     {
       "id": "2-28",
@@ -396,8 +413,8 @@
         "Bước 5: Vẽ ERD bằng công cụ",
         "Bước 4: Chuẩn hóa mô hình"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Phần 2, trang 29 đặt việc gạch chân thuộc tính khóa và ghi bản số trong bước 5 khi hoàn thiện ERD bằng công cụ."
     },
     {
       "id": "2-29",
@@ -409,8 +426,8 @@
         "Ký pháp Bachman (Bachman notation)",
         "Ký pháp Chen (Chen notation)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Chen dùng hình chữ nhật, hình thoi và elip nên thể hiện các khái niệm rõ khi phân tích yêu cầu."
     },
     {
       "id": "2-30",
@@ -422,8 +439,8 @@
         "Một tập hợp các thực thể chia sẻ chung các tính chất/thuộc tính",
         "Một tập hợp các mối quan hệ giữa các thực thể"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Mỗi sinh viên cụ thể là một thể hiện, còn tập SINHVIEN gồm các thể hiện chia sẻ cấu trúc thuộc tính chung."
     },
     {
       "id": "2-31",
@@ -435,8 +452,8 @@
         "Một tính từ mô tả đặc điểm",
         "Một cụm động từ chỉ hành động"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Danh từ số ít như SINHVIEN gọi loại đối tượng; động từ thường dùng cho tên mối kết hợp."
     },
     {
       "id": "2-32",
@@ -448,8 +465,8 @@
         "Bản số (Cardinality)",
         "Mối quan hệ (Relationship)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Thuộc tính như HoTen hay NgaySinh mô tả từng thể hiện. Bản số mô tả mức tham gia vào mối kết hợp."
     },
     {
       "id": "2-33",
@@ -461,8 +478,8 @@
         "Hình thoi",
         "Hình elip (bầu dục)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Chen dùng chữ nhật cho thực thể, chữ nhật kép cho thực thể yếu."
     },
     {
       "id": "2-34",
@@ -474,8 +491,8 @@
         "Hình chữ nhật",
         "Hình thoi"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Chen dùng hình thoi cho mối kết hợp, ví dụ SINHVIEN — đăng ký — HOCPHAN."
     },
     {
       "id": "2-35",
@@ -487,8 +504,8 @@
         "Hình elip (bầu dục)",
         "Hình tam giác"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Chen biểu diễn thuộc tính bằng elip nối với thực thể hoặc mối kết hợp mà thuộc tính mô tả."
     },
     {
       "id": "2-36",
@@ -500,8 +517,8 @@
         "Tên của thuộc tính được viết bằng chữ in hoa",
         "Được đặt bên trong hình chữ nhật nét đôi"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Gạch chân tên phân biệt khóa với thuộc tính mô tả. Elip nét đứt dành cho thuộc tính suy diễn."
     },
     {
       "id": "2-37",
@@ -513,8 +530,8 @@
         "Thay đổi giá trị thường xuyên để bảo mật",
         "Phụ thuộc vào nhiều thực thể khác nhau"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Khóa ổn định giúp tham chiếu ít bị thay đổi, dễ kiểm soát tính duy nhất và tránh việc sửa hàng loạt khóa ngoại."
     },
     {
       "id": "2-38",
@@ -526,8 +543,8 @@
         "Thuộc tính đa trị (Multivalued attribute)",
         "Thuộc tính phức hợp (Composite attribute)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Thuộc tính đơn được xem như một giá trị nguyên tử trong phạm vi mô hình."
     },
     {
       "id": "2-39",
@@ -539,8 +556,8 @@
         "Thuộc tính nguyên tử (Atomic attribute)",
         "Thuộc tính đa trị (Multivalued attribute)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Có thể tách địa chỉ thành số nhà, đường, quận và thành phố, nên nó phức hợp."
     },
     {
       "id": "2-40",
@@ -552,8 +569,8 @@
         "Thuộc tính đa trị (Multivalued attribute)",
         "Thuộc tính đơn trị (Single-valued attribute)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Mỗi nhân viên có một ngày sinh. Tiêu chí ở đây đếm giá trị, không xét cấu tạo của kiểu ngày."
     },
     {
       "id": "2-41",
@@ -565,8 +582,8 @@
         "Nguyên tử, đa trị, suy diễn",
         "Nguyên tử, đa trị, lưu trữ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Theo mô hình trong câu, mỗi số được lưu như một giá trị đơn, một người có thể có nhiều số, và các số được ghi trực tiếp."
     },
     {
       "id": "2-42",
@@ -578,8 +595,8 @@
         "Thuộc tính lưu trữ (Stored attribute)",
         "Thuộc tính phức hợp (Composite attribute)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Tuổi được tính từ ngày sinh và mốc hiện tại. Cùng ngày sinh nhưng tuổi đổi theo thời gian."
     },
     {
       "id": "2-43",
@@ -591,8 +608,8 @@
         "Thâm niên công tác",
         "Tổng tiền hóa đơn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Ngày sinh là đầu vào được lưu trực tiếp. Tuổi, thâm niên và tổng hóa đơn có thể tính từ dữ liệu gốc."
     },
     {
       "id": "2-44",
@@ -604,8 +621,8 @@
         "Đường nét đứt",
         "Đường gạch chân"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Elip nét đứt cho biết giá trị có thể suy ra. Elip kép dùng cho thuộc tính nhận nhiều giá trị."
     },
     {
       "id": "2-45",
@@ -617,8 +634,8 @@
         "Thực thể mạnh tồn tại độc lập, trong khi thực thể yếu phụ thuộc vào sự tồn tại và phụ thuộc khóa vào thực thể cha của nó",
         "Thực thể mạnh luôn được vẽ bằng hình thoi, còn thực thể yếu vẽ bằng hình chữ nhật"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Thực thể yếu cần khóa của chủ để định danh đầy đủ, như số dòng hóa đơn cần kèm mã hóa đơn."
     },
     {
       "id": "2-46",
@@ -630,8 +647,8 @@
         "Không cần khóa chính cũng như khóa bộ phận (partial key)",
         "Bất kỳ thuộc tính đa trị nào cũng được dùng làm khóa chính"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Khóa chủ thường ghép với khóa bộ phận. Chỉ số dòng giống nhau có thể xuất hiện trong các hóa đơn khác nhau."
     },
     {
       "id": "2-47",
@@ -643,8 +660,8 @@
         "Mức độ quan trọng của mối quan hệ đối với doanh nghiệp",
         "Số lượng thuộc tính khóa tham gia vào mối quan hệ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Bậc đếm loại thực thể tham gia, còn bản số đếm số thể hiện có thể liên kết."
     },
     {
       "id": "2-48",
@@ -656,8 +673,8 @@
         "Hai thực thể",
         "Một thực thể duy nhất"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Nhị nguyên kết hợp hai loại thực thể, ví dụ KHOA và SINHVIEN."
     },
     {
       "id": "2-49",
@@ -669,8 +686,8 @@
         "Mối quan hệ đệ quy / vòng lặp (Recursive / loop relationship)",
         "Mối quan hệ đa trị (Multivalued relationship)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Một loại thực thể xuất hiện ở nhiều vai trò tạo mối kết hợp đệ quy, như nhân viên và quản lý."
     },
     {
       "id": "2-50",
@@ -682,8 +699,8 @@
         "Khi một thực thể có mối quan hệ với chính nó, đóng các vai trò khác nhau",
         "Khi hai thực thể liên kết chéo với nhau"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Cả cấp trên và cấp dưới đều là thể hiện của NHANVIEN, nên mối kết hợp chỉ dùng một loại thực thể."
     },
     {
       "id": "2-51",
@@ -695,8 +712,8 @@
         "Chỉ giá trị tối đa",
         "Chỉ giá trị trung bình"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Min cho mức tham gia nhỏ nhất, max cho mức lớn nhất có thể có theo quy tắc nghiệp vụ."
     },
     {
       "id": "2-52",
@@ -708,8 +725,8 @@
         "Tham gia tùy chọn, nhiều lần",
         "Chính xác một lần (bắt buộc)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Min và max cùng bằng 1, nên không được bỏ qua và không được tham gia nhiều hơn một lần."
     },
     {
       "id": "2-53",
@@ -721,8 +738,8 @@
         "Việc tham gia của mỗi thực thể là bắt buộc (mandatory) hay tùy chọn (optional)",
         "Tốc độ xử lý của cơ sở dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Min = 0 cho phép không tham gia; min = 1 yêu cầu tham gia. Max phân biệt một và nhiều."
     },
     {
       "id": "2-54",
@@ -734,8 +751,8 @@
         "Mối quan hệ N-N",
         "Mối quan hệ 1-N"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Mỗi phía có tối đa một đối tượng liên kết. Cả hai phía có thể tùy chọn mà phân loại tối đa vẫn là 1–1."
     },
     {
       "id": "2-55",
@@ -747,8 +764,8 @@
         "Thiết kế giao diện đồ họa cho người dùng cuối",
         "Quyết định phương pháp lưu trữ vật lý cụ thể trên đĩa"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Thiết kế logic chuyển ERD thành quan hệ, khóa và ràng buộc. Lựa chọn cấu trúc tệp thuộc bước vật lý."
     },
     {
       "id": "2-56",
@@ -760,8 +777,8 @@
         "Tạo mô hình dữ liệu logic",
         "Kiểm chứng mô hình thông qua chuẩn hóa và gán các ràng buộc toàn vẹn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Chỉ mục và tổ chức tệp mô tả cách truy cập và lưu dữ liệu vật lý."
     },
     {
       "id": "2-57",
@@ -773,8 +790,8 @@
         "3 giai đoạn",
         "4 giai đoạn"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Bài giảng chia thành tạo mô hình logic, kiểm chứng chuẩn hóa, kiểm chứng ràng buộc, hợp nhất và rà soát với người dùng."
     },
     {
       "id": "2-58",
@@ -786,8 +803,8 @@
         "Các quan hệ độc lập (không có khóa ngoại, không phụ thuộc vào bất kỳ bảng nào khác)",
         "Các bảng trung gian (junction tables) của các mối quan hệ N-N"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Tạo bảng không có phụ thuộc trước để khi khai báo khóa ngoại, bảng đích đã tồn tại."
     },
     {
       "id": "2-59",
@@ -799,8 +816,8 @@
         "Đảm bảo rằng mọi yêu cầu dữ liệu và giao dịch đều được hỗ trợ trước khi chuyển sang giai đoạn thiết kế vật lý",
         "Thống nhất cấu hình phần cứng máy chủ cho DBMS"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Người dùng xác nhận các thông tin và giao dịch cần thiết có thể được biểu diễn trước khi tối ưu lưu trữ."
     },
     {
       "id": "2-60",
@@ -812,8 +829,8 @@
         "Được xây dựng ở mức thiết kế quan niệm (ERD) và hoàn thiện ở mức logic",
         "Chỉ được xây dựng khi khách hàng yêu cầu bảo trì hệ thống"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Bắt đầu từ phân tích và ERD, rồi bổ sung mô tả cột, miền, khóa và ràng buộc khi chuyển sang logic."
     },
     {
       "id": "2-61",
@@ -825,8 +842,8 @@
         "Các cây phân cấp",
         "Các tập tin nhị phân"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Người dùng nhìn dữ liệu thành bảng. Mỗi hàng biểu diễn một bộ và mỗi cột là một thuộc tính."
     },
     {
       "id": "2-62",
@@ -838,8 +855,8 @@
         "Lý thuyết tập hợp (Set theory)",
         "Lý thuyết đồ thị"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Quan hệ được định nghĩa là tập các bộ; vì là tập nên thứ tự và số bản sao của một bộ không có ý nghĩa."
     },
     {
       "id": "2-63",
@@ -851,8 +868,8 @@
         "Khóa (Key)",
         "Thuộc tính (Attribute)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "ERD dùng ở giai đoạn mô hình hóa khái niệm. Quan hệ, thuộc tính và khóa là các thành phần của mô hình quan hệ."
     },
     {
       "id": "2-64",
@@ -864,8 +881,8 @@
         "Các hàng trong một quan hệ có thể trùng lặp hoàn toàn với nhau",
         "Các bộ (hàng) của một quan hệ là duy nhất (không trùng lặp)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Trong lý thuyết, một quan hệ là tập không chứa hai bộ giống hệt. SQL có thể trả hàng trùng nếu không dùng DISTINCT."
     },
     {
       "id": "2-65",
@@ -877,8 +894,8 @@
         "Vì các hàng được lưu trữ dưới dạng các tập tin nhị phân có độ dài cố định",
         "Vì một bảng là một khái niệm logic dựa trên lý thuyết tập hợp, trong đó các phần tử không có thứ tự định trước"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Tập hợp không có thứ tự nội tại. Muốn thứ tự khi truy vấn SQL cần chỉ định ORDER BY."
     },
     {
       "id": "2-66",
@@ -890,8 +907,8 @@
         "Được đặt trong dấu ngoặc nhọn {}",
         "Được gạch chân trong lược đồ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Theo ký hiệu lược đồ trong bài giảng, gạch chân các thành phần của khóa chính."
     },
     {
       "id": "2-67",
@@ -903,8 +920,8 @@
         "Một tập hợp gồm một hoặc nhiều thuộc tính xác định duy nhất các hàng của một bảng và có thể chứa các thuộc tính dư thừa",
         "Một tập tối thiểu các thuộc tính xác định duy nhất mà không có thuộc tính dư thừa"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Siêu khóa đủ để phân biệt mọi bộ và có thể có thuộc tính dư. Khóa ứng viên còn phải tối thiểu."
     },
     {
       "id": "2-68",
@@ -916,8 +933,8 @@
         "Khóa có nhiều thuộc tính dư thừa nhất có thể",
         "Tập hợp tất cả các cột trong bảng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Loại bất kỳ thuộc tính nào khỏi khóa ứng viên sẽ làm mất khả năng định danh duy nhất."
     },
     {
       "id": "2-69",
@@ -929,8 +946,8 @@
         "Luôn có chính xác hai khóa",
         "Chính xác một khóa"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Nếu cả mã nhân viên và email bắt buộc đều duy nhất, mỗi tập một cột có thể là một khóa ứng viên."
     },
     {
       "id": "2-70",
@@ -942,8 +959,8 @@
         "Bất kỳ thuộc tính nào không chứa giá trị NULL",
         "Một khóa ngoại tham chiếu đến bảng cha"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Một khóa ứng viên được chọn làm khóa chính; các khóa ứng viên còn lại vẫn có thể được ràng buộc duy nhất."
     },
     {
       "id": "2-71",
@@ -955,8 +972,8 @@
         "Khóa chính vừa là siêu khóa vừa là khóa ứng viên, và khóa ứng viên là một siêu khóa tối thiểu",
         "Khóa ứng viên là tập con của khóa chính, và siêu khóa là tập con của khóa ứng viên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Khóa chính là một khóa ứng viên, còn mọi khóa ứng viên là siêu khóa. Chiều ngược lại không đúng với siêu khóa có thuộc tính dư."
     },
     {
       "id": "2-72",
@@ -968,8 +985,8 @@
         "Ổn định và không chứa thông tin nghiệp vụ dễ thay đổi",
         "Duy nhất (Unique)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Khóa chọn phải vừa đủ để định danh; thêm thuộc tính dư làm mất tính tối thiểu."
     },
     {
       "id": "2-73",
@@ -981,8 +998,8 @@
         "Khóa chính phải luôn là một chuỗi ký tự dài",
         "Khóa chính phải tham chiếu đến một khóa ngoại ở bảng khác"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Khóa chính định danh hàng nên phải duy nhất và mọi thành phần đều có giá trị."
     },
     {
       "id": "2-74",
@@ -994,8 +1011,8 @@
         "NULL là số 0 hoặc một khoảng trắng",
         "NULL không gây ra bất kỳ vấn đề gì cho các hàm COUNT, AVERAGE và SUM"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "NULL biểu thị vắng giá trị, khác số 0 và chuỗi rỗng, vốn là các giá trị cụ thể."
     },
     {
       "id": "2-75",
@@ -1007,8 +1024,8 @@
         "Một giá trị đã biết nhưng bị thiếu (known but missing value)",
         "Một giá trị mặc định chắc chắn đúng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Giá trị mặc định là giá trị cụ thể. NULL có thể biểu thị chưa biết, thiếu hoặc không áp dụng."
     },
     {
       "id": "2-76",
@@ -1020,8 +1037,8 @@
         "NULL ngăn cản việc tạo các thuộc tính đa trị trong các bảng phụ thuộc",
         "NULL chiếm nhiều bộ nhớ hơn các kiểu dữ liệu khác"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Biểu thức với NULL có thể cho kết quả UNKNOWN. COUNT(cột) bỏ NULL, và kết theo phép bằng không ghép hai NULL như hai giá trị bằng nhau."
     },
     {
       "id": "2-77",
@@ -1033,8 +1050,8 @@
         "Xác định duy nhất mỗi hàng trong bảng hiện tại",
         "Liên kết hai bảng và bảo vệ tính toàn vẹn dữ liệu bằng cách tham chiếu đến khóa chính của một bảng khác"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khóa ngoại nối bản ghi con với khóa có thật của bản ghi cha để ngăn bản ghi mồ côi."
     },
     {
       "id": "2-78",
@@ -1046,8 +1063,8 @@
         "Nếu FK có giá trị thì giá trị đó phải khớp với một giá trị khóa chính đang tồn tại trong bảng được tham chiếu, hoặc nếu không thì FK phải là NULL",
         "FK phải luôn khớp với một khóa ngoại khác trong cùng một bảng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Mã lớp được ghi phải tồn tại trong bảng lớp. Nếu lớp là tùy chọn và cột cho phép NULL, sinh viên có thể chưa được xếp lớp."
     },
     {
       "id": "2-79",
@@ -1059,8 +1076,8 @@
         "Một khóa ngoại bắt buộc phải có tên giống hệt tên thuộc tính khóa chính mà nó tham chiếu",
         "Một khóa ngoại không bao giờ có thể tham chiếu đến chính bảng của nó"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Hai cột phải thuộc miền tương thích để so sánh giá trị và thực thi tham chiếu. Tên cột có thể khác."
     },
     {
       "id": "2-80",
@@ -1072,8 +1089,8 @@
         "Tự tham chiếu luôn yêu cầu tạo một bảng trung gian mới",
         "Một khóa ngoại có thể tham chiếu đến khóa chính của chính bảng của nó (tự tham chiếu)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "MaQuanLy của NHANVIEN có thể tham chiếu MaNV của một hàng khác trong cùng bảng."
     },
     {
       "id": "2-81",
@@ -1085,8 +1102,8 @@
         "Trong bảng trung gian của mối quan hệ N-N và trong thực thể yếu",
         "Chỉ trong các thực thể mạnh độc lập"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Hai mã ở bảng liên kết có thể đồng thời là khóa ngoại và thành phần PK. Tương tự khóa của chủ nằm trong PK của thực thể yếu."
     },
     {
       "id": "2-82",
@@ -1098,8 +1115,8 @@
         "Ràng buộc miền giá trị, ràng buộc CHECK, ràng buộc UNIQUE",
         "Toàn vẹn thực thể, toàn vẹn tham chiếu, ràng buộc UNIQUE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Miền kiểm tra giá trị hợp lệ, thực thể bảo vệ định danh, tham chiếu bảo vệ liên kết giữa các hàng."
     },
     {
       "id": "2-83",
@@ -1111,8 +1128,8 @@
         "Nó đảm bảo mọi giá trị của một thuộc tính đều nằm trong tập hợp các giá trị được phép",
         "Nó đảm bảo mọi quan hệ đều có ít nhất một thuộc tính khóa ngoại"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Miền giới hạn kiểu và giá trị được phép, chẳng hạn điểm từ 0 đến 10."
     },
     {
       "id": "2-84",
@@ -1124,8 +1141,8 @@
         "Ràng buộc toàn vẹn tham chiếu",
         "Ràng buộc toàn vẹn thực thể"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "CHECK giới hạn các giá trị xác định vào tập {0,1}. Nếu muốn cấm NULL phải thêm NOT NULL."
     },
     {
       "id": "2-85",
@@ -1137,8 +1154,8 @@
         "Gán một giá trị mặc định cho cột khi thêm bản ghi mới",
         "Đảm bảo mọi bản ghi trong bảng là duy nhất"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "CHECK đánh giá điều kiện trên dữ liệu, chẳng hạn Score >= 0. Kiểu cột và NOT NULL là các khai báo riêng."
     },
     {
       "id": "2-86",
@@ -1150,8 +1167,8 @@
         "Dữ liệu phải luôn là số 0",
         "Dữ liệu không được phép bỏ trống (không được nhận giá trị NULL)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Cột NOT NULL phải có giá trị. Chuỗi rỗng hoặc 0 vẫn có thể là giá trị hợp lệ tùy miền."
     },
     {
       "id": "2-87",
@@ -1163,8 +1180,8 @@
         "Các giá trị là duy nhất, không có sự trùng lặp trong cùng một cột",
         "Các giá trị phải là số nguyên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "UNIQUE ngăn trùng trên cột hoặc tổ hợp cột. Cách xử lý NULL tùy DBMS."
     },
     {
       "id": "2-88",
@@ -1176,8 +1193,8 @@
         "Tự động gán một giá trị cho cột nếu người dùng không cung cấp giá trị",
         "Buộc người dùng phải nhập dữ liệu mới"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Nếu INSERT bỏ qua cột có DEFAULT, DBMS điền giá trị mặc định. Gán NULL tường minh là trường hợp khác."
     },
     {
       "id": "2-89",
@@ -1189,8 +1206,8 @@
         "Một thuộc tính của quan hệ khác",
         "Một quan hệ (bảng) mới"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Thực thể mạnh có thể lập bảng độc lập với các thuộc tính đơn và khóa của nó."
     },
     {
       "id": "2-90",
@@ -1202,8 +1219,8 @@
         "Một miền giá trị",
         "Một khóa ngoại"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Khóa của thực thể được dùng để định danh các bộ trong bảng tương ứng."
     },
     {
       "id": "2-91",
@@ -1215,8 +1232,8 @@
         "Là khóa bộ phận của thực thể yếu",
         "Là khóa chính của thực thể chủ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Khóa bộ phận chỉ duy nhất trong phạm vi chủ. Ghép khóa chủ mới phân biệt được các bộ trên toàn bảng."
     },
     {
       "id": "2-92",
@@ -1228,8 +1245,8 @@
         "Khóa chính của thực thể chủ (owner entity) của nó",
         "Bảng chứa thuộc tính đa trị của thực thể gốc"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Khóa ngoại ở bảng yếu trỏ về chủ sở hữu, giúp đảm bảo mỗi thể hiện yếu có chủ hợp lệ."
     },
     {
       "id": "2-93",
@@ -1241,8 +1258,8 @@
         "Thuộc tính đa trị bị xóa hoàn toàn khỏi lược đồ",
         "Một quan hệ mới được tạo ra: khóa ngoại của nó là khóa chính của thực thể gốc, và khóa chính của nó là một khóa phức hợp (khóa gốc + thuộc tính đa trị)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Một hàng riêng lưu một giá trị và khóa của chủ. Khóa ghép ngăn lặp cùng một giá trị cho cùng chủ."
     },
     {
       "id": "2-94",
@@ -1254,8 +1271,8 @@
         "Các thuộc tính riêng của mối quan hệ được thêm đơn thuần vào một trong hai quan hệ gốc",
         "Hai thực thể được gộp lại thành một thực thể độc lập duy nhất"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Bảng liên kết cho phép một đối tượng xuất hiện trong nhiều cặp và có thể mang thuộc tính riêng, như điểm của lần đăng ký."
     },
     {
       "id": "2-95",
@@ -1267,8 +1284,8 @@
         "Khóa chính của thực thể có bậc cao nhất",
         "Khóa chính của một thực thể mạnh được chọn ngẫu nhiên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Tổ hợp khóa các bên định danh đầy đủ một liên kết theo quy tắc mặc định. Nếu nghiệp vụ áp ràng buộc chặt hơn, có thể dùng tổ hợp nhỏ hơn."
     },
     {
       "id": "2-96",
@@ -1280,8 +1297,8 @@
         "Dạng chuẩn 2 (2NF)",
         "Dạng chuẩn 3 (3NF)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Bài giảng dùng 3NF làm mục tiêu kiểm chứng logic để giảm phụ thuộc bộ phận và bắc cầu gây dị thường thông thường."
     },
     {
       "id": "2-97",
@@ -1293,8 +1310,8 @@
         "Kế hoạch sao lưu phòng ngừa và danh sách các rủi ro hỏng hóc phần cứng",
         "Các khung nhìn dữ liệu của người dùng cuối và danh sách phân quyền của DBA"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Lược đồ chuẩn hóa cho biết cấu trúc. Số liệu dung lượng, truy cập và đặc tính DBMS giúp chọn chỉ mục, tệp và cách lưu."
     },
     {
       "id": "2-98",
@@ -1306,18 +1323,9 @@
         "Phân tích khối lượng dữ liệu và mức độ sử dụng → Chuyển các quan hệ thành bảng → Chọn tổ chức tập tin → Định nghĩa chỉ mục → Định nghĩa khung nhìn → Ước tính nhu cầu lưu trữ → Xác định bảo mật người dùng",
         "Chuyển các quan hệ thành bảng → Chọn tổ chức tập tin → Định nghĩa chỉ mục → Định nghĩa khung nhìn → Phân tích khối lượng dữ liệu → Ước tính lưu trữ → Xác định bảo mật người dùng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Phần 1, trang 25 bắt đầu từ khối lượng và cách dùng rồi chuyển quan hệ thành bảng, chọn tệp, chỉ mục, view, ước lượng lưu trữ và bảo mật."
     }
   ],
-  "cases": [
-    {
-      "id": "2-case",
-      "title": "Bài tập vận dụng",
-      "paragraphs": [
-        "Một sinh viên có thể đăng ký nhiều lớp học phần và mỗi lớp có nhiều sinh viên. Hãy vẽ ERD, chọn khóa và ánh xạ thành các bảng."
-      ],
-      "supplemental": true
-    }
-  ]
+  "cases": []
 }

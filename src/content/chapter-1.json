@@ -1,37 +1,53 @@
 {
   "id": 1,
-  "title": "Tổng quan về cơ sở dữ liệu",
+  "title": "Chương 1",
   "sourceHeading": "CHƯƠNG 1: TỔNG QUAN VỀ CƠ SỞ DỮ LIỆU (48 CÂU)",
   "description": "Nền tảng dữ liệu, hệ quản trị và kiến trúc cơ sở dữ liệu.",
   "theory": [
     {
-      "title": "Dữ liệu và thông tin",
-      "text": "Dữ liệu là các quan sát thô. Thông tin xuất hiện khi dữ liệu được xử lý và đặt trong ngữ cảnh. Siêu dữ liệu mô tả cấu trúc hoặc đặc điểm của dữ liệu."
+      "title": "Dữ liệu, thông tin và tri thức",
+      "text": "Dữ liệu là quan sát thô như mã hàng, giá và số lượng của từng hóa đơn. Khi gom hóa đơn theo ngày và tính doanh thu, ta có thông tin. Khi hiểu doanh thu biến động theo mùa và dùng nhận định đó để điều chỉnh tồn kho, thông tin trở thành tri thức phục vụ quyết định.\nDữ liệu tĩnh thay đổi tương đối ít, chẳng hạn mã sinh viên và ngày sinh. Dữ liệu động như tồn kho hoặc doanh thu thay đổi theo giao dịch. Siêu dữ liệu mô tả dữ liệu, ví dụ tên cột, kiểu dữ liệu, khóa và quan hệ của bảng.\nDữ liệu có cấu trúc tuân theo lược đồ rõ như hàng và cột. JSON và XML là bán cấu trúc vì có khóa hoặc thẻ nhưng các bản ghi không nhất thiết cùng cấu trúc. Ảnh, video và văn bản tự do là các ví dụ phi cấu trúc.",
+      "source": "Chương 1, tr. 5–11"
     },
     {
-      "title": "Cơ sở dữ liệu và DBMS",
-      "text": "Cơ sở dữ liệu tổ chức các dữ liệu có liên quan. Hệ quản trị cơ sở dữ liệu cung cấp công cụ định nghĩa, truy vấn, kiểm soát truy cập và phục hồi dữ liệu."
+      "title": "Chất lượng, quản lý và quản trị dữ liệu",
+      "text": "Quản lý dữ liệu là các hoạt động thu thập, lưu trữ, tổ chức, bảo vệ và khai thác. Quản trị dữ liệu quy định ai chịu trách nhiệm, ai được truy cập, cách đặt tiêu chuẩn và kiểm tra tuân thủ.\nCác tiêu chí cần phân biệt gồm chính xác (đúng thực tế), đầy đủ (đủ thông tin cần thiết), nhất quán (cùng sự kiện có cùng biểu diễn), kịp thời (còn giá trị tại lúc sử dụng), phù hợp với nhu cầu, dễ hiểu và tránh trùng lặp không cần thiết.",
+      "source": "Chương 1, tr. 10–13"
     },
     {
-      "title": "Kiến trúc ba mức",
-      "text": "Mức ngoài là các khung nhìn của người dùng, mức khái niệm mô tả cấu trúc logic chung, và mức trong mô tả cách lưu trữ vật lý."
-    }
-  ],
-  "terms": [
-    {
-      "term": "Siêu dữ liệu",
-      "english": "Metadata",
-      "definition": "Dữ liệu mô tả dữ liệu như kiểu, cấu trúc và ràng buộc."
+      "title": "Từ hệ tệp đến hệ cơ sở dữ liệu",
+      "text": "Hệ tệp thủ công dùng biểu mẫu giấy, bìa hồ sơ và tủ. Hệ tệp máy tính hóa đưa xử lý dữ liệu vào chương trình và xuất hiện chuyên viên xử lý dữ liệu. Khi chương trình hiểu trực tiếp cấu trúc từng tệp, đổi định dạng dữ liệu kéo theo sửa ứng dụng.\nNhiều phòng ban lưu cùng thông tin dễ gây dữ liệu trùng và mâu thuẫn. DBMS cung cấp kho dữ liệu chung về mặt logic, kiểm soát chia sẻ và giảm liên kết giữa chương trình và định dạng lưu trữ. Đổi lại, tổ chức phải đầu tư hạ tầng, đào tạo, chuyển đổi dữ liệu và cân nhắc phụ thuộc nhà cung cấp.",
+      "source": "Chương 1, tr. 14–22"
     },
     {
-      "term": "Hệ quản trị cơ sở dữ liệu",
-      "english": "DBMS",
-      "definition": "Phần mềm định nghĩa, thao tác và kiểm soát cơ sở dữ liệu."
+      "title": "CSDL, DBMS và các thành phần hệ thống",
+      "text": "CSDL là tập dữ liệu liên quan có tổ chức. DBMS là phần mềm trung gian quản lý dữ liệu và xử lý yêu cầu ứng dụng. Hệ thống còn có phần cứng, hệ điều hành và ứng dụng, con người, quy trình, dữ liệu và siêu dữ liệu.\nCác nhóm tham gia gồm quản trị hệ thống, DBA, người thiết kế CSDL, nhà phân tích và lập trình viên, cùng người dùng cuối. Quy trình quy định vận hành, bảo mật, sao lưu và kiểm toán. DBMS quản lý từ điển dữ liệu, lưu trữ, truy vấn, ràng buộc, phân quyền, truy cập đồng thời và khôi phục.",
+      "source": "Chương 1, tr. 20–32"
     },
     {
-      "term": "Độc lập dữ liệu",
-      "english": "Data independence",
-      "definition": "Khả năng thay đổi lược đồ ở một mức với tác động hạn chế đến mức cao hơn."
+      "title": "Phân loại và vai trò của thiết kế",
+      "text": "Có thể phân loại theo số người dùng (đơn người dùng, nhóm làm việc, doanh nghiệp), nơi lưu trữ (tập trung, phân tán), mục đích (tác nghiệp, phân tích) và mức cấu trúc. Theo quy ước bài giảng, nhóm làm việc phục vụ dưới 50 người.\nOLTP tối ưu nhiều giao dịch ngắn như bán hàng và thanh toán. OLAP phục vụ tổng hợp, so sánh và phân tích lịch sử. Thiết kế kém có thể làm dữ liệu mâu thuẫn và gây báo cáo sai dù DBMS chạy đúng.",
+      "source": "Chương 1, tr. 33–38"
+    },
+    {
+      "title": "Kiến trúc ba mức và các mô-đun",
+      "text": "Mức ngoài cung cấp khung nhìn riêng cho từng nhóm. Mức quan niệm mô tả lược đồ logic toàn cục, gồm thực thể, mối liên hệ và ràng buộc. Mức trong mô tả chỉ mục, tệp và đường truy cập. Ánh xạ nối các mức để hỗ trợ độc lập dữ liệu vật lý và logic.\nBộ xử lý truy vấn phân tích và chọn kế hoạch thực thi. Bộ quản lý lưu trữ điều phối trang, tệp và bộ đệm. Bộ quản lý giao dịch phối hợp truy cập đồng thời và khôi phục. Trong kiến trúc khách–chủ, ứng dụng gửi yêu cầu đến máy chủ DBMS. Kiến trúc nhiều tầng có thể thêm tầng nghiệp vụ ở giữa.",
+      "source": "Chương 1, tr. 39–44"
+    },
+    {
+      "title": "Giao dịch và ACID",
+      "text": "Atomicity là tất cả hoặc không có gì. Consistency yêu cầu giao dịch hợp lệ giữ các ràng buộc nhất quán. Isolation kiểm soát tác động khi thực thi đồng thời. Durability giữ kết quả đã COMMIT sau sự cố. Ví dụ chuyển khoản cần cả ghi nợ và ghi có trong cùng giao dịch.",
+      "source": "Chương 1, tr. 40–41"
+    },
+    {
+      "title": "Mô hình, hệ quản trị và xu hướng",
+      "text": "Mô hình phân cấp tổ chức dữ liệu theo cây, mô hình mạng hỗ trợ liên kết linh hoạt hơn, và mô hình quan hệ dùng các bảng liên kết qua khóa. SQL Server, Oracle, MySQL và IBM Db2 là các RDBMS tiêu biểu. NoSQL bổ sung các mô hình khóa–giá trị, tài liệu, họ cột và đồ thị.\nDịch vụ đám mây có thể quản lý sao lưu và tự mở rộng. Kho phân tích như BigQuery tách tài nguyên tính toán khỏi lưu trữ và tối ưu quét, tổng hợp dữ liệu lớn. CSDL tác nghiệp như MySQL thường phục vụ cập nhật bản ghi và giao dịch ngắn.",
+      "source": "Chương 1, tr. 45–53"
+    },
+    {
+      "title": "Các nhóm lệnh CSDL",
+      "text": "DDL định nghĩa đối tượng bằng CREATE, ALTER, DROP. DML thêm, sửa, xóa bằng INSERT, UPDATE, DELETE. DQL truy vấn bằng SELECT. DCL dùng GRANT và REVOKE để phân quyền. TCL quản lý giao dịch bằng COMMIT, ROLLBACK và SAVEPOINT.\nVDL mô tả khung nhìn ở mức ngoài. SDL mô tả cấu trúc lưu trữ ở mức trong. Trong thực tế, nhiều chức năng này được tích hợp vào DDL hoặc do DBMS quản lý.",
+      "source": "Chương 1, tr. 54–56"
     }
   ],
   "questions": [
@@ -45,8 +61,8 @@
         "Các sự kiện, con số hoặc ký hiệu thô được thu thập từ thế giới thực nhưng chưa được xử lý để tạo ra ý nghĩa cụ thể",
         "Thông tin đã được xử lý nhằm hỗ trợ việc ra quyết định"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Dữ liệu là đầu vào thô, như giá và số lượng trong mỗi hóa đơn. Tổng hợp các giá trị đó theo ngày mới tạo ra báo cáo doanh thu có ý nghĩa."
     },
     {
       "id": "1-2",
@@ -58,8 +74,8 @@
         "Số lượng sản phẩm tồn kho theo thời gian thực",
         "Họ tên, ngày sinh và địa chỉ của một sinh viên"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Ngày sinh cố định và họ tên, địa chỉ thường ít thay đổi. Doanh thu, giao dịch và tồn kho biến động theo hoạt động."
     },
     {
       "id": "1-3",
@@ -71,8 +87,8 @@
         "Địa chỉ thường trú của một sinh viên",
         "Ngày sinh của một khách hàng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Doanh thu và tồn kho đổi theo bán hàng, nhập hàng hoặc điều chỉnh. Họ tên và ngày sinh ổn định hơn."
     },
     {
       "id": "1-4",
@@ -84,8 +100,8 @@
         "Kết quả của việc xử lý, tổ chức hoặc tổng hợp dữ liệu nhằm tạo ra ý nghĩa phục vụ cho việc ra quyết định",
         "Các thiết bị phần cứng được sử dụng để lưu trữ dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Xử lý dữ liệu làm xuất hiện ý nghĩa trong một ngữ cảnh. Ví dụ tổng hợp điểm thành tỷ lệ đỗ để hỗ trợ quyết định."
     },
     {
       "id": "1-5",
@@ -97,8 +113,8 @@
         "Điểm số thô của sinh viên trước khi được xếp loại",
         "Một hệ thống phần mềm quản trị cơ sở dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Tri thức là khả năng hiểu và vận dụng thông tin, như dùng xu hướng điểm để nhận diện nội dung cần ôn."
     },
     {
       "id": "1-6",
@@ -110,8 +126,8 @@
         "Thông tin → Dữ liệu → Tri thức → Ra quyết định",
         "Dữ liệu → Tri thức → Thông tin → Ra quyết định"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Quan sát thô được xử lý thành thông tin, thông tin được hiểu thành tri thức, rồi tri thức hỗ trợ lựa chọn hành động."
     },
     {
       "id": "1-7",
@@ -123,8 +139,8 @@
         "Dữ liệu do người dùng cuối nhập vào hệ thống",
         "Các báo cáo được xuất ra từ cơ sở dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Tên cột, kiểu và ràng buộc mô tả cách đọc hoặc kiểm tra bản ghi. Chúng khác với giá trị nghiệp vụ do người dùng nhập."
     },
     {
       "id": "1-8",
@@ -136,8 +152,8 @@
         "Dữ liệu bán cấu trúc (Semi-structured data)",
         "Dữ liệu phi cấu trúc (Unstructured data)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "XML có thẻ và JSON có cặp khóa–giá trị. Hai định dạng cho phép các bản ghi có trường khác nhau nên được xếp là bán cấu trúc."
     },
     {
       "id": "1-9",
@@ -149,8 +165,8 @@
         "Dữ liệu phản ánh đúng thực tế và đến từ nguồn đáng tin cậy",
         "Dữ liệu được cập nhật thường xuyên và đúng thời điểm"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Chính xác là giá trị khớp với thực tế. Cập nhật đúng lúc thuộc tính kịp thời, còn dữ liệu phù hợp mục đích thuộc tính liên quan."
     },
     {
       "id": "1-10",
@@ -162,8 +178,8 @@
         "Dữ liệu được cập nhật thường xuyên và mang tính thời sự tại thời điểm sử dụng",
         "Ý nghĩa của dữ liệu được định nghĩa rõ ràng để không thể bị hiểu sai"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Dữ liệu có thể đúng vào lúc thu thập nhưng quá cũ lúc cần ra quyết định. Tính kịp thời xét thời điểm cập nhật và sử dụng."
     },
     {
       "id": "1-11",
@@ -175,8 +191,8 @@
         "Quản lý dữ liệu là quá trình kỹ thuật thu thập, lưu trữ, tổ chức và sử dụng dữ liệu, trong khi quản trị dữ liệu là tập hợp các chính sách, quy trình và trách nhiệm giám sát việc quản lý đó",
         "Quản lý dữ liệu chỉ dành cho các cơ sở dữ liệu lớn, còn quản trị dữ liệu dành cho các doanh nghiệp nhỏ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Quản lý thực hiện công việc thu thập và bảo vệ dữ liệu. Quản trị thiết lập chính sách, tiêu chuẩn, thẩm quyền và trách nhiệm cho công việc đó."
     },
     {
       "id": "1-12",
@@ -188,8 +204,8 @@
         "Giấy bút, bìa hồ sơ và tủ đựng tài liệu",
         "Hệ quản trị cơ sở dữ liệu Access"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Hồ sơ giấy được sắp trong bìa và tủ, còn tệp đĩa thuộc giai đoạn máy tính hóa."
     },
     {
       "id": "1-13",
@@ -201,8 +217,8 @@
         "Hệ thống tập tin thủ công (Manual file systems)",
         "Hệ thống tập tin trên máy tính (Computerised file systems)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khi công việc xử lý hồ sơ chuyển sang các chương trình và tệp điện tử, chuyên viên DP vận hành các quy trình xử lý đó."
     },
     {
       "id": "1-14",
@@ -214,8 +230,8 @@
         "Hệ thống tập tin tự động biên dịch lại ứng dụng mỗi khi có dữ liệu mới được thêm vào",
         "Cấu trúc lưu trữ thực tế của dữ liệu và cấu trúc logic được mô tả trong chương trình ứng dụng gắn kết chặt chẽ với nhau, do đó việc thay đổi cấu trúc dữ liệu buộc phải sửa đổi mã nguồn của chương trình"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Mã đọc tệp dựa vào định dạng định sẵn như độ rộng và thứ tự trường. Nếu bố trí trường đổi, mã đọc cũ có thể diễn giải sai dữ liệu."
     },
     {
       "id": "1-15",
@@ -227,8 +243,8 @@
         "Không hỗ trợ lưu trữ tập tin trên máy tính cá nhân",
         "Máy tính xử lý dữ liệu quá nhanh khiến dữ liệu bị mất"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Mỗi ứng dụng giữ tệp riêng làm tăng sao chép và nguy cơ mâu thuẫn. Ràng buộc với định dạng tệp cũng tăng công bảo trì."
     },
     {
       "id": "1-16",
@@ -240,8 +256,8 @@
         "Bằng cách loại bỏ hoàn toàn siêu dữ liệu của hệ thống",
         "Bằng cách lưu trữ dữ liệu riêng biệt và độc lập tại mỗi phòng ban"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Nhiều ứng dụng có thể đọc cùng một nguồn dữ liệu logic thay vì giữ bản riêng. Kho chung vẫn có thể nằm trên nhiều máy vật lý."
     },
     {
       "id": "1-17",
@@ -253,8 +269,8 @@
         "Một tập hợp các dữ liệu có liên quan với nhau, được lưu trữ một cách có tổ chức để nhiều người dùng và ứng dụng có thể dùng chung",
         "Một tập hợp các tập tin dữ liệu riêng lẻ không có mối liên hệ nào với nhau"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "CSDL tổ chức các dữ liệu có liên hệ để dùng và truy xuất chung. Chương trình in báo cáo là một ứng dụng khai thác dữ liệu."
     },
     {
       "id": "1-18",
@@ -266,8 +282,8 @@
         "Là nhân viên chịu trách nhiệm nhập liệu hàng ngày",
         "Đóng vai trò là trung gian giữa người dùng hoặc ứng dụng với dữ liệu thực tế được lưu trữ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Ứng dụng gửi thao tác đến DBMS, DBMS thực thi truy xuất, kiểm tra quyền và xử lý việc lưu giữ dữ liệu."
     },
     {
       "id": "1-19",
@@ -279,8 +295,8 @@
         "Để che giấu sự phức tạp của việc lưu trữ vật lý đồng thời đảm bảo tính an toàn, nhất quán và hiệu năng truy xuất",
         "Để làm tăng kích thước của các tập tin lưu trữ vật lý"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Lớp trừu tượng cho phép ứng dụng thao tác đối tượng logic, còn DBMS quản lý tệp, chỉ mục và kế hoạch truy vấn."
     },
     {
       "id": "1-20",
@@ -292,8 +308,8 @@
         "Hệ quản trị cơ sở dữ liệu (DBMS)",
         "Phần cứng (Hardware)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "DBMS điều phối truy cập, lưu trữ, kiểm tra ràng buộc và phục hồi. Phần cứng, người dùng và quy trình hỗ trợ việc vận hành."
     },
     {
       "id": "1-21",
@@ -305,8 +321,8 @@
         "Phần cứng, phần mềm, con người, thủ tục/quy trình và dữ liệu",
         "Hệ điều hành và các ứng dụng được viết bằng Java hoặc Python"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Năm thành phần bao quát thiết bị, chương trình, con người, cách vận hành và thông tin được lưu."
     },
     {
       "id": "1-22",
@@ -318,8 +334,8 @@
         "Lập trình viên ứng dụng và chuyên viên phân tích hệ thống",
         "Người quản trị cơ sở dữ liệu (DBA) và người thiết kế cơ sở dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Bài giảng liệt kê quản trị hệ thống, DBA, thiết kế CSDL, phân tích và lập trình, cùng người dùng cuối của hệ thống. Trường hợp B không tham gia sử dụng hệ."
     },
     {
       "id": "1-23",
@@ -331,8 +347,8 @@
         "Là các thiết bị vật lý như máy tính, ổ cứng và máy in",
         "Là các hướng dẫn và quy tắc chi phối cách thiết kế và sử dụng hệ thống, thực thi các tiêu chuẩn, đồng thời hỗ trợ giám sát và kiểm toán"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Thủ tục quy định cách thiết kế, dùng, giám sát và kiểm tra, chẳng hạn quy trình định kỳ sao lưu và thử khôi phục."
     },
     {
       "id": "1-24",
@@ -344,8 +360,8 @@
         "Chi phí phần cứng thấp hơn và ít cần đến DBA có kỹ năng cao",
         "Dữ liệu bị trùng lặp và không nhất quán, hiệu năng kém và thông tin sai lệch dẫn đến các quyết định sai lầm"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Lưu cùng sự kiện ở nhiều nơi tạo cơ hội mâu thuẫn và tăng chi phí truy vấn. Báo cáo từ dữ liệu sai có thể kéo theo quyết định sai."
     },
     {
       "id": "1-25",
@@ -357,8 +373,8 @@
         "Nhà cung cấp có thể can thiệp và thay đổi dữ liệu của người dùng",
         "Cơ sở dữ liệu ngừng hoạt động mỗi khi nhà cung cấp phát hành bản cập nhật"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Tính năng riêng, định dạng, quy trình và đầu tư đào tạo theo một nhà cung cấp làm chi phí chuyển đổi tăng."
     },
     {
       "id": "1-26",
@@ -370,8 +386,8 @@
         "Mức trong / mức vật lý (Internal / physical level)",
         "Mức ngoài / mức khung nhìn (External / view level)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Mức quan niệm mô tả bảng, quan hệ và ràng buộc toàn cục. Mức ngoài là khung nhìn, mức trong mô tả lưu trữ."
     },
     {
       "id": "1-27",
@@ -383,8 +399,8 @@
         "Mức vật lý (Physical level)",
         "Mức quan niệm (Conceptual level)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Slide kiến trúc xếp công việc chủ yếu của DBA ở mức quan niệm, nơi quản lý lược đồ logic toàn cục. Trong vận hành thực tế DBA cũng có thể làm việc ở mức vật lý."
     },
     {
       "id": "1-28",
@@ -396,8 +412,8 @@
         "Thống nhất toàn bộ cấu trúc logic của mọi bảng và ràng buộc toàn vẹn trong cơ sở dữ liệu",
         "Cung cấp cho mỗi nhóm một khung nhìn dữ liệu riêng phù hợp với công việc của nhóm đó và che giấu những dữ liệu không liên quan đến họ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Khung nhìn kế toán và khung nhìn bán hàng có thể hiển thị nhóm cột khác nhau từ cùng một CSDL."
     },
     {
       "id": "1-29",
@@ -409,8 +425,8 @@
         "Tạo các khung nhìn tùy chỉnh cho từng nhóm người dùng ở mức ngoài của kiến trúc",
         "Quản lý việc sao lưu và phục hồi cơ sở dữ liệu"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "VDL định nghĩa cách một nhóm nhìn thấy dữ liệu, chẳng hạn khung nhìn chỉ có họ tên và mã phòng ban."
     },
     {
       "id": "1-30",
@@ -422,8 +438,8 @@
         "Cách dữ liệu thực sự được lưu trữ trên các thiết bị vật lý: cấu trúc tập tin, chỉ mục (indexes), phương pháp băm và đường dẫn truy xuất",
         "Cách các phòng ban nhìn thấy dữ liệu và tương tác với các ứng dụng nghiệp vụ"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "Mức trong quản lý cấu trúc tệp, chỉ mục và đường truy cập, tức cách DBMS cất và tìm dữ liệu vật lý."
     },
     {
       "id": "1-31",
@@ -435,8 +451,8 @@
         "Định nghĩa các lược đồ mức ngoài cho các ứng dụng viết bằng Java, Python hoặc C++",
         "Định nghĩa cách dữ liệu thực sự được lưu trữ trong bộ nhớ vật lý, và thường được tích hợp ngầm vào DDL thay vì cung cấp dưới dạng các lệnh SQL riêng biệt cho người dùng gọi"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "SDL mô tả biểu diễn lưu trữ. Trên nhiều DBMS người dùng cấu hình qua DDL hoặc cơ chế riêng của hệ."
     },
     {
       "id": "1-32",
@@ -448,8 +464,8 @@
         "Cấp hoặc thu hồi quyền truy cập dữ liệu của người dùng",
         "Định nghĩa và khai báo cấu trúc cơ sở dữ liệu (tạo, sửa đổi và xóa các đối tượng như bảng, khung nhìn và chỉ mục)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "DDL thay cấu trúc đối tượng, chẳng hạn tạo bảng. SELECT đọc dữ liệu, còn INSERT và UPDATE thay nội dung."
     },
     {
       "id": "1-33",
@@ -461,8 +477,8 @@
         "SELECT",
         "INSERT, UPDATE, DELETE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "CREATE tạo, ALTER sửa định nghĩa, DROP xóa đối tượng. Các lệnh COMMIT và ROLLBACK quản lý giao dịch."
     },
     {
       "id": "1-34",
@@ -474,8 +490,8 @@
         "Thao tác trên dữ liệu bên trong các bảng: thêm, sửa và xóa các dòng dữ liệu",
         "Cấp quyền truy cập hệ thống cho nhân viên mới"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "DML thay các bản ghi trong bảng, ví dụ cập nhật điểm cho một sinh viên theo mã."
     },
     {
       "id": "1-35",
@@ -487,8 +503,8 @@
         "CREATE, ALTER, DROP",
         "INSERT, UPDATE, DELETE"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "INSERT thêm hàng, UPDATE sửa hàng và DELETE xóa hàng. SELECT thuộc DQL theo cách chia nhóm của bài giảng."
     },
     {
       "id": "1-36",
@@ -500,8 +516,8 @@
         "CREATE",
         "INSERT"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "SELECT lấy dữ liệu có thể qua lọc, kết bảng hoặc gom nhóm. CREATE và INSERT phục vụ các mục đích khác."
     },
     {
       "id": "1-37",
@@ -513,8 +529,8 @@
         "GRANT, REVOKE",
         "COMMIT, ROLLBACK"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "GRANT cấp quyền, REVOKE thu hồi quyền. Hai thao tác thay quyền chứ không thay cấu trúc bảng hay nội dung bản ghi."
     },
     {
       "id": "1-38",
@@ -526,8 +542,8 @@
         "CREATE, ALTER, DROP, dùng để thay đổi cấu trúc bảng",
         "GRANT, REVOKE, dùng để phân quyền người dùng"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "COMMIT xác nhận, ROLLBACK hoàn tác, SAVEPOINT đánh dấu mốc để có thể hoàn tác một phần giao dịch."
     },
     {
       "id": "1-39",
@@ -539,8 +555,8 @@
         "Accuracy, Completeness, Isolation, Diversity",
         "Atomicity, Consistency, Isolation, Durability"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "ACID là nguyên tử, nhất quán, cô lập và bền vững. Cả bốn đặc tính cùng bảo vệ giao dịch khi đồng thời hoặc gặp lỗi."
     },
     {
       "id": "1-40",
@@ -552,8 +568,8 @@
         "Dữ liệu được chia nhỏ thành các nguyên tử để có thể lưu trữ hiệu quả hơn trên đĩa",
         "Các giao dịch chạy đồng thời không được làm ảnh hưởng hoặc làm sai lệch dữ liệu của nhau"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "Nếu chuyển khoản ghi nợ thành công nhưng ghi có lỗi, toàn bộ giao dịch phải được hoàn tác. Giữ kết quả sau COMMIT thuộc durability."
     },
     {
       "id": "1-41",
@@ -565,8 +581,8 @@
         "Cơ sở dữ liệu doanh nghiệp (Enterprise database)",
         "Cơ sở dữ liệu nhóm làm việc (Workgroup database)"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Slide phân loại workgroup dưới 50 người theo số người dùng. Phân tán là cách phân loại theo vị trí lưu trữ."
     },
     {
       "id": "1-42",
@@ -578,8 +594,8 @@
         "Dữ liệu được lưu trữ tập trung trên một máy chủ vật lý duy nhất",
         "Dữ liệu được trải rộng và lưu trữ tại nhiều vị trí địa lý khác nhau"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Dữ liệu phân tán nằm trên nhiều nút hoặc địa điểm nhưng được khai thác theo cấu trúc logic của hệ."
     },
     {
       "id": "1-43",
@@ -591,8 +607,8 @@
         "Chỉ hỗ trợ một người dùng tại một thời điểm",
         "Hỗ trợ các giao dịch diễn ra hàng ngày và dữ liệu của nó được cập nhật liên tục"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "OLTP phục vụ giao dịch tác nghiệp ngắn và cập nhật thường xuyên như ghi hóa đơn hay tồn kho."
     },
     {
       "id": "1-44",
@@ -604,8 +620,8 @@
         "Hỗ trợ phân tích và ra quyết định, chủ yếu bằng cách lưu trữ dữ liệu lịch sử",
         "Lưu trữ thông tin cá nhân của một người dùng duy nhất"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "OLAP dùng dữ liệu lịch sử để tổng hợp và so sánh theo thời gian, khu vực hoặc sản phẩm nhằm hỗ trợ quyết định."
     },
     {
       "id": "1-45",
@@ -617,8 +633,8 @@
         "Các cặp khóa - giá trị (key-value) phi cấu trúc",
         "Các đồ thị được tạo thành từ các nút và các cạnh"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 0,
+      "explanation": "Bảng quan hệ gồm các bộ (hàng) và thuộc tính (cột). Khóa tạo liên hệ giữa các bảng."
     },
     {
       "id": "1-46",
@@ -630,8 +646,8 @@
         "Apache Cassandra",
         "MongoDB"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 1,
+      "explanation": "SQL Server, Oracle, MySQL và Db2 là hệ quan hệ. Neo4j thiên về đồ thị, Cassandra họ cột và MongoDB tài liệu."
     },
     {
       "id": "1-47",
@@ -643,8 +659,8 @@
         "Loại bỏ nhu cầu sử dụng mạng máy tính trong các công ty lớn",
         "Xử lý khối lượng dữ liệu khổng lồ, đa dạng và tăng trưởng theo cấp số nhân từ mạng xã hội và Web 2.0, điều mà mô hình quan hệ truyền thống gặp khó khăn để đáp ứng hiệu quả"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 3,
+      "explanation": "Ứng dụng Web sinh dữ liệu lớn, đa dạng và thay đổi nhanh. NoSQL cung cấp lược đồ linh hoạt và nhiều cách phân tán theo bài toán."
     },
     {
       "id": "1-48",
@@ -656,18 +672,9 @@
         "BigQuery lưu trữ và phân tích dữ liệu ở quy mô lớn (OLAP) với phần tính toán tách biệt khỏi phần lưu trữ, chạy không máy chủ để xử lý lượng lớn dữ liệu lịch sử bằng SQL chuẩn, trong khi MySQL là cơ sở dữ liệu quan hệ truyền thống chạy trên máy chủ chuyên dụng và được tối ưu hóa cho OLTP",
         "BigQuery chỉ hỗ trợ các tập tin thủ công và dữ liệu phi cấu trúc, đồng thời không hỗ trợ SQL"
       ],
-      "answer": null,
-      "explanation": null
+      "answer": 2,
+      "explanation": "BigQuery là kho OLAP serverless, tách lưu trữ và tính toán để quét dữ liệu quy mô lớn. MySQL thường được triển khai cho giao dịch quan hệ ngắn; vẫn có dịch vụ MySQL được quản lý trên đám mây."
     }
   ],
-  "cases": [
-    {
-      "id": "1-case",
-      "title": "Bài tập vận dụng",
-      "paragraphs": [
-        "Một trường đang lưu điểm bằng các bảng tính riêng ở mỗi khoa. Hãy chỉ ra các nguy cơ về trùng lặp, nhất quán và quyền truy cập. Đề xuất cách tổ chức cơ sở dữ liệu dùng chung."
-      ],
-      "supplemental": true
-    }
-  ]
+  "cases": []
 }
