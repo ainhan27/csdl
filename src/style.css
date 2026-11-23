@@ -168,12 +168,21 @@ footer { margin-top: 35px; border-top: 1px solid var(--border); padding: 18px 0 
 .tabs a { display: inline-flex; gap: 7px; align-items: center; padding: 9px 13px; white-space: nowrap; border-radius: 9px; font-size: .87rem; color: var(--muted); transition: color .16s, background-color .16s; }
 .tabs a[aria-current] { color: var(--accent); background: var(--accent-soft); font-weight: 620; }
 .reading { max-width: 910px; }
-.theory-index { columns: 2; padding: 16px 20px; margin: 13px 0 18px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-soft); }
-.theory-index a { display: block; break-inside: avoid; color: var(--accent); padding: 5px 0; font-size: .88rem; }
-.theory-index a:hover, .back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.theory-card, .case-card, .result-card { padding: clamp(17px, 2.5vw, 27px); margin-top: 12px; }
-.theory-card h3, .case-card h3, .result-card h3 { line-height: 1.4; font-size: 1.14rem; }
-.theory-card p, .case-card p, .result-card p { max-width: 74ch; margin-top: 9px; font-size: .99rem; line-height: 1.68; overflow-wrap: anywhere; }
+.theory-reading { max-width: none; }
+.theory-layout { display: grid; grid-template-columns: clamp(175px, 21%, 240px) minmax(0, 1fr); gap: clamp(14px, 2.5vw, 35px); align-items: start; margin-top: 15px; }
+.theory-index { position: sticky; top: calc(var(--topbar-height) + 16px); max-height: calc(100dvh - var(--topbar-height) - 30px); overflow-y: auto; padding: 10px 7px 10px 2px; }
+.theory-index h3 { padding: 0 10px 9px; color: var(--muted); font-size: .8rem; letter-spacing: 0; }
+.theory-index-toggle { display: none; }
+.theory-index a { display: block; padding: 7px 10px; border-radius: 8px; color: var(--muted); font-size: .81rem; line-height: 1.5; }
+.theory-index a:hover, .theory-index a[aria-current] { color: var(--accent); background: var(--accent-soft); }
+.back-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.theory-document { min-width: 0; max-width: 900px; padding: 0 clamp(16px, 3.3vw, 48px); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+.theory-card { padding: clamp(20px, 3vw, 36px) 0; }
+.theory-card + .theory-card { border-top: 1px solid var(--border); }
+.theory-card h3 { font-size: clamp(1.22rem, 2vw, 1.62rem); line-height: 1.35; }
+.case-card, .result-card { padding: clamp(17px, 2.5vw, 27px); margin-top: 12px; }
+.case-card h3, .result-card h3 { line-height: 1.4; font-size: 1.14rem; }
+.theory-card p, .case-card p, .result-card p { max-width: 74ch; margin-top: 10px; font-size: .99rem; line-height: 1.76; overflow-wrap: anywhere; }
 .theory-card small { display: block; margin-top: 15px; color: var(--muted); font-size: .76rem; }
 .theory-card pre { max-width: 100%; overflow-x: auto; padding: 13px 15px; margin-top: 13px; background: var(--surface-soft); border: 1px solid var(--border); border-radius: 11px; font-size: .86rem; }
 .case-card h3 { margin-top: 8px; }
@@ -322,7 +331,6 @@ fieldset:disabled .option { cursor: default; }
   .chapter-banner { display: grid; grid-template-columns: 40px 1fr; gap: 8px 11px; }
   .chapter-banner .tile-icon { width: 40px; height: 40px; }
   .chapter-banner button { justify-self: start; grid-column: 2; margin-left: 0; }
-  .theory-index { columns: 1; }
   .quiz-layout.with-questions, .quiz-modes { grid-template-columns: 1fr; gap: 9px; }
   .quiz-modes .case-card { min-height: 0; }
   .question-panel { position: static; grid-row: 1; }
@@ -374,16 +382,30 @@ fieldset:disabled .option { cursor: default; }
   .shell:has(.quiz-layout) .drawer-close { position: absolute; top: 31px; right: 15px; }
   .shell:has(.quiz-layout) .mobile-scrim { display: block; position: fixed; z-index: 4; inset: 0; background: #102c4870; }
 }
-.theory-diagram { margin: 14px 0 18px; padding: clamp(13px, 2.3vw, 22px); background: var(--surface-soft); border: 1px solid var(--border); border-radius: 15px; }
-.theory-diagram figcaption { color: var(--accent); font-weight: 740; font-size: .92rem; }
-.diagram-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 9px; margin: 12px 0 0; }
-.diagram-steps.flow { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 19px; }
-.diagram-steps li { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); overflow-wrap: anywhere; }
-.diagram-steps strong { color: var(--accent); font-size: .79rem; font-weight: 740; }
-.diagram-steps span { color: var(--muted); font-size: .73rem; line-height: 1.5; }
-.diagram-steps.flow li:not(:last-child)::after { content: ""; position: absolute; top: 50%; left: calc(100% + 5px); width: 8px; height: 8px; border-top: 2px solid var(--accent); border-right: 2px solid var(--accent); transform: translateY(-50%) rotate(45deg); }
+.theory-diagram { margin: 19px 0 7px; padding: 13px 0 10px 15px; border-inline-start: 3px solid var(--accent); }
+.theory-diagram figcaption { color: var(--ink); font-weight: 720; font-size: .89rem; }
+.diagram-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 14px; margin: 14px 0 0; }
+.diagram-steps.flow { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 0; }
+.diagram-steps li { position: relative; min-width: 0; padding-inline-end: 10px; overflow-wrap: anywhere; }
+.diagram-steps strong, .diagram-steps li div > span { display: block; }
+.diagram-steps strong { color: var(--accent); font-size: .79rem; font-weight: 720; }
+.diagram-steps li div > span { margin-top: 4px; color: var(--muted); font-size: .76rem; line-height: 1.55; }
+.diagram-step-marker { position: relative; z-index: 1; display: grid; place-items: center; width: 26px; height: 26px; margin-bottom: 8px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-size: .73rem; font-weight: 700; }
+.diagram-steps.flow li:not(:last-child)::after { content: ""; position: absolute; top: 12px; inset-inline: 26px 0; height: 1px; background: var(--border); }
 .theory-card .theory-diagram p { color: var(--muted); font-size: .78rem; margin-top: 10px; }
-@media (max-width: 760px) {
-  .diagram-steps.flow { grid-auto-flow: row; gap: 13px; }
-  .diagram-steps.flow li:not(:last-child)::after { top: calc(100% + 1px); left: 50%; transform: translateX(-50%) rotate(135deg); }
+@media (max-width: 1100px) {
+  .theory-layout { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .theory-index { position: static; max-height: none; overflow: visible; padding: 4px; background: var(--surface-soft); border: 1px solid var(--border); border-radius: 12px; }
+  .theory-index h3, .theory-index ol:not(.expanded) { display: none; }
+  .theory-index-toggle { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 0 9px; border-radius: 9px; color: var(--accent); font-weight: 650; font-size: .84rem; text-align: start; }
+  .theory-index-toggle svg:last-child { margin-inline-start: auto; }
+  .theory-index-toggle[aria-expanded="true"] svg:last-child { rotate: 180deg; }
+}
+@media (max-width: 660px) {
+  .theory-document { border-radius: 15px; }
+  .theory-card p { font-size: .92rem; }
+  .diagram-steps.flow { grid-auto-flow: row; gap: 0; }
+  .diagram-steps.flow li { display: grid; grid-template-columns: 26px minmax(0, 1fr); align-items: start; column-gap: 10px; padding: 0 0 12px; }
+  .diagram-steps.flow li:last-child { padding-bottom: 0; }
+  .diagram-steps.flow li:not(:last-child)::after { top: 26px; bottom: 0; inset-inline: 12px auto; width: 1px; height: auto; }
 }
