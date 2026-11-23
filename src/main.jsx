@@ -105,7 +105,7 @@ function App() {
     <aside id="site-sidebar" className={'sidebar' + (menu ? ' open' : '')}>
       <a className="brand" href="#/" onClick={() => setMenu(false)}>
         <span className="brand-icon"><Database size={23} /></span>
-        <span><strong>MIS<span>2001</span></strong><small>Cơ sở dữ liệu</small></span>
+        <span><strong>CSDL</strong><small>Cơ sở dữ liệu</small></span>
       </a>
       <button className="icon-button drawer-close" aria-label="Đóng điều hướng" onClick={() => { setMenu(false); menuTrigger.current?.focus(); }}><X size={19} /></button>
       <nav aria-label="Điều hướng chính">
@@ -117,7 +117,7 @@ function App() {
           <BookOpen size={17} /><span>{item.title}</span>
         </a>)}
       </nav>
-      <div className="sidebar-bottom"><GraduationCap size={19} /><div><strong>Ôn thi cuối kỳ</strong><small>Học phần MIS2001</small></div></div>
+      <div className="sidebar-bottom"><GraduationCap size={19} /><div><strong>Ôn thi cuối kỳ</strong><small>Học phần CSDL</small></div></div>
     </aside>
     <div className="workspace">
       <header className="topbar">
@@ -135,7 +135,7 @@ function App() {
               : <Dashboard progress={progress} />}
           </div>
         </Entrance>
-        <footer><span>MIS2001 · Cơ sở dữ liệu</span><span>Tiến độ lưu trên thiết bị này</span></footer>
+        <footer><span>CSDL · Cơ sở dữ liệu</span><span>Tiến độ lưu trên thiết bị này</span></footer>
       </main>
     </div>
     {search && <SearchDialog close={() => setSearch(false)} openResult={(url, target) => {
@@ -156,8 +156,8 @@ function Dashboard({ progress }) {
     <div className="hero">
       <div className="hero-copy">
         <span className="hero-tag"><GraduationCap size={17} /> Ôn tập cuối kỳ</span>
-        <h1>Cơ sở<br className="hero-break" /> dữ liệu<span>.</span></h1>
-        <p>Ôn lý thuyết theo chương và luyện đề MIS2001 theo tiến độ của bạn.</p>
+        <h1>CƠ SỞ<br className="hero-break" /> DỮ LIỆU</h1>
+        <p>Ôn lý thuyết theo chương và luyện đề CSDL theo tiến độ của bạn.</p>
         <div className="hero-actions">
           <Button asChild><a className="primary-button" href={chapterUrl(next.id)}>{completed || practiced ? 'Tiếp tục học' : 'Bắt đầu học'} <ArrowRight size={17} /></a></Button>
           <Button asChild><a className="outline-button" href={chapterUrl(quizChapter.id, 'quiz')}><Target size={17} /> Trắc nghiệm chương {quizChapter.id}</a></Button>
