@@ -1,4 +1,4 @@
-# MIS2001 · Ôn tập Cơ sở dữ liệu
+# CSDL · Ôn tập Cơ sở dữ liệu
 
 Website tiếng Việt gồm 5 chương. Phần lý thuyết tổng hợp từ các PDF bài giảng và ghi số trang theo từng mục. Ngân hàng giữ nguyên đề của 289 câu trắc nghiệm và 6 câu tự luận trong **ÔN TẬP CSDL.docx**.
 
