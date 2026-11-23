@@ -6,7 +6,10 @@ export function TheoryDiagram({ diagram }) {
   return <figure className="theory-diagram">
     <figcaption>{title}</figcaption>
     <List className={'diagram-steps' + (flow ? ' flow' : '')} role="list">
-      {steps.map(([label, detail]) => <li key={label}><strong>{label}</strong><span>{detail}</span></li>)}
+      {steps.map(([label, detail], index) => <li key={label}>
+        {flow && <span className="diagram-step-marker" aria-hidden="true">{index + 1}</span>}
+        <div><strong>{label}</strong><span>{detail}</span></div>
+      </li>)}
     </List>
     <p>{note}</p>
   </figure>;

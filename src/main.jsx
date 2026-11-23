@@ -210,19 +210,7 @@ function Chapter({ chapter, requestedTab, targetId, progress, setProgress }) {
         {tabs.map(([value, label, TabIcon]) => <a key={value} href={chapterUrl(chapter.id, value)} aria-current={tab === value ? 'page' : undefined}><TabIcon size={17} /> {label}</a>)}
       </nav>
     </div>
-    {tab === 'theory' && <section className="reading">
-      <h2>Lý thuyết</h2>
-      <nav className="theory-index" aria-label="Mục lục lý thuyết">
-        {chapter.theory.map(({ title }, index) => <a key={index} href={chapterUrl(chapter.id) + '/theory-' + index}>{title}</a>)}
-      </nav>
-      {chapter.theory.map(({ title, text, example, source, diagram }, index) => <article className="reading-card theory-card" key={title} id={'theory-' + index} tabIndex={-1}>
-        <h3>{title}</h3>
-        {diagram && <TheoryDiagram diagram={diagram} />}
-        {text.split('\n').map((section, part) => <p key={part}>{section}</p>)}
-        {example && <pre><code>{example}</code></pre>}
-        <small>{source}</small>
-      </article>)}
-    </section>}
+    {tab === 'theory' && <TheoryReading chapter={chapter} targetId={targetId} />}
     {tab === 'quiz' && <QuizHub key={targetId ?? 'setup'} chapter={chapter} questionId={targetId} setProgress={setProgress} />}
     {tab === 'cases' && <section className="reading"><h2>Bài tập tình huống</h2>
       {chapter.cases.map(item => <article className="case-card" key={item.id} id={item.id} tabIndex={-1}>
@@ -235,6 +223,42 @@ function Chapter({ chapter, requestedTab, targetId, progress, setProgress }) {
       </article>)}
     </section>}
   </>;
+}
+
+function TheoryReading({ chapter, targetId }) {
+  const [tocOpen, setTocOpen] = useState(false);
+
+  return <section className="reading theory-reading" aria-labelledby="theory-heading">
+    <h2 id="theory-heading">Lý thuyết</h2>
+    <div className="theory-layout">
+      <nav className="theory-index" aria-label="Mục lục lý thuyết">
+        <h3>Nội dung chương</h3>
+        <button type="button" className="theory-index-toggle" aria-expanded={tocOpen} aria-controls="theory-links" onClick={() => setTocOpen(open => !open)}>
+          <BookOpen size={17} aria-hidden="true" /> Nội dung chương <ChevronDown size={16} aria-hidden="true" />
+        </button>
+        <ol id="theory-links" className={tocOpen ? 'expanded' : undefined}>
+          {chapter.theory.map(({ title }, index) => {
+            const anchor = 'theory-' + index;
+            return <li key={title}><a href={chapterUrl(chapter.id) + '/' + anchor}
+              aria-current={targetId === anchor ? 'location' : undefined}
+              onClick={() => {
+                setTocOpen(false);
+                if (location.hash.endsWith('/' + anchor)) document.getElementById(anchor)?.focus();
+              }}>{title}</a></li>;
+          })}
+        </ol>
+      </nav>
+      <div className="theory-document">
+        {chapter.theory.map(({ title, text, example, source, diagram }, index) => <article className="theory-card" key={title} id={'theory-' + index} tabIndex={-1}>
+          <h3>{title}</h3>
+          {text.split('\n').map((paragraph, part) => <p key={part}>{paragraph}</p>)}
+          {diagram && <TheoryDiagram diagram={diagram} />}
+          {example && <pre><code>{example}</code></pre>}
+          <small>{source}</small>
+        </article>)}
+      </div>
+    </div>
+  </section>;
 }
 
 function Review({ wrong, setProgress }) {
