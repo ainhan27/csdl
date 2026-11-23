@@ -410,14 +410,12 @@ fieldset:disabled .option { cursor: default; }
   .diagram-steps.flow li:not(:last-child)::after { top: 26px; bottom: 0; inset-inline: 12px auto; width: 1px; height: auto; }
 }
 
-.case-rubric { margin-top: 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-soft); }
-.case-rubric summary { padding: 5px 0; cursor: pointer; color: var(--accent); font-size: .9rem; font-weight: 700; }
-.rubric-score { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 5px 12px; margin: 12px 0 18px; }
-.rubric-score span, .case-rubric small { color: var(--muted); font-size: .76rem; }
-.rubric-criterion { min-width: 0; border-top: 1px solid var(--border); padding-block: 3px 13px; }
-.rubric-criterion legend { padding: 0 6px 0 0; font-weight: 700; font-size: .88rem; }
-.rubric-criterion legend span { color: var(--accent); }
-.case-rubric p, .rubric-criterion p { font-size: .87rem; margin-top: 5px; }
-.rubric-ratings { display: flex; flex-wrap: wrap; gap: 5px 13px; margin-top: 8px; }
-.rubric-ratings label { display: inline-flex; min-height: 38px; align-items: center; gap: 5px; margin: 0; font-size: .8rem; cursor: pointer; }
-.rubric-ratings input { accent-color: var(--accent); }
+.case-action { margin-top: 12px; }
+.case-rubric { margin-top: 14px; padding: 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface-soft); }
+.rubric-score { color: var(--accent); }
+.case-rubric h4 { margin: 16px 0 8px; font-weight: 720; }
+.case-rubric small, .case-rubric .rubric-missing { color: var(--muted); font-size: .76rem; }
+.rubric-criterion { border-top: 1px solid var(--border); padding-block: 9px 13px; }
+.rubric-criterion h5 { font-weight: 700; font-size: .88rem; }
+.rubric-criterion h5 span { color: var(--accent); }
+.case-rubric p { font-size: .87rem; margin-top: 5px; }
